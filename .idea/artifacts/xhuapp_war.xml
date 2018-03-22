@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xhuapp:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="xhuapp.war">
+      <element id="artifact" artifact-name="xhuapp:war exploded" />
+    </root>
+  </artifact>
+</component>
