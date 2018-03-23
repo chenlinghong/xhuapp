@@ -21,11 +21,132 @@
 
     <select id="findUserByUser_id" parameterType="int" resultMap="BaseResultMap">
         SELECT
+            <include refid="Base_Column_List"/>
+        FROM
+            tb_user
+        WHERE
+            user_id=#{value}
+    </select>
+
+    <select id="findUserByTelphone" parameterType="String" resultMap="BaseResultMap">
+        SELECT
         <include refid="Base_Column_List"/>
         FROM
         tb_user
         WHERE
-        user_id=#{value}
+        telphone=#{value}
     </select>
+
+    <select id="findUserByUsernameAndPassword" parameterType="com.app.entity.User" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        tb_user
+        WHERE
+        username=#{username} AND password = #{password}
+    </select>
+
+
+
+    <select id="matchByUsernameAndPassword" parameterType="com.app.entity.User" resultType="int">
+        SELECT
+        count(user_id)
+        FROM
+        tb_user
+        WHERE
+        tb_user.username = #{username} and tb_user.password = #{password}
+    </select>
+
+    <select id="matchByTelphoneAndPassword" parameterType="com.app.entity.User" resultType="int">
+        SELECT
+        count(user_id)
+        FROM
+        tb_user
+        WHERE
+        tb_user.telphone = #{telphone} and tb_user.password = #{password}
+    </select>
+
+    <insert id="insertUser" parameterType="com.app.entity.User">
+        <selectKey keyProperty="user_id" order="AFTER" resultType="int">
+            SELECT last_insert_id()
+        </selectKey>
+        INSERT into
+        tb_user(username,password,gender,birthday,head_portrail,introduce,telphone)
+        values(#{username},#{password},#{gender},#{birthday},#{head_portrail},#{introduce},#{telphone})
+    </insert>
+
+    <select id="queryTelphone" parameterType="java.lang.String" resultType="int">
+        SELECT
+        count(*)
+        FROM
+        tb_user
+        WHERE
+        tb_user.telphone = #{value}
+    </select>
+
+
+
+    <update id="modifyPassword" parameterType="com.app.entity.User">
+        UPDATE
+        tb_user
+        SET
+        password = #{password}
+        WHERE
+        user_id = #{user_id}
+    </update>
+
+    <update id="modifyUsername" parameterType="com.app.entity.User">
+        UPDATE
+        tb_user
+        SET
+        username = #{username}
+        WHERE
+        user_id = #{user_id}
+    </update>
+
+    <update id="modifyHead_portrail" parameterType="com.app.entity.User">
+        UPDATE
+        tb_user
+        SET
+        head_portrail = #{head_portrail}
+        WHERE
+        user_id = #{user_id}
+    </update>
+
+    <update id="modifyGender" parameterType="com.app.entity.User">
+        UPDATE
+        tb_user
+        SET
+        gender = #{gender}
+        WHERE
+        user_id = #{user_id}
+    </update>
+
+    <update id="modifyBirthday" parameterType="com.app.entity.User">
+        UPDATE
+        tb_user
+        SET
+        birthday = #{birthday}
+        WHERE
+        user_id = #{user_id}
+    </update>
+
+    <update id="modifyIntroduce" parameterType="com.app.entity.User">
+        UPDATE
+        tb_user
+        SET
+        introduce = #{introduce}
+        WHERE
+        user_id = #{user_id}
+    </update>
+
+    <update id="modifyTelphone" parameterType="com.app.entity.User">
+        UPDATE
+        tb_user
+        SET
+        telphone = #{telphone}
+        WHERE
+        user_id = #{user_id}
+    </update>
 
 </mapper>
