@@ -21,9 +21,27 @@ public class User {
     private char gender;        //用户性别
     private String password;        //用户密码
     private String introduce;       //用户备注
+    private String longitude;       //经度
+    private String latitude;        //纬度
 
     public User() {
 
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getIntroduce() {

@@ -129,5 +129,23 @@ public interface IUserDao {
     public void modifyTelphone(User user) throws Exception;
 
 
+    /**
+     * 修改经度
+     * @param user 需要填充用户ID和经度
+     * @throws Exception
+     */
+    public void modifyLongitude(User user) throws Exception;
+
+
+    /**
+     * 修改纬度
+     * @param user 需要填充用户ID和纬度
+     * @throws Exception
+     */
+    public void modifyLatitude(User user) throws Exception;
+
+
+
+
 
 }

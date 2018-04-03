@@ -188,6 +188,14 @@ public class UserServiceImpl implements IUserService {
             result = false;
             userApiVo.setMessage(userApiVo.getMessage() + "用户介绍信息不合法！");
         }
+        if (user.getLongitude() != "" && user.getLongitude() != null && user.getLongitude().length() > 30){
+            result = false;
+            userApiVo.setMessage(userApiVo.getMessage() + "经度不能超过30个字符！");
+        }
+        if (user.getLatitude() != "" && user.getLatitude() != null && user.getLatitude().length() > 30){
+            result = false;
+            userApiVo.setMessage(userApiVo.getMessage() + "纬度不能超过30个字符！");
+        }
 
         if (result){
             //通过ID查询是否存在该用户
@@ -206,6 +214,8 @@ public class UserServiceImpl implements IUserService {
                 tempUser.setGender(user.getGender());
                 tempUser.setPassword(user.getPassword());
                 tempUser.setIntroduce(user.getIntroduce());
+                tempUser.setLongitude(user.getLongitude());
+                tempUser.setLatitude(user.getLatitude());
 
                 //校验是否修改电话号码
                 if (tempUser.getTelphone() != null && tempUser.getTelphone() != ""){
@@ -251,6 +261,15 @@ public class UserServiceImpl implements IUserService {
                     if (tempUser.getIntroduce() != "" && tempUser.getIntroduce() != null){
                         userDao.modifyIntroduce(tempUser);
                     }
+                    //修改经度
+                    if (tempUser.getLongitude() != "" && tempUser.getLongitude() != null){
+                        userDao.modifyLongitude(tempUser);
+                    }
+                    //修改纬度
+                    if (tempUser.getLatitude() != "" && tempUser.getLatitude() != null){
+                        userDao.modifyLatitude(tempUser);
+                    }
+
 
                     //执行到此步说明更改用户信息成功
                     userApiVo.setMessage(userApiVo.getMessage() + "修改用户信息成功！");

@@ -14,9 +14,27 @@ public class UserBaseInformationVo {
     private String gender;          //用户性别
     private String birthday;        //出生日期
     private String introduce;       //用户备注
+    private String longitude;       //经度
+    private String latitude;        //纬度
 
     public UserBaseInformationVo(){
 
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
     }
 
     public void setIntroduce(String introduce) {

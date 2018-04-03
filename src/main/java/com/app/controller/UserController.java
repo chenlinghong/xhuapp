@@ -190,9 +190,18 @@ public class UserController {
                     //用户注册时未填写性别
                     tempUser.setGender(' ');
                 }
+                //填充用户介绍信息
                 if (userBaseInformationVo.getIntroduce() != "" && userBaseInformationVo.getIntroduce() != null){
                     tempUser.setIntroduce(userBaseInformationVo.getIntroduce());
                 }
+                //经纬度
+                if (userBaseInformationVo.getLongitude() != "" && userBaseInformationVo.getLongitude() != null){
+                    tempUser.setLongitude(userBaseInformationVo.getLongitude());
+                }
+                if (userBaseInformationVo.getLatitude() != "" && userBaseInformationVo.getLatitude() != null){
+                    tempUser.setLatitude(userBaseInformationVo.getLatitude());
+                }
+
             }
         }
 
@@ -283,7 +292,7 @@ public class UserController {
 
         userApiVo = userService.updateUserInformation(user);
 
-        return ApiFormatUtil.apiFormat(userApiVo.getCode(),userApiVo.getMessage(),userApiVo.getUser());
+        return ApiFormatUtil.apiFormat(userApiVo.getCode(),userApiVo.getMessage(),"");
     }
 
 
@@ -319,8 +328,10 @@ public class UserController {
         //进行数据库更新
         userApiVo = userService.updateUserInformation(user);
 
-        return ApiFormatUtil.apiFormat(userApiVo.getCode(),userApiVo.getMessage(),userApiVo.getUser());
+        return ApiFormatUtil.apiFormat(userApiVo.getCode(),userApiVo.getMessage(),"");
     }
+
+
 
 
 }

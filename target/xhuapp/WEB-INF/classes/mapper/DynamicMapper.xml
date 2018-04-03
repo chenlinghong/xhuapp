@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.dao.IDynamicDao">
+    <resultMap id="BaseResultMap" type="com.app.entity.Dynamic">
+        <id column="dynamic_id" property="dynamic_id"  jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="title" property="title" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="introduce" property="introduce" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="picture" property="picture" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="user_id_f" property="user_id_f" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+    </resultMap>
+
+    <sql id="dynamic_Base_column_List">
+        dynamic_id,title,introduce,picture,user_id_f
+    </sql>
+
+    <select id="findDynamicById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+          <include refid="dynamic_Base_column_List"/>
+        FROM
+          dynamic
+        WHERE
+          dynamic_id = #{dynamic_id}
+    </select>
+    <select id="findisDynamic" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT
+          dynamic_id
+        from
+          dynamic
+        WHERE
+          dynamic_id = #{dynamic_id}
+    </select>
+    <select id="findAllDynamicByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="dynamic_Base_column_List"/>
+        FROM
+        dynamic
+        where
+        user_id_f = #{user_id_f}
+    </select>
+    <select id="findPicturePathByIDd" resultType="java.lang.String" parameterType="java.lang.Integer">
+        SELECT
+          picture
+        FROM
+          dynamic
+        WHERE
+          dynamic_id = #{dynamic_id}
+    </select>
+
+    <insert id="insertOneDynamic" parameterType="com.app.entity.Dynamic">
+        INSERT INTO
+          dynamic(title,introduce,picture,user_id_f)
+        VALUES
+          (#{title},#{introduce},#{picture},#{user_id_f})
+    </insert>
+
+    <update id="modifyDynamicById" parameterType="com.app.entity.Dynamic">
+        UPDATE
+          dynamic
+        set
+          title = #{title} ,introduce = #{introduce},picture = #{picture},user_id_f = #{user_id_f}
+        WHERE
+          dynamic_id = #{dynamic_id}
+    </update>
+
+
+</mapper>

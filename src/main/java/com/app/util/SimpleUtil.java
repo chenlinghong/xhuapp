@@ -19,7 +19,7 @@ public class SimpleUtil {
 
         if (user != null){
             if(user.getPassword() == null || user.getPassword() != ""){
-                user.setPassword(" ");
+                user.setPassword("");
             }
 
             //判空处理
@@ -27,13 +27,19 @@ public class SimpleUtil {
 
             }
             if (user.getHead_portrail() == null){
-                user.setHead_portrail(" ");
+                user.setHead_portrail("");
             }
             if (user.getIntroduce() == null){
-                user.setIntroduce(" ");
+                user.setIntroduce("");
             }
             if (user.getGender() != '1' && user.getGender() != '0'){
                 user.setGender(' ');
+            }
+            if (user.getLongitude() == null){
+                user.setLongitude("");
+            }
+            if (user.getLatitude() == null){
+                user.setLatitude("");
             }
 
         }

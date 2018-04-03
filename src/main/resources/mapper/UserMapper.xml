@@ -13,10 +13,12 @@
         <result column="head_portrail" property="head_portrail" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result column="introduce" property="introduce" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result column="telphone" property="telphone" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="longitude" property="longitude" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="latitude" property="latitude" jdbcType="VARCHAR" javaType="java.lang.String"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        user_id,username,password,gender,birthday,head_portrail,introduce,telphone
+        user_id,username,password,gender,birthday,head_portrail,introduce,telphone,longitude,latitude
     </sql>
 
     <select id="findUserByUser_id" parameterType="int" resultMap="BaseResultMap">
@@ -71,8 +73,8 @@
             SELECT last_insert_id()
         </selectKey>
         INSERT into
-        tb_user(username,password,gender,birthday,head_portrail,introduce,telphone)
-        values(#{username},#{password},#{gender},#{birthday},#{head_portrail},#{introduce},#{telphone})
+        tb_user(username,password,gender,birthday,head_portrail,introduce,telphone,longitude,latitude)
+        values(#{username},#{password},#{gender},#{birthday},#{head_portrail},#{introduce},#{telphone},#{longitude},#{latitude})
     </insert>
 
     <select id="queryTelphone" parameterType="java.lang.String" resultType="int">
@@ -149,4 +151,21 @@
         user_id = #{user_id}
     </update>
 
+    <update id="modifyLongitude" parameterType="com.app.entity.User">
+        UPDATE
+        tb_user
+        SET
+        longitude = #{longitude}
+        WHERE
+        user_id = #{user_id}
+    </update>
+
+    <update id="modifyLatitude" parameterType="com.app.entity.User">
+        UPDATE
+        tb_user
+        SET
+        latitude = #{latitude}
+        WHERE
+        user_id = #{user_id}
+    </update>
 </mapper>
