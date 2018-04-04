@@ -21,22 +21,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5169">
-              <caret line="330" column="83" lean-forward="false" selection-start-line="330" selection-start-column="83" selection-end-line="330" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="api.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/instruction/api.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="276">
-                <caret line="155" column="4" lean-forward="true" selection-start-line="155" selection-start-column="4" selection-end-line="155" selection-end-column="4" />
+              <first_editor relative-caret-position="176">
+                <caret line="303" column="6" lean-forward="false" selection-start-line="303" selection-start-column="6" selection-end-line="303" selection-end-column="6" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -44,86 +34,80 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/SimpleUtil.java">
+      <file leaf-file-name="DynamicController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="99" column="95" lean-forward="false" selection-start-line="99" selection-start-column="95" selection-end-line="99" selection-end-column="95" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/entity/User.java">
+      <file leaf-file-name="PictureUploadUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/PictureUploadUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DynamicMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1564">
+              <caret line="71" column="22" lean-forward="false" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+              <folding>
+                <marker date="1522826068077" expanded="true" signature="1012:1151" ph="SELECT FROM tb_dynamic" />
+                <marker date="1522826068077" expanded="true" signature="1272:1390" ph="SELECT dynam... tb_dynamic" />
+                <marker date="1522826068077" expanded="true" signature="1515:1652" ph="SELECT FROM tb_dynamic" />
+                <marker date="1522826068077" expanded="true" signature="1779:1894" ph="SELECT pictu... tb_dynamic" />
+                <marker date="1522826068077" expanded="true" signature="1992:2136" ph="INSERT INTO tb_dynamic" />
+                <marker date="1522826068077" expanded="true" signature="2231:2350" ph="UPDATE tb_dy... " />
+                <marker date="1522826068077" expanded="true" signature="2449:2623" ph="UPDATE tb_dy... " />
+                <marker date="1522826068077" expanded="true" signature="2543:2623" ph="UPDATE dynam... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dynamic.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/entity/Dynamic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DynamicApiVo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/vo/DynamicApiVo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChargePicUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/ChargePicUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#742#743#0" expanded="true" />
-                <element signature="e#773#774#0" expanded="true" />
-                <element signature="e#809#810#0" expanded="true" />
-                <element signature="e#841#842#0" expanded="true" />
-                <element signature="e#889#890#0" expanded="true" />
-                <element signature="e#929#930#0" expanded="true" />
-                <element signature="e#979#980#0" expanded="true" />
-                <element signature="e#1021#1022#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IUserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dao/IUserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="136" column="31" lean-forward="false" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
+      <file leaf-file-name="DynamicServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="778">
-              <caret line="166" column="30" lean-forward="true" selection-start-line="166" selection-start-column="30" selection-end-line="166" selection-end-column="30" />
-              <folding>
-                <marker date="1522765682991" expanded="true" signature="1542:1672" ph="SELECT FROM tb_user" />
-                <marker date="1522765682991" expanded="true" signature="1782:1901" ph="SELECT FROM tb_user" />
-                <marker date="1522765682991" expanded="true" signature="2035:2184" ph="SELECT FROM tb_user" />
-                <marker date="1522765682991" expanded="true" signature="2308:2454" ph="SELECT count... tb_user" />
-                <marker date="1522765682991" expanded="true" signature="2576:2722" ph="SELECT count... tb_user" />
-                <marker date="1522765682991" expanded="true" signature="3290:3392" ph="SELECT count... tb_user" />
-                <marker date="1522765682991" expanded="true" signature="3487:3595" ph="UPDATE tb_us... " />
-                <marker date="1522765682991" expanded="true" signature="3688:3796" ph="UPDATE tb_us... " />
-                <marker date="1522765682991" expanded="true" signature="3894:4012" ph="UPDATE tb_us... " />
-                <marker date="1522765682991" expanded="true" signature="4103:4207" ph="UPDATE tb_us... " />
-                <marker date="1522765682991" expanded="true" signature="4300:4408" ph="UPDATE tb_us... " />
-                <marker date="1522765682991" expanded="true" signature="4502:4612" ph="UPDATE tb_us... " />
-                <marker date="1522765682991" expanded="true" signature="4705:4813" ph="UPDATE tb_us... " />
-                <marker date="1522765682991" expanded="true" signature="4907:5017" ph="UPDATE tb_us... " />
-                <marker date="1522765682991" expanded="true" signature="5110:5218" ph="UPDATE tb_us... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IUserService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/IUserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1146">
-              <caret line="266" column="21" lean-forward="true" selection-start-line="266" selection-start-column="21" selection-end-line="266" selection-end-column="21" />
+            <state relative-caret-position="161">
+              <caret line="83" column="33" lean-forward="false" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -132,8 +116,8 @@
       <file leaf-file-name="IDynamicDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dao/IDynamicDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1334">
-              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state relative-caret-position="385">
+              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -142,8 +126,8 @@
       <file leaf-file-name="IDynamicService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="21" column="84" lean-forward="false" selection-start-line="21" selection-start-column="84" selection-end-line="21" selection-end-column="84" />
+            <state relative-caret-position="454">
+              <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -189,11 +173,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/app/entity/Dynamic.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/impl/IDynamicService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/vo/DynamicApiVo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/app/dao/IDynamicDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/sql/basic.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/entity/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/vo/UserBaseInformationVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/util/SimpleUtil.java" />
@@ -201,6 +181,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/app/dao/IDynamicDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/app/util/PictureUploadUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml" />
         <option value="$PROJECT_DIR$/instruction/api.md" />
       </list>
     </option>
@@ -231,10 +217,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -252,9 +238,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -424,7 +410,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -434,26 +420,26 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/GoogleDownload/xhuapp-master" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://F:/Javaweb/conformable/xhuapp/src/main/java/com/app/vo/UserBaseInformationVo.java" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Javaweb\demo\xhuapp\src\main\webapp" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.app.util" />
+      <recent name="com.app.controller" />
+      <recent name="com.app.dao" />
+      <recent name="com.app.service.impl" />
+      <recent name="com.app.vo" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Javaweb\conformable\xhuapp\src\main\resources\mapper" />
       <recent name="F:\Javaweb\demo\xhuapp\src\main\resources\spring" />
       <recent name="F:\Javaweb\demo\xhuapp\src\main\resources" />
       <recent name="F:\Javaweb\demo\xhuapp\src\main\resources\sql" />
       <recent name="F:\Javaweb\demo\xhuapp\src\main\webapp\upload\imgs" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.app.controller" />
-      <recent name="com.app.dao" />
-      <recent name="com.app.service.impl" />
-      <recent name="com.app.vo" />
-      <recent name="com.app.util" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\Javaweb\demo\xhuapp\src\main\webapp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -677,6 +663,9 @@
       <workItem from="1522737442949" duration="38000" />
       <workItem from="1522760774793" duration="2235000" />
       <workItem from="1522764431334" duration="1836000" />
+      <workItem from="1522800088369" duration="115000" />
+      <workItem from="1522806187980" duration="25000" />
+      <workItem from="1522825158970" duration="2041000" />
     </task>
     <servers />
   </component>
@@ -689,10 +678,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23838000" />
+    <option name="totallyTimeSpent" value="26019000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="1912" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -708,16 +697,16 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0046783625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0035778175" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.023391813" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.023255814" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25375536" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.340458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -741,45 +730,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dao/IDynamicDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1334">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="21" column="84" lean-forward="false" selection-start-line="21" selection-start-column="84" selection-end-line="21" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/instruction/api.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="2139">
-            <caret line="93" column="24" lean-forward="false" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/entity/Dynamic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3335">
@@ -822,7 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -856,9 +805,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -905,7 +852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,9 +894,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -989,7 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,24 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
           <caret line="41" column="27" lean-forward="false" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/entity/Dynamic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3335">
-          <caret line="154" column="18" lean-forward="false" selection-start-line="154" selection-start-column="18" selection-end-line="154" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1059,37 +984,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1449">
-          <caret line="73" column="36" lean-forward="false" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/sql/basic.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dao/IDynamicDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1334">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="21" column="84" lean-forward="false" selection-start-line="21" selection-start-column="84" selection-end-line="21" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1128,15 +1026,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/SimpleUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="989">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dao/IUserDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
+        <state relative-caret-position="3128">
           <caret line="136" column="31" lean-forward="false" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="31" />
           <folding />
         </state>
@@ -1144,8 +1042,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="778">
-          <caret line="166" column="30" lean-forward="true" selection-start-line="166" selection-start-column="30" selection-end-line="166" selection-end-column="30" />
+        <state relative-caret-position="3818">
+          <caret line="166" column="30" lean-forward="false" selection-start-line="166" selection-start-column="30" selection-end-line="166" selection-end-column="30" />
           <folding>
             <marker date="1522765682991" expanded="true" signature="1542:1672" ph="SELECT FROM tb_user" />
             <marker date="1522765682991" expanded="true" signature="1782:1901" ph="SELECT FROM tb_user" />
@@ -1168,16 +1066,99 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1146">
-          <caret line="266" column="21" lean-forward="true" selection-start-line="266" selection-start-column="21" selection-end-line="266" selection-end-column="21" />
+        <state relative-caret-position="5957">
+          <caret line="266" column="21" lean-forward="false" selection-start-line="266" selection-start-column="21" selection-end-line="266" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5169">
+        <state relative-caret-position="7222">
           <caret line="330" column="83" lean-forward="false" selection-start-line="330" selection-start-column="83" selection-end-line="330" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="83" column="33" lean-forward="false" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dao/IDynamicDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/ChargePicUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/PictureUploadUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="71" column="22" lean-forward="false" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+          <folding>
+            <marker date="1522826068077" expanded="true" signature="1012:1151" ph="SELECT FROM tb_dynamic" />
+            <marker date="1522826068077" expanded="true" signature="1272:1390" ph="SELECT dynam... tb_dynamic" />
+            <marker date="1522826068077" expanded="true" signature="1515:1652" ph="SELECT FROM tb_dynamic" />
+            <marker date="1522826068077" expanded="true" signature="1779:1894" ph="SELECT pictu... tb_dynamic" />
+            <marker date="1522826068077" expanded="true" signature="1992:2136" ph="INSERT INTO tb_dynamic" />
+            <marker date="1522826068077" expanded="true" signature="2231:2350" ph="UPDATE tb_dy... " />
+            <marker date="1522826068077" expanded="true" signature="2449:2623" ph="UPDATE tb_dy... " />
+            <marker date="1522826068077" expanded="true" signature="2543:2623" ph="UPDATE dynam... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/entity/Dynamic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/vo/DynamicApiVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="99" column="95" lean-forward="false" selection-start-line="99" selection-start-column="95" selection-end-line="99" selection-end-column="95" />
           <folding />
         </state>
       </provider>
@@ -1185,8 +1166,8 @@
     <entry file="file://$PROJECT_DIR$/instruction/api.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="276">
-            <caret line="155" column="4" lean-forward="true" selection-start-line="155" selection-start-column="4" selection-end-line="155" selection-end-column="4" />
+          <first_editor relative-caret-position="176">
+            <caret line="303" column="6" lean-forward="false" selection-start-line="303" selection-start-column="6" selection-end-line="303" selection-end-column="6" />
             <folding />
           </first_editor>
           <second_editor />

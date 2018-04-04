@@ -178,7 +178,7 @@
     introduce（String）： 动态的介绍正文
     picture（String）： 动态的图片地址
     user_id_f（int）： 动态的用户从属
-    （注：若登录失败，参数为默认值）
+   
 
 4、请求方式
     
@@ -188,11 +188,11 @@
 
     http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicById.do?dynamic_id=1
     
-#### 二、查找用户的多个动态
+##### 二、查找用户的多个动态
 
 1、接口URL
     
-    http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByUserId.do?（注：部署到服务器后更改IP地址）
+    http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByUserId.do
     
 2、参数说明
     
@@ -208,7 +208,7 @@
         introduce（String）： 动态的介绍正文
         picture（String）： 动态的图片地址
         user_id_f（int）： 动态的用户从属
-    （注：若登录失败，参数为默认值）
+   
     
 4、请求方式
         
@@ -216,20 +216,19 @@
         
 5、示例
     
-    http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByUserId.do?user_id_f=1
+    http://120.77.170.124:8080/xhuapp/Dynamic/findAllDynamicByUserId.do?user_id_f=1
 
-#### 三、通过动态的ID修改动态
+##### 三、通过动态的ID修改动态
     
 1、接口URL
     
-    http://120.77.170.124:8080/xhuapp/Dynamic/modifyDynamicById.do?（注：部署到服务器后更改IP地址）
+    http://120.77.170.124:8080/xhuapp/Dynamic/modifyDynamicById.do
     
 2、参数说明
     
     dynamic_id（int）： (必填)
     title（String）： 标题
     introduce（String）： 介绍正文
-    picture（String）： 图片地址
     user_id_f（int）：用户的id(一般不能修改)
         
 3、返回（JSON格式字符串）
@@ -239,9 +238,8 @@
     dynamic_id（int）： 动态的ID，成功找到返回正确值，若失败无返回下同
     title（String）： 动态的标题
     introduce（String）： 动态的介绍正文
-    picture（String）： 动态的图片地址
     user_id_f（int）： 动态的用户从属         
-    （注：若登录失败，参数为默认值）
+
     
 4、请求方式
         
@@ -249,21 +247,47 @@
         
 5、示例
     
-    http://120.77.170.124:8080/xhuapp/Dynamic/modifyDynamicById.do?dynamic_id=1&title=test&introduce=test&
-        picture=c:/test.jpg&user_id_f=1
-    注：如果要修改多张图片，url之间请用;间隔
+    http://120.77.170.124:8080/Dynamic/modifyDynamicById.do?dynamic_id=14&title=erwre&
+        introduce=esrsr&user_id_f=3 
         
-#### 四、添加一个用户的动态
+##### 四、通过动态的ID修改图片
+    
+1、接口URL
+    
+    http://127.0.0.1:8080/xhuapp/Dynamic/modifyPicById.do
+    
+2、参数说明
+    
+    dynamic_id int (必填)
+    picfile file 图片的文件流
+        
+3、返回（JSON格式字符串）
+    
+    code（int）： 是否成功的信息，成功返回1，失败返回0
+    msg（String）： 返回操作信息
+    dynamic_id（int）： 动态的ID，成功找到返回正确值，若失败无返回下同
+    picture： 图片文件
+    user_id_f（int）： 动态的用户从属(默认0)
+           
+4、请求方式
+        
+    POST
+        
+5、示例
+    
+    http://120.77.170.127:8080/Dynamic/modifyPicById.do?dynamic_id=14&picfile=63909109_p0.jpg
+    
+##### 五、添加一个用户的动态
 
 1、接口URL
     
-    http://120.77.170.124:8080/xhuapp/Dynamic/insertOneDynamic.do?（注：部署到服务器后更改IP地址）
+    http://120.77.170.124:8080/xhuapp/Dynamic/insertOneDynamic.do
     
 2、参数说明
     
     title（String）： 标题
-    introduce（String）：介绍正文
-    picture（String）： 图片地址
+    introduce（String）： 介绍正文
+    picture（file）： 图片流
     user_id_f（int）： 用户的id(必填)
         
 3、返回（JSON格式字符串）
@@ -271,22 +295,19 @@
     code（int）： 是否成功的信息，成功返回1，失败返回0
     msg（String）： 返回操作信息
     title（String）： 动态的标题
-    introduce（String）：动态的介绍正文
-    picture（String）：动态的图片地址
-    user_id_f（int）：动态的用户从属
-    （注：若登录失败，参数为默认值）
+    introduce（String）： 动态的介绍正文
+    picture： 图片(目前只能存一张)
+    user_id_f（int）： 动态的用户从属
+           
+
     
 4、请求方式
         
-    POST/GET
+    POST
         
 5、示例
     
-    http://120.77.170.124:8080/xhuapp/Dynamic/insertOneDynamic.do?title=test&introduce=test&
-        picture=c:/test.jpg;c:/test2.jpg&user_id_f=1     
-    注：如果要存入多张图片，url之间请用“;”间隔
-
-
+    http://120.77.170.124:8080/Dynamic/insertOneDynamic.do?title=test&introduce=tets&picfile=63909109_p0.jpg&user_id_f=3
 
 
 

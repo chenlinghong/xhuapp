@@ -17,51 +17,63 @@
 
     <select id="findDynamicById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         SELECT
-          <include refid="dynamic_Base_column_List"/>
+        <include refid="dynamic_Base_column_List"/>
         FROM
-          dynamic
+        tb_dynamic
         WHERE
-          dynamic_id = #{dynamic_id}
+        dynamic_id = #{dynamic_id}
     </select>
+
     <select id="findisDynamic" resultType="java.lang.Integer" parameterType="java.lang.Integer">
         SELECT
-          dynamic_id
+            dynamic_id
         from
-          dynamic
+            tb_dynamic
         WHERE
-          dynamic_id = #{dynamic_id}
+            dynamic_id = #{dynamic_id}
     </select>
+
     <select id="findAllDynamicByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         SELECT
         <include refid="dynamic_Base_column_List"/>
         FROM
-        dynamic
+        tb_dynamic
         where
         user_id_f = #{user_id_f}
     </select>
+
     <select id="findPicturePathByIDd" resultType="java.lang.String" parameterType="java.lang.Integer">
         SELECT
-          picture
+            picture
         FROM
-          dynamic
+            tb_dynamic
         WHERE
-          dynamic_id = #{dynamic_id}
+            dynamic_id = #{dynamic_id}
     </select>
 
     <insert id="insertOneDynamic" parameterType="com.app.entity.Dynamic">
         INSERT INTO
-          dynamic(title,introduce,picture,user_id_f)
+            tb_dynamic(title,introduce,picture,user_id_f)
         VALUES
-          (#{title},#{introduce},#{picture},#{user_id_f})
+            (#{title},#{introduce},#{picture},#{user_id_f})
+    </insert>
+
+    <insert id="modifyPicById" parameterType="com.app.entity.Dynamic">
+        UPDATE
+            tb_dynamic
+        SET
+        picture = #{picture}
+        WHERE
+        dynamic_id = #{dynamic_id}
     </insert>
 
     <update id="modifyDynamicById" parameterType="com.app.entity.Dynamic">
         UPDATE
-          dynamic
+            tb_dynamic
         set
-          title = #{title} ,introduce = #{introduce},picture = #{picture},user_id_f = #{user_id_f}
+            title = #{title} ,introduce = #{introduce},user_id_f = #{user_id_f}
         WHERE
-          dynamic_id = #{dynamic_id}
+            dynamic_id = #{dynamic_id}
     </update>
 
 

@@ -3,11 +3,15 @@ package com.app.controller;
 import com.app.entity.Dynamic;
 import com.app.service.IDynamicService;
 import com.app.util.ApiFormatUtil;
+import com.app.util.ChargePicUtil;
+import com.app.util.PictureUploadUtil;
 import com.app.vo.DynamicApiVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  *@Description：用于动态的相关api
  *@Date: 2018-3-23
  */
+
 @Controller
 @RequestMapping(value = "/Dynamic")
 public class DynamicController {
@@ -46,7 +51,7 @@ public class DynamicController {
     @RequestMapping(value = "/modifyDynamicById",method = {RequestMethod.GET,RequestMethod.POST},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String modifyDynamicById(int dynamic_id,String title,String introduce,String picture,int user_id_f,HttpServletRequest request){
+    public String modifyDynamicById(int dynamic_id,String title,String introduce,int user_id_f){
         Dynamic result = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         if(dynamic_id<=0){
@@ -57,9 +62,8 @@ public class DynamicController {
             result.setDynamic_id(dynamic_id);
             result.setIntroduce(introduce);
             result.setTitle(title);
-            result.setPicture(picture);
             result.setUser_id_f(user_id_f);
-            dynamicApiVo = dynamicService.modifyDynamicById(result,request);
+            dynamicApiVo = dynamicService.modifyDynamicById(result);
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
     }
@@ -67,23 +71,51 @@ public class DynamicController {
     @RequestMapping(value = "/insertOneDynamic",method = {RequestMethod.GET,RequestMethod.POST},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String insertOneDynamic(String title, String introduce, String picture, int user_id_f, HttpServletRequest request){
+    public String insertOneDynamic(String title, String introduce,
+                                   @RequestParam("picfile")CommonsMultipartFile picfile, int user_id_f, HttpServletRequest request){
         Dynamic newdynamic = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         if(user_id_f<=0){
             dynamicApiVo.setCode(0);
             dynamicApiVo.setMessage("不存在这个用户");
             dynamicApiVo.setDynamic(null);
+        }else if(!ChargePicUtil.ispic(picfile.getOriginalFilename())){
+            dynamicApiVo.setCode(0);
+            dynamicApiVo.setMessage("图片格式错误");
+            dynamicApiVo.setDynamic(null);
         }else{
-            newdynamic.setIntroduce(introduce);
-            newdynamic.setTitle(title);
-            newdynamic.setPicture(picture);
+            String picturepath = PictureUploadUtil.pictureupload(picfile,request);
+            newdynamic.setPicture(picturepath);
             newdynamic.setUser_id_f(user_id_f);
-            dynamicApiVo = dynamicService.insertOneDynamic(newdynamic,request);
+            newdynamic.setTitle(title);
+            newdynamic.setIntroduce(introduce);
+            dynamicApiVo = dynamicService.insertOneDynamic(newdynamic);
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
     }
 
+    @RequestMapping(value = "/modifyPicById",method = {RequestMethod.GET,RequestMethod.POST},
+            produces = "text/json;charset=UTF-8")
+    @ResponseBody
+    public String modifyPicById(int dynamic_id,@RequestParam("picfile")CommonsMultipartFile picfile,HttpServletRequest request){
+        Dynamic newdynamic = new Dynamic();
+        DynamicApiVo dynamicApiVo = new DynamicApiVo();
+        if(dynamic_id<=0){
+            dynamicApiVo.setCode(0);
+            dynamicApiVo.setMessage("不存在这个动态");
+            dynamicApiVo.setDynamic(null);
+        }else if(!ChargePicUtil.ispic(picfile.getOriginalFilename())){
+            dynamicApiVo.setCode(0);
+            dynamicApiVo.setMessage("图片格式错误");
+            dynamicApiVo.setDynamic(null);
+        }else{
+            String picturepath = PictureUploadUtil.pictureupload(picfile,request);
+            newdynamic.setPicture(picturepath);
+            newdynamic.setDynamic_id(dynamic_id);
+            dynamicApiVo = dynamicService.modifyPicById(newdynamic);
+        }
+        return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
+    }
 
     @RequestMapping(value = "/findAllDynamicByUserId",method = {RequestMethod.GET,RequestMethod.POST},
             produces = "text/json;charset=UTF-8")

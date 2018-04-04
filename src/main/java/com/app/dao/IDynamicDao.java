@@ -4,9 +4,8 @@ import com.app.entity.Dynamic;
 
 import java.util.List;
 
-
 /**
- * Dynamic实体类相关dao接口
+ * dynamic相关操作
  */
 public interface IDynamicDao {
 
@@ -58,5 +57,12 @@ public interface IDynamicDao {
     */
     public String findPicturePathByIDd(int dynamic_id);
 
+
+    /*
+    *@param:filepath String
+    *@Description：存储图片专用
+    *@Rerurn:return String
+    */
+    public void modifyPicById(Dynamic dynamic);
 
 }
