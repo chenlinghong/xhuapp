@@ -1,10 +1,14 @@
-package com.app.controller;
+package com.app.controller;/*
+ *@Author:dxlin
+ *@Description：用于动态的相关api
+ *@Date: 2018-3-23
+ */
 
 import com.app.entity.Dynamic;
 import com.app.service.IDynamicService;
 import com.app.util.ApiFormatUtil;
 import com.app.util.ChargePicUtil;
-import com.app.util.PictureUploadUtil;
+import com.app.util.UploadUtil;
 import com.app.vo.DynamicApiVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,18 +19,14 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
-/*
- *@Author:dxlin
- *@Description：用于动态的相关api
- *@Date: 2018-3-23
- */
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 
 @Controller
 @RequestMapping(value = "/Dynamic")
 public class DynamicController {
     @Resource
-    IDynamicService dynamicService;
+    private IDynamicService dynamicService;
 
     public DynamicController(){}
 
@@ -35,7 +35,6 @@ public class DynamicController {
             produces = "text/json;charset=UTF-8")
     @ResponseBody
     public String findDynamicById(int dynamic_id){
-        Dynamic result = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         if(dynamic_id<=0){
             dynamicApiVo.setCode(0);
@@ -67,28 +66,42 @@ public class DynamicController {
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
     }
-
     @RequestMapping(value = "/insertOneDynamic",method = {RequestMethod.GET,RequestMethod.POST},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
     public String insertOneDynamic(String title, String introduce,
-                                   @RequestParam("picfile")CommonsMultipartFile picfile, int user_id_f, HttpServletRequest request){
+                                   @RequestParam("picfile")CommonsMultipartFile[] picfiles,
+                                   int user_id_f, boolean dynamic_type,HttpServletRequest request) throws UnsupportedEncodingException {
         Dynamic newdynamic = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
+        String picfilepaths = "";
         if(user_id_f<=0){
             dynamicApiVo.setCode(0);
             dynamicApiVo.setMessage("不存在这个用户");
             dynamicApiVo.setDynamic(null);
-        }else if(!ChargePicUtil.ispic(picfile.getOriginalFilename())){
-            dynamicApiVo.setCode(0);
-            dynamicApiVo.setMessage("图片格式错误");
-            dynamicApiVo.setDynamic(null);
-        }else{
-            String picturepath = PictureUploadUtil.pictureupload(picfile,request);
-            newdynamic.setPicture(picturepath);
+            dynamicApiVo.setDynamicList(null);
+        }else {
+            for (CommonsMultipartFile picfile : picfiles) {
+                if(picfile.getOriginalFilename().equals("")){
+                    continue;
+                }
+                if (!ChargePicUtil.ispic(picfile.getOriginalFilename())) {
+                    dynamicApiVo.setCode(0);
+                    dynamicApiVo.setMessage("图片格式错误");
+                    dynamicApiVo.setDynamic(null);
+                    dynamicApiVo.setDynamicList(null);
+                    break;
+                } else {
+                    //提高健壮性
+                    String picturepath = UploadUtil.upload(picfile,request,true);
+                    picfilepaths = picfilepaths + picturepath + ";";
+                }
+            }
+            newdynamic.setPicture(picfilepaths);
             newdynamic.setUser_id_f(user_id_f);
             newdynamic.setTitle(title);
             newdynamic.setIntroduce(introduce);
+            newdynamic.setDynamic_type(dynamic_type);
             dynamicApiVo = dynamicService.insertOneDynamic(newdynamic);
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
@@ -97,22 +110,41 @@ public class DynamicController {
     @RequestMapping(value = "/modifyPicById",method = {RequestMethod.GET,RequestMethod.POST},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String modifyPicById(int dynamic_id,@RequestParam("picfile")CommonsMultipartFile picfile,HttpServletRequest request){
+    public String modifyPicById(int dynamic_id,String prepicfilepath,@RequestParam("picfile")
+                                CommonsMultipartFile nowpicfile,HttpServletRequest request){
         Dynamic newdynamic = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
+        String picturepath = "";
+        boolean flag = false;
+        if(nowpicfile.getOriginalFilename().equals("")){
+            flag = false;
+        }else {
+            flag = !ChargePicUtil.ispic(nowpicfile.getOriginalFilename());
+        }
+
         if(dynamic_id<=0){
             dynamicApiVo.setCode(0);
             dynamicApiVo.setMessage("不存在这个动态");
+            dynamicApiVo.setDynamicList(null);
             dynamicApiVo.setDynamic(null);
-        }else if(!ChargePicUtil.ispic(picfile.getOriginalFilename())){
+        }else if(flag){
             dynamicApiVo.setCode(0);
             dynamicApiVo.setMessage("图片格式错误");
             dynamicApiVo.setDynamic(null);
+            dynamicApiVo.setDynamicList(null);
         }else{
-            String picturepath = PictureUploadUtil.pictureupload(picfile,request);
+            try{
+                new File(prepicfilepath).delete();
+            }catch (Exception e){
+                dynamicApiVo.setCode(0);
+                dynamicApiVo.setMessage("修改失败");
+                dynamicApiVo.setDynamicList(null);
+                dynamicApiVo.setDynamic(null);
+            }
+            picturepath = UploadUtil.upload(nowpicfile, request,true);
             newdynamic.setPicture(picturepath);
             newdynamic.setDynamic_id(dynamic_id);
-            dynamicApiVo = dynamicService.modifyPicById(newdynamic);
+            dynamicApiVo = dynamicService.deletePicById(newdynamic,prepicfilepath);
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
     }
@@ -132,6 +164,40 @@ public class DynamicController {
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamicList());
     }
+
+    @RequestMapping(value = "/deleteOneDynamicById",method = {RequestMethod.GET,RequestMethod.POST}
+            ,produces = "text/json;charset=utf-8")
+    @ResponseBody
+    public String deleteOneDynamicById(int dynamic_id){
+        DynamicApiVo dynamicApiVo = new DynamicApiVo();
+        if(dynamic_id<=0){
+            dynamicApiVo.setCode(0);
+            dynamicApiVo.setDynamicList(null);
+            dynamicApiVo.setMessage("动态的id格式错误");
+            dynamicApiVo.setDynamic(null);
+        }else{
+            dynamicApiVo = dynamicService.deleteOneDynamicById(dynamic_id);
+        }
+        return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
+    }
+
+    @RequestMapping(value = "/findDynamicByType",method = {RequestMethod.GET,RequestMethod.POST},
+            produces = "text/json;charset=UTF-8")
+    @ResponseBody
+    public String findDynamicByType(boolean dynamic_type){
+        DynamicApiVo dynamicApiVo = new DynamicApiVo();
+        if(dynamic_type==true||dynamic_type==false){
+            //找需求
+            dynamicApiVo = dynamicService.findDynamicByType(dynamic_type);
+        }else{
+            dynamicApiVo.setCode(0);
+            dynamicApiVo.setMessage("只能输入0或1");
+            dynamicApiVo.setDynamic(null);
+            dynamicApiVo.setDynamic(null);
+        }
+        return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamicList());
+    }
+
 //    public static void main(String args[]){
 //        IDynamicService dynamicService = new DynamicServiceImpl();
 //        Dynamic result = new Dynamic();

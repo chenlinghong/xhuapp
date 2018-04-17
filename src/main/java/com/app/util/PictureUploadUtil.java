@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class PictureUploadUtil {
-
     public static String pictureupload(CommonsMultipartFile file, HttpServletRequest request){
         String str =  request.getSession().getServletContext().getRealPath("upload/imgs/");
         String filepath = str+file.getOriginalFilename();
@@ -23,5 +22,4 @@ public class PictureUploadUtil {
         }
         return filepath;
     }
-
 }

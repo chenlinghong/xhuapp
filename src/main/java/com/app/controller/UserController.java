@@ -1,3 +1,4 @@
+
 package com.app.controller;
 
 import com.app.entity.User;
@@ -34,44 +35,45 @@ public class UserController {
 
 
     //无参构造
-    public UserController(){
+    public UserController() {
 
     }
 
     /**
      * 通过用户账户（电话号码/用户名）进行登录验证并返回用户基本信息
-     * @param account 用户账户（电话号码或用户名）
-     * @param password  用户密码
-     * @return  用户信息JSON字符串
-     *          user_id：用户登录成功返回用户ID，登录失败返回-1
-     *          username：用户姓名
-     *          password：用户密码（鉴于安全，一般为空）
-     *          gender：用户性别
-     *          birthday：用户出生日期
-     *          head_portrail：用户头像图片路径
-     *          introduce：用户介绍
-     *          telphone：用户电话号码
-     *          （注：若登录失败，user_id为-1，其余参数为默认值）
+     *
+     * @param account  用户账户（电话号码或用户名）
+     * @param password 用户密码
+     * @return 用户信息JSON字符串
+     * user_id：用户登录成功返回用户ID，登录失败返回-1
+     * username：用户姓名
+     * password：用户密码（鉴于安全，一般为空）
+     * gender：用户性别
+     * birthday：用户出生日期
+     * head_portrail：用户头像图片路径
+     * introduce：用户介绍
+     * telphone：用户电话号码
+     * （注：若登录失败，user_id为-1，其余参数为默认值）
      * @throws Exception
      */
-    @RequestMapping(value = "/login", method = {RequestMethod.POST,RequestMethod.GET},
+    @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String loginByAccountAndPassword(@RequestParam String account, @RequestParam String password) throws Exception{
+    public String loginByAccountAndPassword(@RequestParam String account, @RequestParam String password) throws Exception {
         User resultUser = new User();
         UserApiVo userApiVo = new UserApiVo();
 
         userApiVo.setMessage("说明：");
 
-        UserApiVo loginResult = userService.loginByAccountAndPassword(account,password);
+        UserApiVo loginResult = userService.loginByAccountAndPassword(account, password);
         loginResult.setMessage(userApiVo.getMessage() + loginResult.getMessage());
 
-        if(loginResult.getCode() == 1){
+        if (loginResult.getCode() == 1) {
             //表示利用电话号码和密码进行成功登录
             resultUser = userService.getUserByTelphone(account).getUser();
-        } else if (loginResult.getCode() == 2){
+        } else if (loginResult.getCode() == 2) {
             //表示通过用户名和密码进行成功登录
-            resultUser = userService.getUserByUsernameAndPassword(account,password).getUser();
+            resultUser = userService.getUserByUsernameAndPassword(account, password).getUser();
             loginResult.setCode(1);
         } else {
             //登录失败
@@ -88,31 +90,31 @@ public class UserController {
 
         String resultJson = gson.toJson(resultUser);
 
-        return ApiFormatUtil.apiFormat(loginResult.getCode(),loginResult.getMessage(),resultJson);
+        return ApiFormatUtil.apiFormat(loginResult.getCode(), loginResult.getMessage(), resultJson);
     }
 
 
     /**
      * 用户注册
-     * @param userBaseInformationVo
-     *          username：用户姓名
-     *          password：用户密码
-     *          telphone：用户电话号码
-     *          gender：用户性别
-     *          birthday: 用户出生日期（yyyy-MM-dd）
-     *          introduce: 用户备注
-     * @return  用户基本信息
-     *          user_id：用户登录成功返回用户ID，登录失败返回-1
-     *          username：用户姓名
-     *          password：用户密码（鉴于安全，一般为空）
-     *          gender：用户性别
-     *          birthday：用户出生日期
-     *          head_portrail：用户头像图片路径
-     *          introduce：用户介绍
-     *          telphone：用户电话号码
-     *          （注：若注册成功，返回值均为数据库中查询当前注册用户所得。若注册失败，user_id为-1，其他值为原值）
+     *
+     * @param userBaseInformationVo username：用户姓名
+     *                              password：用户密码
+     *                              telphone：用户电话号码
+     *                              gender：用户性别
+     *                              birthday: 用户出生日期（yyyy-MM-dd）
+     *                              introduce: 用户备注
+     * @return 用户基本信息
+     * user_id：用户登录成功返回用户ID，登录失败返回-1
+     * username：用户姓名
+     * password：用户密码（鉴于安全，一般为空）
+     * gender：用户性别
+     * birthday：用户出生日期
+     * head_portrail：用户头像图片路径
+     * introduce：用户介绍
+     * telphone：用户电话号码
+     * （注：若注册成功，返回值均为数据库中查询当前注册用户所得。若注册失败，user_id为-1，其他值为原值）
      */
-    @RequestMapping(value = "/register",method = {RequestMethod.POST,RequestMethod.GET},
+    @RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
     public String registerUser(UserBaseInformationVo userBaseInformationVo) throws Exception {
@@ -126,26 +128,26 @@ public class UserController {
         userApiVo.setMessage("说明：");
 
         //必填项检查
-        if (userBaseInformationVo.getUsername() == "" || userBaseInformationVo.getUsername() == null){
+        if (userBaseInformationVo.getUsername() == "" || userBaseInformationVo.getUsername() == null) {
             check = false;
             userApiVo.setMessage(userApiVo.getMessage() + "用户名不能为空！");
         }
-        if(userBaseInformationVo.getTelphone() == "" || userBaseInformationVo.getTelphone() == null){
+        if (userBaseInformationVo.getTelphone() == "" || userBaseInformationVo.getTelphone() == null) {
             check = false;
             userApiVo.setMessage(userApiVo.getMessage() + "电话号码不能为空！");
         }
-        if (userBaseInformationVo.getPassword() == "" || userBaseInformationVo.getPassword() == null){
+        if (userBaseInformationVo.getPassword() == "" || userBaseInformationVo.getPassword() == null) {
             check = false;
             userApiVo.setMessage(userApiVo.getMessage() + "密码不能为空！");
         }
 
-        if (check == false){
+        if (check == false) {
             //缺少必填项
             userApiVo.setCode(0);
         } else {
             //填充数据，并检验数据合法性
             //检验username长度
-            if(userBaseInformationVo.getUsername().length() < 10){
+            if (userBaseInformationVo.getUsername().length() < 10) {
                 tempUser.setUsername(userBaseInformationVo.getUsername());
             } else {
                 //username数据长度不合法
@@ -153,14 +155,14 @@ public class UserController {
                 userApiVo.setMessage(userApiVo.getMessage() + "用户名不能超过10个字符！");
             }
             //验证手机号码是否合法
-            if (TelphoneCheckUtil.isPhoneLegal(userBaseInformationVo.getTelphone())){
+            if (TelphoneCheckUtil.isPhoneLegal(userBaseInformationVo.getTelphone())) {
                 tempUser.setTelphone(userBaseInformationVo.getTelphone());
             } else {
                 check = false;
                 userApiVo.setMessage(userApiVo.getMessage() + "电话号码不正确！");
             }
             //检验密码长度是否合法
-            if (userBaseInformationVo.getPassword().length() < 20){
+            if (userBaseInformationVo.getPassword().length() < 20) {
                 tempUser.setPassword(userBaseInformationVo.getPassword());
             } else {
                 //数据不合法
@@ -169,19 +171,19 @@ public class UserController {
             }
 
             //判断必填项是否合法结果
-            if (check == false){
+            if (check == false) {
                 //数据非法
                 userApiVo.setCode(0);
 
             } else {
                 //必填项合法，填充其他信息
-                if (userBaseInformationVo.getBirthday() != null && userBaseInformationVo.getBirthday() != null){
+                if (userBaseInformationVo.getBirthday() != null && userBaseInformationVo.getBirthday() != null) {
                     //将字符串转换为Date
                     tempUser.setBirthday(GetDateByStringUtils.getDate(userBaseInformationVo.getBirthday()));
                 }
-                if (userBaseInformationVo.getGender() != "" && userBaseInformationVo.getGender() != null){
+                if (userBaseInformationVo.getGender() != "" && userBaseInformationVo.getGender() != null) {
 //                    tempUser.setGender((char) user.getGender().indexOf(1));
-                    if (userBaseInformationVo.getGender().equals("1")){
+                    if (userBaseInformationVo.getGender().equals("1")) {
                         tempUser.setGender('1');
                     } else {
                         tempUser.setGender('0');
@@ -191,21 +193,21 @@ public class UserController {
                     tempUser.setGender(' ');
                 }
                 //填充用户介绍信息
-                if (userBaseInformationVo.getIntroduce() != "" && userBaseInformationVo.getIntroduce() != null){
+                if (userBaseInformationVo.getIntroduce() != "" && userBaseInformationVo.getIntroduce() != null) {
                     tempUser.setIntroduce(userBaseInformationVo.getIntroduce());
                 }
                 //经纬度
-                if (userBaseInformationVo.getLongitude() != "" && userBaseInformationVo.getLongitude() != null){
+                if (userBaseInformationVo.getLongitude() != "" && userBaseInformationVo.getLongitude() != null) {
                     tempUser.setLongitude(userBaseInformationVo.getLongitude());
                 }
-                if (userBaseInformationVo.getLatitude() != "" && userBaseInformationVo.getLatitude() != null){
+                if (userBaseInformationVo.getLatitude() != "" && userBaseInformationVo.getLatitude() != null) {
                     tempUser.setLatitude(userBaseInformationVo.getLatitude());
                 }
 
             }
         }
 
-        if (check == false){
+        if (check == false) {
             //存在不合法数据
             userApiVo.setCode(0);
 
@@ -214,14 +216,14 @@ public class UserController {
             resultUser.setUsername(userBaseInformationVo.getUsername());
             resultUser.setIntroduce(userBaseInformationVo.getIntroduce());
 //            resultUser.setGender((char) user.getGender().indexOf(1));
-            if (userBaseInformationVo.getGender() != null){
-                if (userBaseInformationVo.getGender().equals("1")){
+            if (userBaseInformationVo.getGender() != null) {
+                if (userBaseInformationVo.getGender().equals("1")) {
                     tempUser.setGender('1');
                 } else {
                     tempUser.setGender('0');
                 }
             }
-            if (userBaseInformationVo.getBirthday() != null){
+            if (userBaseInformationVo.getBirthday() != null) {
                 resultUser.setBirthday(GetDateByStringUtils.getDate(userBaseInformationVo.getBirthday()));
             }
             resultUser.setPassword(userBaseInformationVo.getPassword());
@@ -229,7 +231,7 @@ public class UserController {
         } else {
             //进行注册操作
             userApiVo = userService.registerUser(tempUser);
-            if (userApiVo.getCode() == 0){
+            if (userApiVo.getCode() == 0) {
                 //注册失败
 
             } else {
@@ -251,27 +253,27 @@ public class UserController {
 
         String resultJson = gson.toJson(resultUser);
 
-        return ApiFormatUtil.apiFormat(userApiVo.getCode(),userApiVo.getMessage(),resultJson);
+        return ApiFormatUtil.apiFormat(userApiVo.getCode(), userApiVo.getMessage(), resultJson);
     }
 
 
     /**
      * 修改用户基本信息
-     * @param modifyUserVo
-     *          user_id: 用户ID
-     *          username：用户姓名
-     *          password：用户密码
-     *          telphone：用户电话号码
-     *          gender：用户性别
-     *          birthday: 用户出生日期（yyyy-MM-dd）
-     *          introduce: 用户备注
+     *
+     * @param modifyUserVo user_id: 用户ID
+     *                     username：用户姓名
+     *                     password：用户密码
+     *                     telphone：用户电话号码
+     *                     gender：用户性别
+     *                     birthday: 用户出生日期（yyyy-MM-dd）
+     *                     introduce: 用户备注
      * @return 修改结果布尔值（修改成功返回true，反之为false）
      * @throws Exception
      */
-    @RequestMapping(value = "/modify",method = {RequestMethod.POST,RequestMethod.GET},
+    @RequestMapping(value = "/modify", method = {RequestMethod.POST, RequestMethod.GET},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String modifyUserBaseInformation(ModifyUserVo modifyUserVo) throws Exception{
+    public String modifyUserBaseInformation(ModifyUserVo modifyUserVo) throws Exception {
         User user = new User();
         boolean result = false;
         UserApiVo userApiVo = new UserApiVo();
@@ -281,7 +283,7 @@ public class UserController {
         user.setUser_id(modifyUserVo.getUser_id());
         user.setUsername(modifyUserVo.getUsername());
         user.setPassword(modifyUserVo.getPassword());
-        if (modifyUserVo.getGender().equals("1")){
+        if (modifyUserVo.getGender().equals("1")) {
             user.setGender('1');
         } else {
             user.setGender('0');
@@ -292,21 +294,22 @@ public class UserController {
 
         userApiVo = userService.updateUserInformation(user);
 
-        return ApiFormatUtil.apiFormat(userApiVo.getCode(),userApiVo.getMessage(),"");
+        return ApiFormatUtil.apiFormat(userApiVo.getCode(), userApiVo.getMessage(), "");
     }
 
 
     /**
      * 修改用户头像图片
-     * @param head_portrail   用户新头像图片文件
+     *
+     * @param head_portrail 用户新头像图片文件
      * @param request
-     * @param user_id   用户ID
-     * @return  修改结果
+     * @param user_id       用户ID
+     * @return 修改结果
      */
-    @RequestMapping(value = "/modify/head_portrail",method = {RequestMethod.POST,RequestMethod.GET},
+    @RequestMapping(value = "/modify/head_portrail", method = {RequestMethod.POST, RequestMethod.GET},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String modifyHead_portrail(@RequestParam(value = "head_portrail",required = false)MultipartFile head_portrail,
+    public String modifyHead_portrail(@RequestParam(value = "head_portrail", required = false) MultipartFile head_portrail,
                                       HttpServletRequest request, int user_id) throws Exception {
 
         //未进行测试
@@ -319,7 +322,7 @@ public class UserController {
         userApiVo.setUser(null);
 
         //将图片存储在服务器文件夹中，并返回文件路径
-        String head_portrailResult = UploadHead_portrailUtil.uploadHead_portrail(head_portrail,request);
+        String head_portrailResult = UploadHead_portrailUtil.uploadHead_portrail(head_portrail, request);
 
         //封装数据
         user.setUser_id(user_id);
@@ -328,10 +331,8 @@ public class UserController {
         //进行数据库更新
         userApiVo = userService.updateUserInformation(user);
 
-        return ApiFormatUtil.apiFormat(userApiVo.getCode(),userApiVo.getMessage(),"");
+        return ApiFormatUtil.apiFormat(userApiVo.getCode(), userApiVo.getMessage(), "");
     }
-
-
 
 
 }

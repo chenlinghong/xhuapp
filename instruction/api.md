@@ -254,60 +254,112 @@
     
 1、接口URL
     
-    http://127.0.0.1:8080/xhuapp/Dynamic/modifyPicById.do
+    http://120.77.170.124:8080/xhuapp/Dynamic/modifyPicById.do
     
 2、参数说明
     
-    dynamic_id int (必填)
-    picfile file 图片的文件流
+    dynamic_id（int）： (必填)
+    prepicfilepath（String): 要修改图片的服务器地址
+    picfile(file): 需要更改的图片的文件流
         
 3、返回（JSON格式字符串）
     
-    code（int）： 是否成功的信息，成功返回1，失败返回0
-    msg（String）： 返回操作信息
-    dynamic_id（int）： 动态的ID，成功找到返回正确值，若失败无返回下同
-    picture： 图片文件
-    user_id_f（int）： 动态的用户从属(默认0)
-           
+    code(int):  是否成功的信息，成功返回1，失败返回0
+    msg(String): 返回操作信息
+    dynamic_id(int): 动态的ID，成功找到返回正确值，若失败无返回下同
+    picture 图片的服务器端如果只删除返回null 
+ 
+    
 4、请求方式
         
     POST
         
 5、示例
     
-    http://120.77.170.127:8080/Dynamic/modifyPicById.do?dynamic_id=14&picfile=63909109_p0.jpg
+    http://120.77.170.124:8080/Dynamic/modifyPicById.do?dynamic_id=14&prepicfilepath="服务器端图片地址"&picfile=63909109_p0.jpg
+
+##### 五、删除一个动态
     
-##### 五、添加一个用户的动态
+1、接口URL
+    
+    http://120.77.170.124:8080/xhuapp/Dynamic/deleteOneDynamicById.do
+    
+2、参数说明
+    
+    dynamic_id int 动态的ID
+        
+3、返回（JSON格式字符串）
+    
+    code int 是否成功的信息，成功返回1，失败返回0
+    msg String 返回操作信息
+        
+           
+4、请求方式
+        
+    POST/GET
+        
+5、示例
+    
+    http://120.77.170.124:8080/Dynamic/deleteOneDynamicById.do?dynamic_id=2
+
+##### 六、创建一个动态
 
 1、接口URL
     
-    http://120.77.170.124:8080/xhuapp/Dynamic/insertOneDynamic.do
+    http://120.77.170.124:8080/xhuapp/Dynamic/deleteOneDynamicById.do
     
 2、参数说明
     
-    title（String）： 标题
-    introduce（String）： 介绍正文
-    picture（file）： 图片流
-    user_id_f（int）： 用户的id(必填)
+    title String 动态或者需求的标题
+    introduce String 动态或者需求的介绍
+    CommonsMultipartFile[] 图片流数组
+    user_id_f int 用户的id
+    dynamic_type boolean 动态的类型
+    request HttpServletRequest 请求对象
         
 3、返回（JSON格式字符串）
     
-    code（int）： 是否成功的信息，成功返回1，失败返回0
-    msg（String）： 返回操作信息
-    title（String）： 动态的标题
-    introduce（String）： 动态的介绍正文
-    picture： 图片(目前只能存一张)
-    user_id_f（int）： 动态的用户从属
+    code int 是否成功的信息，成功返回1，失败返回0
+    msg String 返回操作信息
+    title String 动态或者需求的标题
+    introduce String 动态或者需求的介绍
+    CommonsMultipartFile[] 图片流数组
+    user_id_f int 用户的id
+    dynamic_type boolean 动态的类型true(需求) or false(动态) 
+        
            
-
-    
 4、请求方式
         
-    POST
+    POST/GET
         
 5、示例
     
-    http://120.77.170.124:8080/Dynamic/insertOneDynamic.do?title=test&introduce=tets&picfile=63909109_p0.jpg&user_id_f=3
+    http://120.77.170.124:8080/Dynamic/insertOneDynamic.do?title=test&introduce=test&picfile=63826574_p0.jpg&picfile=63902583_p0.jpg&user_id_f=3&dynamic_type=0
 
+##### 七、查找所有的动态或者需求
 
-
+1、接口URL
+    
+    http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByType.do
+    
+2、参数说明
+    
+    dynamic_type boolean 0为需求1为动态
+        
+3、返回（JSON格式字符串）
+    
+    code int 是否成功的信息，成功返回1，失败返回0
+    msg String 返回操作信息
+    一般有多个，返回的每个信息如下
+    title String 动态或者需求的标题
+    introduce String 动态或者需求的介绍     picture String 图片的服务器地址
+    user_id_f int 用户的id
+    dynamic_type boolean 动态的类型true(需求) or false(动态) 
+           
+4、请求方式
+        
+    POST/GET
+        
+5、示例
+    
+    http://120.77.170.124:8080/Dynamic/findDynamicByType.do?dynamic_type=0

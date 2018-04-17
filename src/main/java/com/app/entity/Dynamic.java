@@ -4,21 +4,21 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- * @program: xhuapp
- * @description: 用户发布视频、语音、图文等动态相关实体类
- * @author: Mr.Chen
- * @create: 2018-04-02 15:42
- **/
+ * 通过用户ID查询用户基本信息
+ *
+ * @param user_id
+ * @return 用户信息
+ * @throws Exception
+ */
 @Component(value = "dynamic")
 @Scope(value = "prototype")
 public class Dynamic {
-
     private int dynamic_id;
     private String title;
     private String introduce;
     private String picture;
     private int user_id_f;
-
+    private boolean dynamic_type;
     public Dynamic(){}
 
     public int getDynamic_id() {
@@ -60,5 +60,14 @@ public class Dynamic {
     public void setUser_id_f(int user_id_f) {
         this.user_id_f = user_id_f;
     }
-}
 
+    public boolean isDynamic_type() {
+        return dynamic_type;
+    }
+
+    public void setDynamic_type(boolean dynamic_type) {
+        this.dynamic_type = dynamic_type;
+    }
+
+
+}

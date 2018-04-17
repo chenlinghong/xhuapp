@@ -1,18 +1,16 @@
-package com.app.vo;
+package com.app.vo;/*
+ *@Author:dxlin
+ *@Description：用于动态的接口
+ *@Date: 2018-3-23
+ */
 
 import com.app.entity.Dynamic;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/*
- *@Author:dxlin
- *@Description：用于动态的接口
- *@Date: 2018-3-23
- */
 @Component(value = "dynamicApiVo")
 public class DynamicApiVo {
-
     private Dynamic dynamic;
     private List<Dynamic> dynamicList;
     private int code;
