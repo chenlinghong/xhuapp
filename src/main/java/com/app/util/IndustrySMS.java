@@ -19,7 +19,7 @@ public class IndustrySMS
 
 	private static String accountSid = Config.ACCOUNT_SID;
 //	private static String to = "13008142306";
-	private static String smsContentHead = "【西华公交信息系统】您的验证码为";
+	private static String smsContentHead = "【小农娱乐】您的验证码为";
 	private static String smsContentTail = "，请于2分钟内正确输入，如非本人操作，请忽略此短信。";
 
 	/**

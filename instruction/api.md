@@ -29,7 +29,7 @@
 
 本系统所返回数据均以以上描述固定格式
 
-后续仅对data数据进行说明
+**后续仅对data数据进行说明**
 
 
 
@@ -92,6 +92,7 @@
     introduce(string)：用户介绍
     longitude(string): 经度
     latitude(string): 纬度
+    code(string) : 短信验证码(必填)
 
 3、返回（JSON格式字符串）
 
@@ -108,7 +109,7 @@
 4、示例
 
     http://120.77.170.124:8080/xhuapp/user/register.do?username=Alice&password=123456&gender=0&birthday=1999-1-1
-        &introduce=good&telphone=13008142300
+        &introduce=good&telphone=13008142300&code=123456
 
 ##### 三、修改用户基本信息（姓名、密码、性别、出生日期、介绍、电话号码）
 
@@ -344,7 +345,7 @@
 
 1、接口URL
     
-    http://120.77.170.124:8080/xhuapp/Dynamic/deleteOneDynamicById.do
+    http://120.77.170.124:8080/xhuapp/Dynamic/insertOneDynamic.do
     
 2、参数说明
     

@@ -407,7 +407,7 @@ public class UserController {
             produces = "text/json;charset=UTF-8")
     @ResponseBody
     public String modifyHead_portrail(@RequestParam(value = "file", required = false) MultipartFile file,
-                                      HttpServletRequest request, int user_id) throws Exception {
+                                      HttpServletRequest request, @RequestParam int user_id) throws Exception {
 
         //未进行测试
 

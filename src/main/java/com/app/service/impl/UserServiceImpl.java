@@ -270,7 +270,6 @@ public class UserServiceImpl implements IUserService {
                         userDao.modifyLatitude(tempUser);
                     }
 
-
                     //执行到此步说明更改用户信息成功
                     userApiVo.setMessage(userApiVo.getMessage() + "修改用户信息成功！");
                     userApiVo.setCode(1);
