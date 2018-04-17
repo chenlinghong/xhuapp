@@ -103,7 +103,7 @@
     head_portrail：用户头像图片文件路径
     introduce：用户介绍
     telphone：用户电话号码
-    （注：若注册成功，返回值均为数据库中查询当前注册用户所得。若注册失败，user_id为-1，其他值为原值）
+    （注：若注册成功，返回值均为数据库中查询当前注册用户所得。若注册失败，返回空）
 
 4、示例
 
@@ -138,7 +138,7 @@
         &birthday=1999-1-31&introduce=I am a good girl&telphone=13008142301
 
 
-##### 四、修改用户头像(安卓未进行测试)
+##### 四、修改用户头像
 
 1、接口URL
 
@@ -147,7 +147,7 @@
 2、参数说明
 
     user_id(int)：用户ID(必填)
-    head_portrail(MultipartFile):用户新头像图片文件（必填）
+    file(MultipartFile):用户新头像图片文件（必填）
 
 3、返回（JSON字符串）
 
@@ -156,6 +156,44 @@
 4、示例
 
 
+##### 五、发送短信验证码
+
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/sms.do
+
+2、参数说明
+
+    telphone(string)：电话号码(必填)
+
+3、返回（JSON字符串）
+
+    空
+
+4、示例
+
+    http://120.77.170.124:8080/xhuapp/user/sms.do?telphone=13008142306
+
+##### 六、找回密码
+
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/recover.do
+
+2、参数说明
+
+    code(string)：短信验证码(必填)
+    password(string) : 新密码（必填）
+
+3、返回（JSON字符串）
+
+    空
+
+4、示例
+
+    http://120.77.170.124:8080/xhuapp/user/recover.do?code=123456
+    
+    
 
 #### 动态相关API
 

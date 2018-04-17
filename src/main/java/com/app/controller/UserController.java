@@ -1,10 +1,13 @@
 
 package com.app.controller;
 
+import com.app.dto.LoginVo;
+import com.app.dto.RecoverPasswordDto;
 import com.app.entity.User;
 import com.app.service.IUserService;
 import com.app.util.*;
 import com.app.vo.ModifyUserVo;
+import com.app.vo.SmsVo;
 import com.app.vo.UserApiVo;
 import com.app.vo.UserBaseInformationVo;
 import com.google.gson.Gson;
@@ -18,6 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @program: busis
@@ -42,8 +47,9 @@ public class UserController {
     /**
      * 通过用户账户（电话号码/用户名）进行登录验证并返回用户基本信息
      *
-     * @param account  用户账户（电话号码或用户名）
-     * @param password 用户密码
+     * @param loginVo
+     *          account : 用户账户（电话号码）
+     *          password :  用户密码
      * @return 用户信息JSON字符串
      * user_id：用户登录成功返回用户ID，登录失败返回-1
      * username：用户姓名
@@ -59,36 +65,80 @@ public class UserController {
     @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String loginByAccountAndPassword(@RequestParam String account, @RequestParam String password) throws Exception {
+    public String loginByAccountAndPassword(LoginVo loginVo) throws Exception {
+        String account = "";
+        String password = "";
         User resultUser = new User();
         UserApiVo userApiVo = new UserApiVo();
+        userApiVo.setCode(1);
+        userApiVo.setMessage("");
 
-        userApiVo.setMessage("说明：");
+        UserApiVo loginResult = new UserApiVo();
 
-        UserApiVo loginResult = userService.loginByAccountAndPassword(account, password);
-        loginResult.setMessage(userApiVo.getMessage() + loginResult.getMessage());
-
-        if (loginResult.getCode() == 1) {
-            //表示利用电话号码和密码进行成功登录
-            resultUser = userService.getUserByTelphone(account).getUser();
-        } else if (loginResult.getCode() == 2) {
-            //表示通过用户名和密码进行成功登录
-            resultUser = userService.getUserByUsernameAndPassword(account, password).getUser();
-            loginResult.setCode(1);
+        //判别输入参数
+        if (loginVo == null){
+            userApiVo.setCode(0);
+            userApiVo.setMessage(userApiVo.getMessage() + "未接收到参数！");
         } else {
-            //登录失败
-            resultUser.setUser_id(-1);
-            loginResult.setCode(0);
+            account = loginVo.getAccount();
+            password = loginVo.getPassword();
+
+            if (account == null || account == ""){
+                userApiVo.setCode(0);
+                userApiVo.setMessage(userApiVo.getMessage() + "用户账户为空!");
+            } else {
+                account = account.trim();
+            }
+
+            if (password == null || password == "") {
+                userApiVo.setCode(0);
+                userApiVo.setMessage(userApiVo.getMessage() + "密码为空！");
+            } else {
+                password = password.trim();
+            }
+
+            if (userApiVo.getCode() == 1){
+                //参数输入正确
+                loginResult = userService.loginByAccountAndPassword(account, password);
+                loginResult.setMessage(userApiVo.getMessage() + loginResult.getMessage());
+
+                //判断loginResult对象
+                if (loginResult == null){
+                    //结果返回出错
+                    loginResult = new UserApiVo();
+                    loginResult.setCode(0);
+                    loginResult.setMessage("请求失败！");
+                } else {
+                    if (loginResult.getCode() == 1) {
+                        //表示利用电话号码和密码进行成功登录
+                        resultUser = userService.getUserByTelphone(account).getUser();
+                    } else if (loginResult.getCode() == 2) {
+                        //表示通过用户名和密码进行成功登录
+                        resultUser = userService.getUserByUsernameAndPassword(account, password).getUser();
+                        loginResult.setCode(1);
+                    } else {
+                        //登录失败
+                        resultUser.setUser_id(-1);
+                        loginResult.setCode(0);
+                    }
+                }
+            }
         }
 
-        resultUser = SimpleUtil.hideSensitiveInformation(resultUser);
+        String resultJson = "";
 
-        GsonBuilder gsonBuilder = new GsonBuilder();
+        if (loginResult.getCode() == 0){
+
+        } else {
+            resultUser = SimpleUtil.hideSensitiveInformation(resultUser);
+
+            GsonBuilder gsonBuilder = new GsonBuilder();
 //        gsonBuilder.setPrettyPrinting();        //格式化（仅用于开发阶段）
-        gsonBuilder.setDateFormat("yyyy-MM-dd");
-        Gson gson = gsonBuilder.create();
+            gsonBuilder.setDateFormat("yyyy-MM-dd");
+            Gson gson = gsonBuilder.create();
 
-        String resultJson = gson.toJson(resultUser);
+            resultJson = gson.toJson(resultUser);
+        }
 
         return ApiFormatUtil.apiFormat(loginResult.getCode(), loginResult.getMessage(), resultJson);
     }
@@ -117,7 +167,10 @@ public class UserController {
     @RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String registerUser(UserBaseInformationVo userBaseInformationVo) throws Exception {
+    public String registerUser(UserBaseInformationVo userBaseInformationVo,
+                               HttpServletRequest request,HttpServletResponse response) throws Exception {
+
+        HttpSession session = request.getSession();
         User tempUser = new User();
         User resultUser = new User();
         boolean check = true;
@@ -125,133 +178,177 @@ public class UserController {
         UserApiVo userApiVo = new UserApiVo();
 
         //初始化结果说明
-        userApiVo.setMessage("说明：");
+        userApiVo.setMessage("");
 
-        //必填项检查
-        if (userBaseInformationVo.getUsername() == "" || userBaseInformationVo.getUsername() == null) {
-            check = false;
-            userApiVo.setMessage(userApiVo.getMessage() + "用户名不能为空！");
+        //判断短信验证码是否有效
+        String smsCode = (String) session.getAttribute("code");
+        String smsTelphone = (String) session.getAttribute("telphone");
+
+        if (smsCode != null && smsCode != ""){
+            smsCode = smsCode.trim();
         }
-        if (userBaseInformationVo.getTelphone() == "" || userBaseInformationVo.getTelphone() == null) {
+        if (smsTelphone != null && smsTelphone != ""){
+            smsTelphone = smsTelphone.trim();
+        }
+
+
+        String telphone = userBaseInformationVo.getTelphone();
+
+        if (telphone == null || telphone == ""){
             check = false;
             userApiVo.setMessage(userApiVo.getMessage() + "电话号码不能为空！");
-        }
-        if (userBaseInformationVo.getPassword() == "" || userBaseInformationVo.getPassword() == null) {
-            check = false;
-            userApiVo.setMessage(userApiVo.getMessage() + "密码不能为空！");
-        }
-
-        if (check == false) {
-            //缺少必填项
-            userApiVo.setCode(0);
         } else {
-            //填充数据，并检验数据合法性
-            //检验username长度
-            if (userBaseInformationVo.getUsername().length() < 10) {
-                tempUser.setUsername(userBaseInformationVo.getUsername());
-            } else {
-                //username数据长度不合法
-                check = false;
-                userApiVo.setMessage(userApiVo.getMessage() + "用户名不能超过10个字符！");
-            }
-            //验证手机号码是否合法
-            if (TelphoneCheckUtil.isPhoneLegal(userBaseInformationVo.getTelphone())) {
-                tempUser.setTelphone(userBaseInformationVo.getTelphone());
-            } else {
-                check = false;
-                userApiVo.setMessage(userApiVo.getMessage() + "电话号码不正确！");
-            }
-            //检验密码长度是否合法
-            if (userBaseInformationVo.getPassword().length() < 20) {
-                tempUser.setPassword(userBaseInformationVo.getPassword());
-            } else {
-                //数据不合法
-                check = false;
-                userApiVo.setMessage(userApiVo.getMessage() + "密码长度不能超过20个字符！");
-            }
+            telphone = telphone.trim();
+        }
 
-            //判断必填项是否合法结果
-            if (check == false) {
-                //数据非法
-                userApiVo.setCode(0);
-
+        if (check){
+            if (userBaseInformationVo.getCode() == "" || userBaseInformationVo.getCode() == null){
+                //验证失败
+                check = false;
+                userApiVo.setMessage(userApiVo.getMessage() + "未输入短信验证码！");
+            } else if (!telphone.equals(smsTelphone)){
+                //验证失败
+                check = false;
+                userApiVo.setMessage(userApiVo.getMessage() + "手机号码错误！");
+            } else if (!userBaseInformationVo.getCode().equals(smsCode)){
+                //验证失败
+                check = false;
+                userApiVo.setMessage(userApiVo.getMessage() + "短信验证码错误！");
             } else {
-                //必填项合法，填充其他信息
-                if (userBaseInformationVo.getBirthday() != null && userBaseInformationVo.getBirthday() != null) {
-                    //将字符串转换为Date
-                    tempUser.setBirthday(GetDateByStringUtils.getDate(userBaseInformationVo.getBirthday()));
+                //验证成功
+                //必填项检查
+                if (userBaseInformationVo.getUsername() == "" || userBaseInformationVo.getUsername() == null) {
+                    check = false;
+                    userApiVo.setMessage(userApiVo.getMessage() + "用户名不能为空！");
                 }
-                if (userBaseInformationVo.getGender() != "" && userBaseInformationVo.getGender() != null) {
-//                    tempUser.setGender((char) user.getGender().indexOf(1));
-                    if (userBaseInformationVo.getGender().equals("1")) {
-                        tempUser.setGender('1');
+                if (userBaseInformationVo.getTelphone() == "" || userBaseInformationVo.getTelphone() == null) {
+                    check = false;
+                    userApiVo.setMessage(userApiVo.getMessage() + "电话号码不能为空！");
+                }
+                if (userBaseInformationVo.getPassword() == "" || userBaseInformationVo.getPassword() == null) {
+                    check = false;
+                    userApiVo.setMessage(userApiVo.getMessage() + "密码不能为空！");
+                }
+
+                if (check == false) {
+                    //缺少必填项
+                    userApiVo.setCode(0);
+                } else {
+                    //填充数据，并检验数据合法性
+                    //检验username长度
+                    if (userBaseInformationVo.getUsername().length() < 10) {
+                        tempUser.setUsername(userBaseInformationVo.getUsername());
                     } else {
-                        tempUser.setGender('0');
+                        //username数据长度不合法
+                        check = false;
+                        userApiVo.setMessage(userApiVo.getMessage() + "用户名不能超过10个字符！");
                     }
-                } else {
-                    //用户注册时未填写性别
-                    tempUser.setGender(' ');
-                }
-                //填充用户介绍信息
-                if (userBaseInformationVo.getIntroduce() != "" && userBaseInformationVo.getIntroduce() != null) {
-                    tempUser.setIntroduce(userBaseInformationVo.getIntroduce());
-                }
-                //经纬度
-                if (userBaseInformationVo.getLongitude() != "" && userBaseInformationVo.getLongitude() != null) {
-                    tempUser.setLongitude(userBaseInformationVo.getLongitude());
-                }
-                if (userBaseInformationVo.getLatitude() != "" && userBaseInformationVo.getLatitude() != null) {
-                    tempUser.setLatitude(userBaseInformationVo.getLatitude());
+                    //验证手机号码是否合法
+                    if (TelphoneCheckUtil.isPhoneLegal(userBaseInformationVo.getTelphone())) {
+                        tempUser.setTelphone(userBaseInformationVo.getTelphone());
+                    } else {
+                        check = false;
+                        userApiVo.setMessage(userApiVo.getMessage() + "电话号码不正确！");
+                    }
+                    //检验密码长度是否合法
+                    if (userBaseInformationVo.getPassword().length() < 20) {
+                        tempUser.setPassword(userBaseInformationVo.getPassword());
+                    } else {
+                        //数据不合法
+                        check = false;
+                        userApiVo.setMessage(userApiVo.getMessage() + "密码长度不能超过20个字符！");
+                    }
+
+                    //判断必填项是否合法结果
+                    if (check == false) {
+                        //数据非法
+                        userApiVo.setCode(0);
+
+                    } else {
+                        //必填项合法，填充其他信息
+                        if (userBaseInformationVo.getBirthday() != null && userBaseInformationVo.getBirthday() != null) {
+                            //将字符串转换为Date
+                            tempUser.setBirthday(GetDateByStringUtils.getDate(userBaseInformationVo.getBirthday()));
+                        }
+                        if (userBaseInformationVo.getGender() != "" && userBaseInformationVo.getGender() != null) {
+//                    tempUser.setGender((char) user.getGender().indexOf(1));
+                            if (userBaseInformationVo.getGender().equals("1")) {
+                                tempUser.setGender('1');
+                            } else {
+                                tempUser.setGender('0');
+                            }
+                        } else {
+                            //用户注册时未填写性别
+                            tempUser.setGender(' ');
+                        }
+                        //填充用户介绍信息
+                        if (userBaseInformationVo.getIntroduce() != "" && userBaseInformationVo.getIntroduce() != null) {
+                            tempUser.setIntroduce(userBaseInformationVo.getIntroduce());
+                        }
+                        //经纬度
+                        if (userBaseInformationVo.getLongitude() != "" && userBaseInformationVo.getLongitude() != null) {
+                            tempUser.setLongitude(userBaseInformationVo.getLongitude());
+                        }
+                        if (userBaseInformationVo.getLatitude() != "" && userBaseInformationVo.getLatitude() != null) {
+                            tempUser.setLatitude(userBaseInformationVo.getLatitude());
+                        }
+                    }
                 }
 
-            }
-        }
+                if (check == false) {
+                    //存在不合法数据
+                    userApiVo.setCode(0);
 
-        if (check == false) {
-            //存在不合法数据
-            userApiVo.setCode(0);
-
-            resultId = -1;      //标识注册失败
-            resultUser.setUser_id(resultId);
-            resultUser.setUsername(userBaseInformationVo.getUsername());
-            resultUser.setIntroduce(userBaseInformationVo.getIntroduce());
+                    resultId = -1;      //标识注册失败
+                    resultUser.setUser_id(resultId);
+                    resultUser.setUsername(userBaseInformationVo.getUsername());
+                    resultUser.setIntroduce(userBaseInformationVo.getIntroduce());
 //            resultUser.setGender((char) user.getGender().indexOf(1));
-            if (userBaseInformationVo.getGender() != null) {
-                if (userBaseInformationVo.getGender().equals("1")) {
-                    tempUser.setGender('1');
+                    if (userBaseInformationVo.getGender() != null) {
+                        if (userBaseInformationVo.getGender().equals("1")) {
+                            tempUser.setGender('1');
+                        } else {
+                            tempUser.setGender('0');
+                        }
+                    }
+                    if (userBaseInformationVo.getBirthday() != null) {
+                        resultUser.setBirthday(GetDateByStringUtils.getDate(userBaseInformationVo.getBirthday()));
+                    }
+                    resultUser.setPassword(userBaseInformationVo.getPassword());
+                    resultUser.setTelphone(userBaseInformationVo.getTelphone());
                 } else {
-                    tempUser.setGender('0');
+                    //进行注册操作
+                    userApiVo = userService.registerUser(tempUser);
+                    if (userApiVo.getCode() == 0) {
+                        //注册失败
+
+                    } else {
+                        //注册成功
+                        //重新从数据库中查询数据
+                        resultUser = userService.getUserByUser_id(userApiVo.getUser().getUser_id()).getUser();
+                        userApiVo.setMessage("注册成功！");
+                    }
                 }
             }
-            if (userBaseInformationVo.getBirthday() != null) {
-                resultUser.setBirthday(GetDateByStringUtils.getDate(userBaseInformationVo.getBirthday()));
-            }
-            resultUser.setPassword(userBaseInformationVo.getPassword());
-            resultUser.setTelphone(userBaseInformationVo.getTelphone());
-        } else {
-            //进行注册操作
-            userApiVo = userService.registerUser(tempUser);
-            if (userApiVo.getCode() == 0) {
-                //注册失败
-
-            } else {
-                //注册成功
-                //重新从数据库中查询数据
-                resultUser = userService.getUserByUser_id(userApiVo.getUser().getUser_id()).getUser();
-                userApiVo.setMessage("注册成功！");
-            }
-
-
         }
 
-        GsonBuilder gsonBuilder = new GsonBuilder();
+
+
+        String resultJson = "";
+
+        if (check == false){
+
+        }else {
+            GsonBuilder gsonBuilder = new GsonBuilder();
 //        gsonBuilder.setPrettyPrinting();        //格式化（仅用于开发阶段）
-        gsonBuilder.setDateFormat("yyyy-MM-dd");
-        Gson gson = gsonBuilder.create();
+            gsonBuilder.setDateFormat("yyyy-MM-dd");
+            Gson gson = gsonBuilder.create();
 
-        resultUser = SimpleUtil.hideSensitiveInformation(resultUser);
+            resultUser = SimpleUtil.hideSensitiveInformation(resultUser);
 
-        String resultJson = gson.toJson(resultUser);
+            resultJson = gson.toJson(resultUser);
+        }
+
 
         return ApiFormatUtil.apiFormat(userApiVo.getCode(), userApiVo.getMessage(), resultJson);
     }
@@ -301,7 +398,7 @@ public class UserController {
     /**
      * 修改用户头像图片
      *
-     * @param head_portrail 用户新头像图片文件
+     * @param file 用户新头像图片文件
      * @param request
      * @param user_id       用户ID
      * @return 修改结果
@@ -309,7 +406,7 @@ public class UserController {
     @RequestMapping(value = "/modify/head_portrail", method = {RequestMethod.POST, RequestMethod.GET},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String modifyHead_portrail(@RequestParam(value = "head_portrail", required = false) MultipartFile head_portrail,
+    public String modifyHead_portrail(@RequestParam(value = "file", required = false) MultipartFile file,
                                       HttpServletRequest request, int user_id) throws Exception {
 
         //未进行测试
@@ -318,11 +415,11 @@ public class UserController {
         boolean result = false;
         UserApiVo userApiVo = new UserApiVo();
 
-        userApiVo.setMessage("说明：");
+        userApiVo.setMessage("");
         userApiVo.setUser(null);
 
         //将图片存储在服务器文件夹中，并返回文件路径
-        String head_portrailResult = UploadHead_portrailUtil.uploadHead_portrail(head_portrail, request);
+        String head_portrailResult = UploadHead_portrailUtil.uploadHead_portrail(file, request);
 
         //封装数据
         user.setUser_id(user_id);
@@ -333,6 +430,179 @@ public class UserController {
 
         return ApiFormatUtil.apiFormat(userApiVo.getCode(), userApiVo.getMessage(), "");
     }
+
+
+    /**
+     * 发送短信验证码
+     * @param telphone
+     * @return  发送结果
+     * @throws Exception
+     */
+    @RequestMapping(value = "/sms",method = {RequestMethod.POST,RequestMethod.GET},
+            produces = "text/json;charset=UTF-8")
+    @ResponseBody
+    public String sendSmsCode(String telphone, HttpServletRequest request, HttpServletResponse response) throws Exception{
+        //获取session对象
+        HttpSession session = request.getSession();
+        int resultCode = 0;
+        String result = "";
+
+        if (telphone != "" && telphone != null){
+            //接收参数正确
+            if(TelphoneCheckUtil.isPhoneLegal(telphone)){
+                //电话号码格式正确
+                SmsVo smsVo = IndustrySMS.execute(telphone);
+//                if (smsVo.getStatusCode().equals("00000")){
+//                    //短信发送成功
+//                    resultCode = 1;
+//                    result = "短信发送成功！";
+//
+//                    //将验证码与电话号码存入session，并设置125秒有效期限
+//                    session.setAttribute("code",smsVo.getVerificationCode());
+//                    session.setAttribute("telphone",telphone);
+//                    session.setMaxInactiveInterval(2*60 + 5);
+//
+//                } else {
+//                    //短信发送失败
+//                    resultCode = 0;
+//                    result = "短信发送失败！" ;
+//                    if (smsVo.getMiaoDiReturn() != null){
+//                        result += smsVo.getMiaoDiReturn().getRespDesc();
+//                    }
+//                }
+
+
+                //短信发送成功
+                resultCode = 1;
+                result = "短信发送成功！";
+
+                //将验证码与电话号码存入session，并设置125秒有效期限
+                session.setAttribute("code",smsVo.getVerificationCode());
+                session.setAttribute("telphone",telphone);
+                session.setMaxInactiveInterval(2*60 + 5);
+
+//                Cookie cookieCode = new Cookie("code",smsVo.getVerificationCode());
+//                Cookie cookieTelphone = new Cookie("telphone",telphone);
+//                cookieCode.setMaxAge(3*60);
+//                cookieTelphone.setMaxAge(3*60);
+//
+//                response.addCookie(cookieCode);
+//                response.addCookie(cookieTelphone);
+            } else {
+                result  = "电话号码无效！";
+                resultCode = 0;
+            }
+        }else {
+            //未接收到参数
+            result = "未接收到电话号码数据！";
+            resultCode = 0;
+        }
+
+//        response.setContentType("application/json;charset=UTF-8");
+
+        return ApiFormatUtil.apiFormat(resultCode,result,"");
+    }
+
+    /**
+     * 用于找回密码
+     * @param
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/recover",method = {RequestMethod.POST,RequestMethod.GET},
+            produces = "text/json;charset=UTF-8")
+    @ResponseBody
+    public String recoverPassword(RecoverPasswordDto recoverPasswordDto, HttpServletRequest request,
+                                  HttpServletResponse response) throws Exception{
+        //声明返回
+        int resultCode = 1;
+        String resultMessage = "";
+
+        //获取session
+        HttpSession session = request.getSession();
+        //用于存放session中的tephone和code
+        String telphone = "";
+        String smsCode = "";
+
+        //参数值
+        String code = recoverPasswordDto.getCode();
+        String password = recoverPasswordDto.getPassword().trim();
+
+        if (session == null){
+            //session不存在
+//            System.out.println("session不存在--------------------------------------");
+            resultCode = 0;
+            resultMessage += "验证码已过期！";
+        }else {
+            //获取电话号码和验证码
+            telphone = (String) session.getAttribute("telphone");
+            smsCode = (String) session.getAttribute("code");
+
+            if (telphone == "" || telphone == null){
+                //未获取到手机号码
+                resultCode = 0;
+                resultMessage += "未获取到电话号码！";
+//                System.out.println("电话号码数据缺失----------------------------------");
+            }
+            if (smsCode == "" || smsCode == null){
+                //未获取到短信验证码
+                resultCode = 0;
+                resultMessage += "未获取到短信验证码！";
+//                System.out.println("短信验证码数据缺失----------------------------------");
+            }
+            if (code == "" || code == null){
+                //参数中未获取到短信验证码
+                resultCode = 0;
+                resultMessage += "未填写短信验证码！";
+//                System.out.println("参数短信验证码数据缺失----------------------------------");
+            }
+
+            if (resultCode == 0){
+                //存在数据缺失
+//                System.out.println("存在数据缺失----------------------------------");
+            }else {
+                //数据获取成功
+                if (!smsCode.trim().equals(code.trim())){
+                    //验证码不正确
+                    resultCode = 0;
+                    resultMessage += "验证码错误！";
+                } else {
+                    UserApiVo userApiVo = userService.getUserByTelphone(telphone);
+                    if (userApiVo == null){
+                        //查询用户失败
+                        resultCode = 0;
+                        resultMessage += "用户不存在！";
+                    }else {
+                        //获取用户信息
+                        User user = userApiVo.getUser();
+                        if (user == null){
+                            //未获取到用户信息
+                            resultCode = 0;
+                            resultMessage += "获取用户信息失败！";
+                        } else {
+                            //存在以telphone为电话号码的用户
+                            User temp = new User();
+                            temp.setUser_id(user.getUser_id());
+                            temp.setPassword(password);
+                            //修改用户密码
+                            UserApiVo userApiVo1 = userService.updateUserInformation(temp);
+                            if (userApiVo.getCode() == 0){
+                                //修改失败
+                                resultCode = 0;
+                                resultMessage += userApiVo.getMessage() + "找回密码失败！";
+                            } else {
+                                resultCode = 1;
+                                resultMessage = "找回密码成功！";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return ApiFormatUtil.apiFormat(resultCode,resultMessage,"");
+    }
+
+
 
 
 }

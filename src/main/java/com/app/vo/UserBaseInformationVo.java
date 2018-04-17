@@ -16,9 +16,18 @@ public class UserBaseInformationVo {
     private String introduce;       //用户备注
     private String longitude;       //经度
     private String latitude;        //纬度
+    private String code;        //短信验证码
 
     public UserBaseInformationVo(){
 
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
     }
 
     public void setLongitude(String longitude) {
