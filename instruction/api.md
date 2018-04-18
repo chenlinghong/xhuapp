@@ -192,7 +192,7 @@
 
 4、示例
 
-    http://120.77.170.124:8080/xhuapp/user/recover.do?code=123456
+    http://120.77.170.124:8080/xhuapp/user/recover.do?code=123456&password=123123
     
     
 
@@ -202,7 +202,7 @@
 
 1、接口URL
 
-    http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicById.do?（注：部署到服务器后更改IP地址）
+    http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicById.do
 
 2、参数说明
 

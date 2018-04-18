@@ -325,8 +325,15 @@ public class UserController {
                     } else {
                         //注册成功
                         //重新从数据库中查询数据
-                        resultUser = userService.getUserByUser_id(userApiVo.getUser().getUser_id()).getUser();
-                        userApiVo.setMessage("注册成功！");
+                        UserApiVo userApiVo1 = userService.getUserByUser_id(userApiVo.getUser().getUser_id());
+                        if (userApiVo1.getCode() == 0){
+                            check = false;
+                            userApiVo.setMessage(userApiVo.getMessage() + userApiVo1.getMessage());
+                        } else {
+                            resultUser = userApiVo1.getUser();
+                            userApiVo.setMessage("注册成功！");
+                            check = true;
+                        }
                     }
                 }
             }
@@ -512,7 +519,7 @@ public class UserController {
     @RequestMapping(value = "/recover",method = {RequestMethod.POST,RequestMethod.GET},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String recoverPassword(RecoverPasswordDto recoverPasswordDto, HttpServletRequest request,
+    public String recoverPassword(@RequestParam RecoverPasswordDto recoverPasswordDto, HttpServletRequest request,
                                   HttpServletResponse response) throws Exception{
         //声明返回
         int resultCode = 1;
@@ -524,81 +531,111 @@ public class UserController {
         String telphone = "";
         String smsCode = "";
 
-        //参数值
-        String code = recoverPasswordDto.getCode();
-        String password = recoverPasswordDto.getPassword().trim();
-
-        if (session == null){
-            //session不存在
-//            System.out.println("session不存在--------------------------------------");
+        if (recoverPasswordDto == null){
             resultCode = 0;
-            resultMessage += "验证码已过期！";
-        }else {
-            //获取电话号码和验证码
-            telphone = (String) session.getAttribute("telphone");
-            smsCode = (String) session.getAttribute("code");
+            resultMessage += "未接收到参数！";
+        } else {
+            //参数值
+            String code = recoverPasswordDto.getCode();
+            String password = recoverPasswordDto.getPassword();
 
-            if (telphone == "" || telphone == null){
-                //未获取到手机号码
+            if (password != null && password != ""){
+                password = password.trim();
+            } else {
                 resultCode = 0;
-                resultMessage += "未获取到电话号码！";
-//                System.out.println("电话号码数据缺失----------------------------------");
-            }
-            if (smsCode == "" || smsCode == null){
-                //未获取到短信验证码
-                resultCode = 0;
-                resultMessage += "未获取到短信验证码！";
-//                System.out.println("短信验证码数据缺失----------------------------------");
-            }
-            if (code == "" || code == null){
-                //参数中未获取到短信验证码
-                resultCode = 0;
-                resultMessage += "未填写短信验证码！";
-//                System.out.println("参数短信验证码数据缺失----------------------------------");
+                resultMessage += "新密码不能为空！";
             }
 
-            if (resultCode == 0){
-                //存在数据缺失
-//                System.out.println("存在数据缺失----------------------------------");
-            }else {
-                //数据获取成功
-                if (!smsCode.trim().equals(code.trim())){
-                    //验证码不正确
+            if (resultCode != 0){
+                if (session.isNew()){
+                    //session不存在
                     resultCode = 0;
-                    resultMessage += "验证码错误！";
-                } else {
-                    UserApiVo userApiVo = userService.getUserByTelphone(telphone);
-                    if (userApiVo == null){
-                        //查询用户失败
+                    resultMessage += "验证码已过期！";
+                }else {
+                    //获取电话号码和验证码
+                    telphone = (String) session.getAttribute("telphone");
+                    smsCode = (String) session.getAttribute("code");
+
+                    if (telphone == "" || telphone == null){
+                        //未获取到手机号码
                         resultCode = 0;
-                        resultMessage += "用户不存在！";
+                        resultMessage += "电话号码未知错误！";
+                    } else {
+                        telphone = telphone.trim();
+                    }
+                    if (telphone == "" || telphone == null){
+                        resultCode = 0;
+                        resultMessage += "电话号码未知错误！";
+                    }
+
+                    if (smsCode == "" || smsCode == null){
+                        //未获取到短信验证码
+                        resultCode = 0;
+                        resultMessage += "短信验证码未知错误！";
+                    } else {
+                        smsCode = smsCode.trim();
+                    }
+                    if (smsCode == "" || smsCode == null){
+                        resultCode = 0;
+                        resultMessage += "短信验证码未知错误！";
+                    }
+
+                    if (code == "" || code == null){
+                        //参数中未获取到短信验证码
+                        resultCode = 0;
+                        resultMessage += "未填写短信验证码！";
+                    } else {
+                        code = code.trim();
+                    }
+                    if (code == null || code == ""){
+                        resultCode = 0;
+                        resultMessage += "短信验证码为空！";
+                    }
+
+                    if (resultCode == 0){
+                        //存在数据缺失
                     }else {
-                        //获取用户信息
-                        User user = userApiVo.getUser();
-                        if (user == null){
-                            //未获取到用户信息
+                        //数据获取成功
+                        if (!smsCode.equals(code)){
+                            //验证码不正确
                             resultCode = 0;
-                            resultMessage += "获取用户信息失败！";
+                            resultMessage += "验证码错误！";
                         } else {
-                            //存在以telphone为电话号码的用户
-                            User temp = new User();
-                            temp.setUser_id(user.getUser_id());
-                            temp.setPassword(password);
-                            //修改用户密码
-                            UserApiVo userApiVo1 = userService.updateUserInformation(temp);
-                            if (userApiVo.getCode() == 0){
-                                //修改失败
+                            UserApiVo userApiVo = userService.getUserByTelphone(telphone);
+                            if (userApiVo == null){
+                                //查询用户失败
                                 resultCode = 0;
-                                resultMessage += userApiVo.getMessage() + "找回密码失败！";
-                            } else {
-                                resultCode = 1;
-                                resultMessage = "找回密码成功！";
+                                resultMessage += "用户不存在！";
+                            }else {
+                                //获取用户信息
+                                User user = userApiVo.getUser();
+                                if (user == null){
+                                    //未获取到用户信息
+                                    resultCode = 0;
+                                    resultMessage += "获取用户信息失败！";
+                                } else {
+                                    //存在以telphone为电话号码的用户
+                                    User temp = new User();
+                                    temp.setUser_id(user.getUser_id());
+                                    temp.setPassword(password);
+                                    //修改用户密码
+                                    UserApiVo userApiVo1 = userService.updateUserInformation(temp);
+                                    if (userApiVo.getCode() == 0){
+                                        //修改失败
+                                        resultCode = 0;
+                                        resultMessage += userApiVo.getMessage() + "找回密码失败！";
+                                    } else {
+                                        resultCode = 1;
+                                        resultMessage = "找回密码成功！";
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
         }
+
         return ApiFormatUtil.apiFormat(resultCode,resultMessage,"");
     }
 
