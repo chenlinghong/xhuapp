@@ -8,16 +8,83 @@
         <result property="title" column="title" javaType="java.lang.String" jdbcType="VARCHAR"/>
         <result property="videopath" column="videopath" javaType="java.lang.String" jdbcType="VARCHAR"/>
         <result property="user_id_f" column="user_id_f" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-        <result property="video_type" column="video_type" javaType="boolean" jdbcType="INTEGER"/>
-     </resultMap>
+        <result property="video_type" column="video_type" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        <result property="introduce" column="introduce" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="prize" property="prize" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="look_persons" property="look_persons" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+    </resultMap>
 
     <sql id="video_base_column_List">
-        video_id,title,videopath,user_id_f,video_type
+        video_id,title,videopath,user_id_f,video_type,introduce,address,prize,look_persons
     </sql>
     <insert id="insertOneVideo" parameterType="com.app.entity.Video">
         INSERT INTO
-          tb_video
-        set
-          title = #{title},videopath = #{videopath},user_id_f = #{user_id_f},video_type = #{video_type}
+        tb_video(title,videopath,user_id_f,video_type,introduce,address,prize,look_persons)
+        VALUES
+        (#{title},#{videopath},#{user_id_f},#{video_type},#{introduce},#{address},#{prize},#{look_persons})
     </insert>
+
+    <select id="findVideoById" resultType="com.app.entity.Video" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="video_base_column_List"/>
+        FROM
+        tb_video
+        WHERE
+        video_id = #{video_id}
+    </select>
+
+    <select id="findVideosByType" resultMap="BaseVideo" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="video_base_column_List"/>
+        FROM
+        tb_video
+        WHERE
+        video_type = #{video_type}
+    </select>
+
+    <select id="findVideosByUser_id_f" parameterType="java.lang.Integer" resultMap="BaseVideo">
+        SELECT
+        <include refid="video_base_column_List"/>
+        FROM
+        tb_video
+        WHERE
+        user_id_f = #{user_id_f}
+    </select>
+
+    <select id="findVideoPathById" parameterType="java.lang.Integer" resultType="java.lang.String">
+        SELECT
+        videopath
+        FROM
+        tb_video
+        WHERE
+        video_id = #{video_id}
+    </select>
+
+    <update id="modifyVideoById" parameterType="com.app.entity.Video">
+        UPDATE
+        tb_video
+        SET
+        title = #{title},introduce = #{introduce},address = #{address},
+        prize = #{prize},look_persons = #{look_persons}
+        WHERE
+        video_id = #{video_id}
+    </update>
+
+    <update id="modifyVideo_videoById" parameterType="com.app.entity.Video">
+        UPDATE
+        tb_video
+        SET
+        videopath = #{videopath}
+        WHERE
+        video_id = #{video_id}
+    </update>
+
+    <delete id="deleteVideoById" parameterType="java.lang.Integer">
+        DELETE FROM
+        tb_video
+        WHERE
+        video_id = #{video_id}
+    </delete>
+
 </mapper>

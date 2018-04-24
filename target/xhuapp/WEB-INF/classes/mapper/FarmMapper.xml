@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.dao.IFarmDao">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.Farm">
+        <id column="farm_id" property="farm_id" jdbcType="INTEGER" javaType="int"/>
+        <result column="name" property="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="location_name" property="location_name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="user_id" property="user_id" jdbcType="INTEGER" javaType="int"/>
+        <result column="area" property="area" jdbcType="VARCHAR" javaType="int"/>
+        <result column="introduce" property="introduce" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="photo" property="photo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="longitude" property="longitude" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="latitude" property="latitude" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        farm_id,name,longitude,latitude,location_name,user_id,area,introduce,photo
+    </sql>
+
+
+    <select id="findFarmByUser_id" parameterType="int" resultMap="BaseResultMap">
+        SELECT
+            <include refid="Base_Column_List"/>
+        FROM
+            tb_farm
+        WHERE
+            user_id=#{user_id}
+    </select>
+
+
+    <insert id="insertFarm" parameterType="com.app.entity.Farm">
+        <selectKey keyProperty="farm_id" order="AFTER" resultType="int">
+            SELECT last_insert_id()
+        </selectKey>
+        INSERT into
+            tb_farm(name,longitude,latitude,location_name,user_id,area,introduce,photo)
+            values(#{name},#{longitude},#{latitude},#{location_name},#{user_id},#{area},#{introduce},#{photo})
+    </insert>
+
+    <update id="modifyName">
+        UPDATE
+            tb_farm
+        SET
+            name=#{name}
+        WHERE
+            user_id=#{user_id}
+    </update>
+
+    <update id="modifyLocation_name">
+        UPDATE
+            tb_farm
+        SET
+            location_name=#{location_name}
+        WHERE
+            user_id=#{user_id}
+    </update>
+
+
+    <update id="modifyArea">
+        UPDATE
+            tb_farm
+        SET
+            area=#{area}
+        WHERE
+            user_id=#{user_id}
+    </update>
+
+    <update id="modifyIntroduce">
+        UPDATE
+            tb_farm
+        SET
+            introduce=#{introduce}
+        WHERE
+            user_id=#{user_id}
+    </update>
+
+    <update id="modifyPhoto">
+        UPDATE
+            tb_farm
+        SET
+            photo=#{photo}
+        WHERE
+            user_id=#{user_id}
+    </update>
+
+
+</mapper>

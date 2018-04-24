@@ -10,27 +10,30 @@
         <result column="picture" property="picture" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result column="user_id_f" property="user_id_f" jdbcType="INTEGER" javaType="java.lang.Integer"/>
         <result column="dynamic_type" property="dynamic_type" jdbcType="INTEGER" javaType="boolean"/>
+        <result column="address" property="address" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="prize" property="prize" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="look_persons" property="look_persons" jdbcType="INTEGER" javaType="java.lang.Integer"/>
     </resultMap>
 
     <sql id="dynamic_Base_column_List">
-        dynamic_id,title,introduce,picture,user_id_f,dynamic_type
+        dynamic_id,title,introduce,picture,user_id_f,dynamic_type,address,prize,look_persons
     </sql>
 
     <select id="findDynamicById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         SELECT
-          <include refid="dynamic_Base_column_List"/>
+        <include refid="dynamic_Base_column_List"/>
         FROM
-          dynamic
+        dynamic
         WHERE
-          dynamic_id = #{dynamic_id}
+        dynamic_id = #{dynamic_id}
     </select>
     <select id="findisDynamic" resultType="java.lang.Integer" parameterType="java.lang.Integer">
         SELECT
-          dynamic_id
+        dynamic_id
         from
-          dynamic
+        dynamic
         WHERE
-          dynamic_id = #{dynamic_id}
+        dynamic_id = #{dynamic_id}
     </select>
     <select id="findAllDynamicByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         SELECT
@@ -42,48 +45,51 @@
     </select>
     <select id="findPicturePathByIDd" resultType="java.lang.String" parameterType="java.lang.Integer">
         SELECT
-          picture
+        picture
         FROM
-          dynamic
+        dynamic
         WHERE
-          dynamic_id = #{dynamic_id}
+        dynamic_id = #{dynamic_id}
     </select>
     <select id="findAllDynamicByType" resultMap="BaseResultMap" parameterType="boolean">
         SELECT
-          <include refid="dynamic_Base_column_List"/>
+        <include refid="dynamic_Base_column_List"/>
         FROM
-          dynamic
+        dynamic
         WHERE
-          dynamic_type = #{dynamic_type}
+        dynamic_type = #{dynamic_type}
     </select>
+
     <insert id="insertOneDynamic" parameterType="com.app.entity.Dynamic">
         INSERT INTO
-          dynamic(title,introduce,picture,user_id_f,dynamic_type)
+        dynamic(title,introduce,picture,user_id_f,dynamic_type,address,prize,look_persons)
         VALUES
-          (#{title},#{introduce},#{picture},#{user_id_f},#{dynamic_type})
+        (#{title},#{introduce},#{picture},#{user_id_f},#{dynamic_type},#{address},#{prize},#{look_persons})
     </insert>
+
     <insert id="modifyPicById" parameterType="com.app.entity.Dynamic">
         UPDATE
-          dynamic
+        dynamic
         SET
-          picture = #{picture}
+        picture = #{picture}
         WHERE
-          dynamic_id = #{dynamic_id}
+        dynamic_id = #{dynamic_id}
     </insert>
 
     <update id="modifyDynamicById" parameterType="com.app.entity.Dynamic">
         UPDATE
-          dynamic
+            dynamic
         set
-          title = #{title} ,introduce = #{introduce},user_id_f = #{user_id_f}
+            title = #{title} ,introduce = #{introduce},address = #{address},
+            prize = #{prize},look_persons = #{look_persons}
         WHERE
-          dynamic_id = #{dynamic_id}
+            dynamic_id = #{dynamic_id}
     </update>
 
     <delete id="deleteOneDynamicById" parameterType="java.lang.Integer">
         DELETE FROM
-          dynamic
+            dynamic
         WHERE
-          dynamic_id = #{dynamic_id}
+            dynamic_id = #{dynamic_id}
     </delete>
 </mapper>

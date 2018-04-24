@@ -16,7 +16,6 @@ import java.util.List;
 
 @Service(value = "dynamicService")
 public class DynamicServiceImpl implements IDynamicService {
-
     /*
     *@param:getDynamicById
     *@Description：通过dynamic_id 查找动态,
@@ -68,7 +67,7 @@ public class DynamicServiceImpl implements IDynamicService {
         return dynamicApiVo;
     }
 
-    public DynamicApiVo deletePicById(Dynamic dynamic, String prepicfilepath) {
+    public DynamicApiVo deletePicById(Dynamic dynamic,String prepicfilepath) {
         try{
             String prepicpath = dynamicDao.findPicturePathByIDd(dynamic.getDynamic_id());
             String[] prepicpaths = prepicpath.split(";");

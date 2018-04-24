@@ -50,7 +50,8 @@ public class DynamicController {
     @RequestMapping(value = "/modifyDynamicById",method = {RequestMethod.GET,RequestMethod.POST},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String modifyDynamicById(int dynamic_id,String title,String introduce,int user_id_f){
+    public String modifyDynamicById(int dynamic_id,String title,String introduce,
+                                    String address,int prize,int look_persons){
         Dynamic result = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         if(dynamic_id<=0){
@@ -61,7 +62,9 @@ public class DynamicController {
             result.setDynamic_id(dynamic_id);
             result.setIntroduce(introduce);
             result.setTitle(title);
-            result.setUser_id_f(user_id_f);
+            result.setAddress(address);
+            result.setLook_persons(look_persons);
+            result.setPrize(prize);
             dynamicApiVo = dynamicService.modifyDynamicById(result);
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
@@ -71,7 +74,8 @@ public class DynamicController {
     @ResponseBody
     public String insertOneDynamic(String title, String introduce,
                                    @RequestParam("picfile")CommonsMultipartFile[] picfiles,
-                                   int user_id_f, boolean dynamic_type,HttpServletRequest request) throws UnsupportedEncodingException {
+                                   int user_id_f, boolean dynamic_type,String address,
+                                   int prize,int look_persons,HttpServletRequest request) throws UnsupportedEncodingException {
         Dynamic newdynamic = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         String picfilepaths = "";
@@ -102,6 +106,9 @@ public class DynamicController {
             newdynamic.setTitle(title);
             newdynamic.setIntroduce(introduce);
             newdynamic.setDynamic_type(dynamic_type);
+            newdynamic.setPrize(prize);
+            newdynamic.setLook_persons(look_persons);
+            newdynamic.setAddress(address);
             dynamicApiVo = dynamicService.insertOneDynamic(newdynamic);
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
@@ -111,7 +118,7 @@ public class DynamicController {
             produces = "text/json;charset=UTF-8")
     @ResponseBody
     public String modifyPicById(int dynamic_id,String prepicfilepath,@RequestParam("picfile")
-                                CommonsMultipartFile nowpicfile,HttpServletRequest request){
+            CommonsMultipartFile nowpicfile,HttpServletRequest request){
         Dynamic newdynamic = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         String picturepath = "";

@@ -19,7 +19,35 @@ public class Dynamic {
     private String picture;
     private int user_id_f;
     private boolean dynamic_type;
+    private String address;
+    private int prize;
+    private int look_persons;
+
     public Dynamic(){}
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
+    public void setPrize(int prize) {
+        this.prize = prize;
+    }
+
+    public int getLook_persons() {
+        return look_persons;
+    }
+
+    public void setLook_persons(int look_persons) {
+        this.look_persons = look_persons;
+    }
 
     public int getDynamic_id() {
         return dynamic_id;

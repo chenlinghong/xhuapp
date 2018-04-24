@@ -1,4 +1,3 @@
-
 package com.app.controller;
 
 import com.app.dto.LoginVo;
@@ -378,27 +377,95 @@ public class UserController {
             produces = "text/json;charset=UTF-8")
     @ResponseBody
     public String modifyUserBaseInformation(ModifyUserVo modifyUserVo) throws Exception {
+//        User user = new User();
+//        boolean result = false;
+//        UserApiVo userApiVo = new UserApiVo();
+//
+//        userApiVo.setMessage("");
+//
+//        user.setUser_id(modifyUserVo.getUser_id());
+//        user.setUsername(modifyUserVo.getUsername());
+//        user.setPassword(modifyUserVo.getPassword());
+//        if (modifyUserVo.getGender() != "" && modifyUserVo.getGender() != null){
+//            if (modifyUserVo.getGender().equals("1")) {
+//                user.setGender('1');
+//            }
+//        }else {
+//            user.setGender('0');
+//        }
+//        if (modifyUserVo.getBirthday() != "" && modifyUserVo.getBirthday() != null){
+//            user.setBirthday(GetDateByStringUtils.getDate(modifyUserVo.getBirthday()));
+//        } else {
+//            //TODO
+//
+//        }
+//        user.setIntroduce(modifyUserVo.getIntroduce());
+//        user.setTelphone(modifyUserVo.getTelphone());
+//
+//        userApiVo = userService.updateUserInformation(user);
+//
+//        return ApiFormatUtil.apiFormat(userApiVo.getCode(), userApiVo.getMessage(), "");
+
         User user = new User();
+        User resultUser = new User();
         boolean result = false;
         UserApiVo userApiVo = new UserApiVo();
+        String resultJson = "";
 
-        userApiVo.setMessage("说明：");
+//        userApiVo.setMessage("说明：");
 
-        user.setUser_id(modifyUserVo.getUser_id());
-        user.setUsername(modifyUserVo.getUsername());
-        user.setPassword(modifyUserVo.getPassword());
-        if (modifyUserVo.getGender().equals("1")) {
-            user.setGender('1');
-        } else {
-            user.setGender('0');
+        if(modifyUserVo.getUser_id() <= 0){
+            //user_id非法
+            result = false;
+            resultJson = "";
+            userApiVo.setCode(0);
+            userApiVo.setMessage("不存在此用户");
+        }else {
+            //填充数据
+            user.setUser_id(modifyUserVo.getUser_id());
+            if(modifyUserVo.getUsername() != null && modifyUserVo.getUsername() != ""){
+                user.setUsername(modifyUserVo.getUsername());
+            }
+            if(modifyUserVo.getPassword() != null && modifyUserVo.getPassword() != ""){
+                user.setPassword(modifyUserVo.getPassword());
+            }
+            if(modifyUserVo.getGender() != null && modifyUserVo.getGender() != ""){
+                if (modifyUserVo.getGender().equals("1")){
+                    //判断用户性别
+                    user.setGender('1');
+                } else {
+                    //默认为0：女
+                    user.setGender('0');
+                }
+            }
+
+            if (modifyUserVo.getBirthday() != null && modifyUserVo.getBirthday() != ""){
+                user.setBirthday(GetDateByStringUtils.getDate(modifyUserVo.getBirthday()));
+            }
+            if (modifyUserVo.getIntroduce() != null && modifyUserVo.getIntroduce() != ""){
+                user.setIntroduce(modifyUserVo.getIntroduce());
+            }
+            if(modifyUserVo.getTelphone() != null && modifyUserVo.getTelphone() != ""){
+                user.setTelphone(modifyUserVo.getTelphone());
+            }
+
+            userApiVo = userService.updateUserInformation(user);
+
+            GsonBuilder gsonBuilder = new GsonBuilder();
+//        gsonBuilder.setPrettyPrinting();        //格式化（仅用于开发阶段）
+            gsonBuilder.setDateFormat("yyyy-MM-dd");
+            Gson gson = gsonBuilder.create();
+
+            resultUser = SimpleUtil.hideSensitiveInformation(userApiVo.getUser());
+
+            resultJson = gson.toJson(resultUser);
         }
-        user.setBirthday(GetDateByStringUtils.getDate(modifyUserVo.getBirthday()));
-        user.setIntroduce(modifyUserVo.getIntroduce());
-        user.setTelphone(modifyUserVo.getTelphone());
+        if(userApiVo.getCode() == 0){
+            resultJson = "";
+        }
 
-        userApiVo = userService.updateUserInformation(user);
+        return ApiFormatUtil.apiFormat(userApiVo.getCode(),userApiVo.getMessage(),resultJson);
 
-        return ApiFormatUtil.apiFormat(userApiVo.getCode(), userApiVo.getMessage(), "");
     }
 
 

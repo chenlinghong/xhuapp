@@ -25,3 +25,16 @@ CREATE table tb_dynamic(
   user_id_f int NOT NULL
 );
 
+
+# 创建农场表
+CREATE TABLE tb_farm (
+  farm_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20),
+  longitude VARCHAR(30) NOT NULL ,
+  latitude VARCHAR(30) NOT NULL ,
+  location_name VARCHAR(50),
+  user_id INT NOT NULL UNIQUE ,
+  area INT,
+  introduce VARCHAR(300),
+  photo VARCHAR(500)
+);

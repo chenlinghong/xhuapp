@@ -14,13 +14,18 @@
             <input type="file" name="picfile">
             <input type="text" name="user_id_f" value="3">
             <input type="text" name="dynamic_type" value="">
+            <input type="text" name="address" value="">
+            <input type="text" name="prize" value="">
+            <input type="text" name="look_persons" value="">
             <input type="submit" value="insertOneDynamic">
     </form>
     <form action="/Dynamic/modifyDynamicById.do" method="get">
         <input type="text" name="dynamic_id" value="14">
         <input type="text" name="title" value="">
         <input type="text" name="introduce" value="">
-        <input type="text" name="user_id_f" value="3">
+        <input type="text" name="address" value="">
+        <input type="text" name="prize" value="">
+        <input type="text" name="look_persons" value="">
         <input type="submit" value="modifyDynamicById">
     </form>
     <form action="/Dynamic/modifyPicById.do" method="post" enctype="multipart/form-data">

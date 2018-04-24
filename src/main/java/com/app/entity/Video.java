@@ -14,7 +14,11 @@ public class Video {
     private String title;
     private String videopath;
     private int user_id_f;
-    private boolean video_type;
+    private int video_type;
+    private String introduce;
+    private String address;
+    private int prize;
+    private int look_persons;
 
     public Video(){}
 
@@ -50,11 +54,43 @@ public class Video {
         this.user_id_f = user_id_f;
     }
 
-    public boolean isVideo_type() {
+    public int getVideo_type() {
         return video_type;
     }
 
-    public void setVideo_type(boolean video_type) {
+    public void setVideo_type(int video_type) {
         this.video_type = video_type;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
+    public void setPrize(int prize) {
+        this.prize = prize;
+    }
+
+    public int getLook_persons() {
+        return look_persons;
+    }
+
+    public void setLook_persons(int look_persons) {
+        this.look_persons = look_persons;
     }
 }

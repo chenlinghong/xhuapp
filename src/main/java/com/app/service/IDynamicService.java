@@ -16,7 +16,7 @@ public interface IDynamicService {
 
    public DynamicApiVo modifyDynamicById(Dynamic dynamic);
 
-   public DynamicApiVo deletePicById(Dynamic dynamic, String prepicfilepath);
+   public DynamicApiVo deletePicById(Dynamic dynamic,String prepicfilepath);
 
    public DynamicApiVo insertOneDynamic(Dynamic dynamic);
 
