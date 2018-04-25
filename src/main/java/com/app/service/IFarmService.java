@@ -44,5 +44,15 @@ public interface IFarmService {
     public FarmDto modifyFarmInfo(Farm farm) throws Exception;
 
 
+    /**
+     * 修改图片路径
+     * @param photo
+     * @param user_id
+     * @return
+     * @throws Exception
+     */
+    public FarmDto modifyPhoto(String photo,int user_id) throws Exception;
+
+
 
 }

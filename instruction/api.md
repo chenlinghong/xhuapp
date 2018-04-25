@@ -228,8 +228,88 @@
 
     http://120.77.170.124:8080/xhuapp/user/farm/get.do?user_id=1
 
+##### 二、新增农场
 
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/farm/add.do
+
+2、参数说明
+
+    name（String）： 农场名称
+    longitude（String）： 经度(必填)
+    latitude（String）： 纬度（必填）
+    location_name（String）： 位置名称
+    user_id（int）： 用户ID（必填）
+    area（int）： 农场面积【默认为0，单位：亩】
+    introduce(String) : 农场介绍
+    files （MultipartFile[]）: 文件流数组
     
+3、返回（JSON格式字符串）
+
+    无
+
+4、请求方式
+    
+    POST/GET
+    
+5、示例
+
+    无
+
+
+##### 三、修改农场信息
+
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/farm/modify.do
+
+2、参数说明
+
+    name（String）： 农场名称
+    longitude（String）： 经度
+    latitude（String）： 纬度
+    location_name（String）： 位置名称
+    user_id（int）： 用户ID（必填）
+    area（int）： 农场面积【单位：亩】
+    introduce(String) : 农场介绍
+    
+3、返回（JSON格式字符串）
+
+    无
+
+4、请求方式
+    
+    POST/GET
+    
+5、示例
+
+    http://120.77.170.124:8080/xhuapp/user/farm/modify.do?user_id=1&area=2
+
+
+##### 四、修改农场图片
+
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/farm/modifyphoto.do
+
+2、参数说明
+
+    user_id（int）： 用户ID（必填）
+    files （MultipartFile[]）: 文件流数组(必填)
+    
+3、返回（JSON格式字符串）
+
+    无
+
+4、请求方式
+    
+    POST/GET
+    
+5、示例
+
+    无
+
 
 #### 动态相关API
 

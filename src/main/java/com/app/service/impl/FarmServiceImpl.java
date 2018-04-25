@@ -232,4 +232,32 @@ public class FarmServiceImpl implements IFarmService{
 
         return farmDto;
     }
+
+    public FarmDto modifyPhoto(String photo,int user_id) throws Exception {
+        FarmDto farmDto = new FarmDto();
+        farmDto.setCode(1);
+        farmDto.setMessage("");
+
+        Farm farm = farmDao.findFarmByUser_id(user_id);
+        if (farm == null){
+            farmDto.setCode(0);
+            farmDto.setMessage(farmDto.getMessage() + "该用户未拥有农场！");
+        } else {
+            if (photo != null && photo != ""){
+                if (photo.equals(farm.getPhoto())){
+                    farmDto.setCode(0);
+                    farmDto.setMessage(farmDto.getMessage() + "未进行图片修改！");
+                } else {
+                    farmDao.modifyPhoto(photo,user_id);
+                    farmDto.setCode(1);
+                    farmDto.setMessage("修改成功");
+                }
+            } else{
+                farmDao.modifyPhoto(photo,user_id);
+                farmDto.setCode(1);
+                farmDto.setMessage("修改成功");
+            }
+        }
+        return farmDto;
+    }
 }
