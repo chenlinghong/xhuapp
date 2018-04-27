@@ -38,3 +38,7 @@ CREATE TABLE tb_farm (
   introduce VARCHAR(300),
   photo VARCHAR(500)
 );
+
+# 向农场插入数据
+INSERT INTO tb_farm(name,longitude,latitude,user_id,introduce)
+    VALUES ('test','112.12','123.123',1,'This is a test.');
