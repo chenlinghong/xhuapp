@@ -17,7 +17,7 @@ import java.util.List;
 
 @Component(value = "videoService")
 @Scope(value = "prototype")
-public class VideoServiceImpl implements IVideoService{
+public class VideoServiceImpl implements IVideoService {
 
     @Resource
     private VideoApiVo videoApiVo;
@@ -100,28 +100,33 @@ public class VideoServiceImpl implements IVideoService{
     }
 
     public VideoApiVo modifyVideo_videoById(Video video) {
-        String prevideopath = videoDao.findVideoPathById(video.getVideo_id());
+        List<String> prevideopaths = videoDao.findVideoPathById(video.getVideo_id());
         try{
-            if(!prevideopath.equals("")){
-                new File(prevideopath).delete();
+            for(String prevideopath:prevideopaths){
+                if(!prevideopath.equals("")){
+                    new File(prevideopath).delete();
+                }
             }
             videoDao.modifyVideo_videoById(video);
             videoApiVo.setVideo(video);
             videoApiVo.setMsg("修改成功");
             videoApiVo.setCode(1);
         }catch (Exception e){
-//            videoApiVo.setVideo(null);
-//            videoApiVo.setMsg("修改失败");
-//            videoApiVo.setCode(0);
-            e.printStackTrace();
+            videoApiVo.setVideo(null);
+            videoApiVo.setMsg("修改失败");
+            videoApiVo.setCode(0);
         }
         return videoApiVo;
     }
 
     public VideoApiVo deleteVideoById(int video_id) {
-        String prevideopath = videoDao.findVideoPathById(video_id);
+        List<String> prevideopaths = videoDao.findVideoPathById(video_id);
         try{
-            new File(prevideopath).delete();
+            for(String prevideopath:prevideopaths){
+                if(!prevideopath.equals("")){
+                    new File(prevideopath).delete();
+                }
+            }
             videoDao.deleteVideoById(video_id);
             videoApiVo.setVideo(null);
             videoApiVo.setMsg("删除成功");

@@ -21,75 +21,75 @@
 
     <select id="findDynamicById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         SELECT
-        <include refid="dynamic_Base_column_List"/>
+          <include refid="dynamic_Base_column_List"/>
         FROM
-        dynamic
+          tb_dynamic
         WHERE
-        dynamic_id = #{dynamic_id}
+          dynamic_id = #{dynamic_id}
     </select>
     <select id="findisDynamic" resultType="java.lang.Integer" parameterType="java.lang.Integer">
         SELECT
-        dynamic_id
+          dynamic_id
         from
-        dynamic
+            tb_dynamic
         WHERE
-        dynamic_id = #{dynamic_id}
+          dynamic_id = #{dynamic_id}
     </select>
     <select id="findAllDynamicByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         SELECT
         <include refid="dynamic_Base_column_List"/>
         FROM
-        dynamic
+        tb_dynamic
         where
         user_id_f = #{user_id_f}
     </select>
     <select id="findPicturePathByIDd" resultType="java.lang.String" parameterType="java.lang.Integer">
         SELECT
-        picture
+          picture
         FROM
-        dynamic
+            tb_dynamic
         WHERE
-        dynamic_id = #{dynamic_id}
+          dynamic_id = #{dynamic_id}
     </select>
     <select id="findAllDynamicByType" resultMap="BaseResultMap" parameterType="boolean">
         SELECT
-        <include refid="dynamic_Base_column_List"/>
+          <include refid="dynamic_Base_column_List"/>
         FROM
-        dynamic
+        tb_dynamic
         WHERE
-        dynamic_type = #{dynamic_type}
+          dynamic_type = #{dynamic_type}
     </select>
 
     <insert id="insertOneDynamic" parameterType="com.app.entity.Dynamic">
         INSERT INTO
-        dynamic(title,introduce,picture,user_id_f,dynamic_type,address,prize,look_persons)
+            tb_dynamic(title,introduce,picture,user_id_f,dynamic_type,address,prize,look_persons)
         VALUES
-        (#{title},#{introduce},#{picture},#{user_id_f},#{dynamic_type},#{address},#{prize},#{look_persons})
+          (#{title},#{introduce},#{picture},#{user_id_f},#{dynamic_type},#{address},#{prize},#{look_persons})
     </insert>
 
     <insert id="modifyPicById" parameterType="com.app.entity.Dynamic">
         UPDATE
-        dynamic
+            tb_dynamic
         SET
-        picture = #{picture}
+          picture = #{picture}
         WHERE
-        dynamic_id = #{dynamic_id}
+          dynamic_id = #{dynamic_id}
     </insert>
 
     <update id="modifyDynamicById" parameterType="com.app.entity.Dynamic">
         UPDATE
-            dynamic
+            tb_dynamic
         set
-            title = #{title} ,introduce = #{introduce},address = #{address},
-            prize = #{prize},look_persons = #{look_persons}
+          title = #{title} ,introduce = #{introduce},address = #{address},
+          prize = #{prize},look_persons = #{look_persons}
         WHERE
-            dynamic_id = #{dynamic_id}
+          dynamic_id = #{dynamic_id}
     </update>
 
     <delete id="deleteOneDynamicById" parameterType="java.lang.Integer">
         DELETE FROM
-            dynamic
+            tb_dynamic
         WHERE
-            dynamic_id = #{dynamic_id}
+          dynamic_id = #{dynamic_id}
     </delete>
 </mapper>

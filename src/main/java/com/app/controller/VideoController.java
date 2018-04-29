@@ -8,6 +8,7 @@ package com.app.controller;/*
 import com.app.entity.Video;
 import com.app.service.IVideoService;
 import com.app.util.ApiFormatUtil;
+import com.app.util.ChargePicUtil;
 import com.app.util.ChargeVidUtil;
 import com.app.util.UploadUtil;
 import com.app.vo.VideoApiVo;
@@ -30,9 +31,10 @@ public class VideoController {
     private IVideoService videoService;
 
     @RequestMapping(value = "/insertOneVideo",method = {RequestMethod.GET, RequestMethod.POST}
-            ,produces = "text/json;charset=utf-8")
+                        ,produces = "text/json;charset=utf-8")
     @ResponseBody
     public String insertOneVideo(String title, @RequestParam("videofile")CommonsMultipartFile videofile,
+                                 @RequestParam("video_picture")CommonsMultipartFile video_picture,
                                  int user_id_f, int video_type, String introduce,String address,
                                  int prize,int look_persons,HttpServletRequest request){
         if(videofile.getOriginalFilename().equals("")){
@@ -50,14 +52,15 @@ public class VideoController {
             videoApiVo.setVideoList(null);
             videoApiVo.setMsg("用户id格式错误");
             videoApiVo.setVideo(null);
-        }else if(!ChargeVidUtil.isVideo(videofile.getOriginalFilename())){
+        }else if(!ChargeVidUtil.isVideo(videofile.getOriginalFilename())||!ChargePicUtil.ispic(video_picture.getOriginalFilename())){
             videoApiVo.setCode(0);
             videoApiVo.setVideoList(null);
-            videoApiVo.setMsg("视频格式错误");
+            videoApiVo.setMsg("视频或者视频图片的格式错误");
             videoApiVo.setVideo(null);
         } else{
             try{
-                String videopath = UploadUtil.upload(videofile,request,false);
+                String videopath = UploadUtil.upload(videofile,request,2);
+                String videopicturepath = UploadUtil.upload(video_picture,request,3);
                 Video video = new Video();
                 video.setTitle(title);
                 video.setUser_id_f(user_id_f);
@@ -67,12 +70,14 @@ public class VideoController {
                 video.setAddress(address);
                 video.setLook_persons(look_persons);
                 video.setPrize(prize);
+                video.setVideo_picture(videopicturepath);
                 videoApiVo = videoService.insertOneVideo(video);
             }catch (Exception e){
                 videoApiVo.setCode(0);
                 videoApiVo.setVideoList(null);
                 videoApiVo.setMsg("出现未知错误");
                 videoApiVo.setVideo(null);
+                e.printStackTrace();
             }
         }
         return ApiFormatUtil.apiFormat(videoApiVo.getCode(),videoApiVo.getMsg(),videoApiVo.getVideo());
@@ -155,26 +160,30 @@ public class VideoController {
             ,produces = "text/json;charset=utf-8")
     @ResponseBody
     public String modifyVideo_videoById(int video_id, @RequestParam("videofile") CommonsMultipartFile videofile,
-                                        HttpServletRequest request){
-        if(!videofile.getOriginalFilename().equals("")){
-            if(!ChargeVidUtil.isVideo(videofile.getOriginalFilename())) {
-                videoApiVo.setCode(0);
-                videoApiVo.setVideoList(null);
-                videoApiVo.setMsg("视频格式错误");
-                videoApiVo.setVideo(null);
+                                        @RequestParam("video_picture") CommonsMultipartFile video_picture,HttpServletRequest request){
+            if(!videofile.getOriginalFilename().equals("")||!video_picture.getOriginalFilename().equals("")){
+                if(!ChargeVidUtil.isVideo(videofile.getOriginalFilename())
+                        ||!ChargePicUtil.ispic(video_picture.getOriginalFilename())) {
+                    videoApiVo.setCode(0);
+                    videoApiVo.setVideoList(null);
+                    videoApiVo.setMsg("视频或者视频图片格式错误");
+                    videoApiVo.setVideo(null);
+                }else{
+                    String videopath = UploadUtil.upload(videofile,request,2);
+                    String videopicturepath = UploadUtil.upload(video_picture,request,3);
+                    Video video = new Video();
+                    video.setVideopath(videopath);
+                    video.setVideo_picture(videopicturepath);
+                    video.setVideo_id(video_id);
+                    videoApiVo = videoService.modifyVideo_videoById(video);
+                }
             }else{
-                String videopath = UploadUtil.upload(videofile,request,false);
                 Video video = new Video();
-                video.setVideopath(videopath);
+                video.setVideopath("");
+                video.setVideo_picture("");
                 video.setVideo_id(video_id);
                 videoApiVo = videoService.modifyVideo_videoById(video);
             }
-        }else{
-            Video video = new Video();
-            video.setVideopath("");
-            video.setVideo_id(video_id);
-            videoApiVo = videoService.modifyVideo_videoById(video);
-        }
         return ApiFormatUtil.apiFormat(videoApiVo.getCode(),videoApiVo.getMsg(),videoApiVo.getVideo());
     }
 

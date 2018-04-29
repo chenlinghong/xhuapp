@@ -11,13 +11,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class UploadUtil {
-    public static String upload(CommonsMultipartFile file, HttpServletRequest request,boolean flag){
-        String str;
-        if(flag){
-            str =  request.getSession().getServletContext().getRealPath("upload/imgs/");
-        }else {
-            str =  request.getSession().getServletContext().getRealPath("upload/video/");
-
+    public static String upload(CommonsMultipartFile file, HttpServletRequest request,int flag){
+        String str = "";
+        switch (flag){
+            case 1:str =  request.getSession().getServletContext().getRealPath("upload/imgs/dynamic_images/");break;
+            case 2:str =  request.getSession().getServletContext().getRealPath("upload/videos/");break;
+            case 3:str =  request.getSession().getServletContext().getRealPath("upload/imgs/video_images/");break;
+            default:break;
         }
         String filepath = str+file.getOriginalFilename();
         try {

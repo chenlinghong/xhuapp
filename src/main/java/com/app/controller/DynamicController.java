@@ -20,16 +20,15 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 
 @Controller
 @RequestMapping(value = "/Dynamic")
 public class DynamicController {
+
     @Resource
     private IDynamicService dynamicService;
 
     public DynamicController(){}
-
 
     @RequestMapping(value = "/findDynamicById",method = {RequestMethod.GET,RequestMethod.POST},
             produces = "text/json;charset=UTF-8")
@@ -75,10 +74,11 @@ public class DynamicController {
     public String insertOneDynamic(String title, String introduce,
                                    @RequestParam("picfile")CommonsMultipartFile[] picfiles,
                                    int user_id_f, boolean dynamic_type,String address,
-                                   int prize,int look_persons,HttpServletRequest request) throws UnsupportedEncodingException {
+                                   int prize,int look_persons,HttpServletRequest request) {
         Dynamic newdynamic = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         String picfilepaths = "";
+        boolean flag = true;
         if(user_id_f<=0){
             dynamicApiVo.setCode(0);
             dynamicApiVo.setMessage("不存在这个用户");
@@ -94,22 +94,25 @@ public class DynamicController {
                     dynamicApiVo.setMessage("图片格式错误");
                     dynamicApiVo.setDynamic(null);
                     dynamicApiVo.setDynamicList(null);
+                    flag = false;
                     break;
                 } else {
                     //提高健壮性
-                    String picturepath = UploadUtil.upload(picfile,request,true);
+                    String picturepath = UploadUtil.upload(picfile,request,1);
                     picfilepaths = picfilepaths + picturepath + ";";
                 }
             }
-            newdynamic.setPicture(picfilepaths);
-            newdynamic.setUser_id_f(user_id_f);
-            newdynamic.setTitle(title);
-            newdynamic.setIntroduce(introduce);
-            newdynamic.setDynamic_type(dynamic_type);
-            newdynamic.setPrize(prize);
-            newdynamic.setLook_persons(look_persons);
-            newdynamic.setAddress(address);
-            dynamicApiVo = dynamicService.insertOneDynamic(newdynamic);
+            if(flag){
+                newdynamic.setPicture(picfilepaths);
+                newdynamic.setUser_id_f(user_id_f);
+                newdynamic.setTitle(title);
+                newdynamic.setIntroduce(introduce);
+                newdynamic.setDynamic_type(dynamic_type);
+                newdynamic.setPrize(prize);
+                newdynamic.setLook_persons(look_persons);
+                newdynamic.setAddress(address);
+                dynamicApiVo = dynamicService.insertOneDynamic(newdynamic);
+            }
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic());
     }
@@ -148,7 +151,7 @@ public class DynamicController {
                 dynamicApiVo.setDynamicList(null);
                 dynamicApiVo.setDynamic(null);
             }
-            picturepath = UploadUtil.upload(nowpicfile, request,true);
+            picturepath = UploadUtil.upload(nowpicfile, request,1);
             newdynamic.setPicture(picturepath);
             newdynamic.setDynamic_id(dynamic_id);
             dynamicApiVo = dynamicService.deletePicById(newdynamic,prepicfilepath);
@@ -204,12 +207,4 @@ public class DynamicController {
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamicList());
     }
-
-//    public static void main(String args[]){
-//        IDynamicService dynamicService = new DynamicServiceImpl();
-//        Dynamic result = new Dynamic();
-//        DynamicApiVo dynamicApiVo = new DynamicApiVo();
-//        dynamicApiVo = dynamicService.getDynamicById(2);
-//        System.out.println(ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamic()));
-//    }
 }

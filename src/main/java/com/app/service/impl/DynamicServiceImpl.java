@@ -67,7 +67,7 @@ public class DynamicServiceImpl implements IDynamicService {
         return dynamicApiVo;
     }
 
-    public DynamicApiVo deletePicById(Dynamic dynamic,String prepicfilepath) {
+    public DynamicApiVo deletePicById(Dynamic dynamic, String prepicfilepath) {
         try{
             String prepicpath = dynamicDao.findPicturePathByIDd(dynamic.getDynamic_id());
             String[] prepicpaths = prepicpath.split(";");
@@ -88,9 +88,10 @@ public class DynamicServiceImpl implements IDynamicService {
             dynamicApiVo.setMessage("修改成功");
         }catch (Exception e){
             dynamicApiVo.setCode(0);
-            dynamicApiVo.setMessage("出现未知错误");
             dynamicApiVo.setDynamic(null);
             dynamicApiVo.setDynamicList(null);
+            dynamicApiVo.setMessage("出现未知错误");
+            e.printStackTrace();
         }
         return dynamicApiVo;
     }
@@ -122,6 +123,7 @@ public class DynamicServiceImpl implements IDynamicService {
             dynamicApiVo.setMessage("出现未知错误");
             dynamicApiVo.setDynamic(null);
             dynamicApiVo.setDynamicList(null);
+            e.printStackTrace();
         }
         return dynamicApiVo;
     }

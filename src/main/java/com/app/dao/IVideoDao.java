@@ -18,7 +18,7 @@ public interface IVideoDao {
 
     public List<Video> findVideosByUser_id_f(int user_id_f);
 
-    public String findVideoPathById(int video_id);
+    public List<String> findVideoPathById(int video_id);
 
     public void modifyVideoById(Video video);
 

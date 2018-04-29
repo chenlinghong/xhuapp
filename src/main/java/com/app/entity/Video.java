@@ -19,8 +19,16 @@ public class Video {
     private String address;
     private int prize;
     private int look_persons;
-
+    private String video_picture;
     public Video(){}
+
+    public String getVideo_picture() {
+        return video_picture;
+    }
+
+    public void setVideo_picture(String video_picture) {
+        this.video_picture = video_picture;
+    }
 
     public int getVideo_id() {
         return video_id;
