@@ -18,7 +18,7 @@ import java.util.List;
 
 @Component(value = "videoService")
 @Scope(value = "prototype")
-public class VideoServiceImpl implements IVideoService{
+public class VideoServiceImpl implements IVideoService {
 
     @Resource
     private VideoApiVo videoApiVo;
@@ -27,13 +27,11 @@ public class VideoServiceImpl implements IVideoService{
 
 
     public VideoApiVo insertOneVideo(Video video) throws SQLException {
-
         videoDao.insertOneVideo(video);
         videoApiVo.setCode(1);
         videoApiVo.setVideo(video);
         videoApiVo.setVideoList(null);
         videoApiVo.setMsg("添加成功");
-
         return videoApiVo;
     }
 

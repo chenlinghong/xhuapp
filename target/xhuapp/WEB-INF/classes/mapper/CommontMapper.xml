@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.dao.ICommontDao">
+    <resultMap id="BaseResult" type="com.app.entity.Commont">
+        <result property="commont_id" column="commont_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        <result property="user_id_f" column="user_id_f" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        <result property="commont_body" column="commont_body" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="father_commont_id" column="father_commont_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="insertOneCommont" parameterType="com.app.entity.Commont">
+        INSERT INTO
+          tb_commont(user_id_f,commont_body,father_commont_id)
+        VALUES
+          (#{user_id_f},#{commont_body},#{father_commont_id})
+    </insert>
+
+    <select id="findCommontById" parameterType="java.lang.Integer" resultMap="BaseResult">
+        SELECT * FROM
+          tb_commont
+        WHERE
+          commont_id = #{commont_id}
+    </select>
+    
+    <select id="findCommontsByUser_id" parameterType="java.lang.Integer" resultMap="BaseResult">
+        SELECT * FROM
+          tb_commont
+        WHERE
+          user_id_f = #{user_id_f}
+    </select>
+
+    <select id="findFather_CommontByCommont_id" resultMap="BaseResult" parameterType="java.lang.Integer">
+        SELECT * from
+          tb_commont
+        WHERE
+          commont_id = (
+          select
+            father_commont_id
+          from
+            tb_commont
+          WHERE
+            commont_id = #{commont_id}
+          )
+    </select>
+    <select id="findSon_Commont_idByCommont_id" parameterType="java.lang.Integer" resultMap="BaseResult">
+        SELECT
+          *
+        FROM
+          tb_commont
+        WHERE
+          father_commont_id = #{commont_id}
+    </select>
+
+    <delete id="deleteCommontById" parameterType="java.lang.Integer">
+        DELETE FROM
+          tb_commont
+        WHERE
+          commont_id = #{commont_id}
+    </delete>
+
+</mapper>

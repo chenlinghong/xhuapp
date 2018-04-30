@@ -19,6 +19,7 @@
     <sql id="video_base_column_List">
         video_id,title,videopath,user_id_f,video_type,introduce,address,prize,look_persons,video_picture
     </sql>
+
     <insert id="insertOneVideo" parameterType="com.app.entity.Video">
         INSERT INTO
           tb_video(title,videopath,user_id_f,video_type,introduce,

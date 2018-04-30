@@ -229,217 +229,375 @@
     5、示例
     
     http://localhost:8080/Dynamic/findDynamicByType.do?dynamic_type=0
+ #### 视频相关API
+ 
+ ##### 测试接口
+     一，插入一个视频数据
+     1、接口URL
+     
+         http://127.0.0.1:8080/xhuapp/Video/insertOneVideo.do?（注：部署到服务器后更改IP地址）
+     
+     2、参数说明
+     
+         title String 动态的标题（必填）
+         videofile File 视频流文件（必填）
+         video_picture File 图片流文件 (必填)
+         introduce String 动态的介绍正文（必填）
+         video_type int 0-3 分为4种视频（必填）
+         user_id_f int 动态的用户从属（必填）
+         address String 地址
+         prize int 价格 默认为0
+         look_persons int 查看量 默认为0
+         
+ 
+         
+     3、返回（JSON格式字符串）
+     
+         code int 是否成功的信息，成功返回1，失败返回0
+         msg String 返回操作信息
+         data{
+                 title String 动态的标题（必填）
+                 videofile String 视频地址
+                 video_picture String 图片地址
+                 introduce String 动态的介绍正文（必填）
+                 video_type int 0-3 分为4种视频（必填）
+                 user_id_f int 动态的用户从属（必填）
+                 address String 地址
+                 prize int 价格 默认为0
+                 look_persons int 查看量 默认为0
+         }
+     
+     4、请求方式
+         
+         POST
+         
+     5、示例
+     
+         http://localhost:8080/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&video_picture=123.jpg&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
+         
+     二，通过视频数据的id查找视频数据
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Video/findVideoById.do?（注：部署到服务器后更改IP地址）
+         
+         2、参数说明
+         
+             video_id (必填)
+             
+         3、返回（JSON格式字符串）
+         
+             code int 是否成功的信息，成功返回1，失败返回0
+             msg String 返回操作信息
+             data{
+                       title String 动态的标题（必填）
+                       introduce String 动态的介绍正文（必填）
+                       video_type int 0-3 分为4种视频（必填）
+                       user_id_f int 动态的用户从属（必填）
+                       address String 地址
+                       prize int 价格 默认为0
+                       look_persons int 查看量 默认为0
+                 }
+     
+         
+         4、请求方式
+             
+             POST/GET
+             
+         5、示例
+         
+              http://127.0.0.1:8080/xhuapp/Video/findVideoById.do?video_id=1
+     三，通过视频的类型查找视频数据
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Video/findVideosByType.do?（注：部署到服务器后更改IP地址）
+         
+         2、参数说明
+         
+            video_type int 视频的类型
+             
+         3、返回（JSON格式字符串）
+             code int 是否成功的信息，成功返回1，失败返回0
+             msg String 返回操作信息
+             data{
+                       title String 动态的标题（必填）
+                       introduce String 动态的介绍正文（必填）
+                       video_type int 0-3 分为4种视频（必填）
+                       user_id_f int 动态的用户从属（必填）
+                       address String 地址
+                       prize int 价格 默认为0
+                       look_persons int 查看量 默认为0
+                 }    一般为数组            
+             
+             
+         4、请求方式
+             
+             POST/GET
+             
+         5、示例
+         
+         http://127.0.0.1:8080/xhuapp/Video/findVideosByType.do?video_type=0 
+         注 此接口请
+     四，通过用户的ID查找视频数据
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Video/findVideosByUser_id_f.do?（注：部署到服务器后更改IP地址）
+         
+         2、参数说明
+         
+             user_id_f int 用户的id
+             
+         3、返回（JSON格式字符串）
+             code int 是否成功的信息，成功返回1，失败返回0
+             msg String 返回操作信息
+             data{
+                       title String 动态的标题（必填）
+                       introduce String 动态的介绍正文（必填）
+                       video_type int 0-3 分为4种视频（必填）
+                       user_id_f int 动态的用户从属（必填）
+                       address String 地址
+                       prize int 价格 默认为0
+                       look_persons int 查看量 默认为0
+                 }    一般为数组           
+         4、请求方式
+             
+             POST/GET
+             
+         5、示例
+         
+         http://127.0.0.1:8080/xhuapp/Video/findVideosByUser_id_f.do?use_id_f=1  
+           
+     五，修改一个视频数据（修改视频地址另有接口）
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Video/modifyVideoById.do?（注：部署到服务器后更改IP地址）
+         
+         2、参数说明
+             title String 动态的标题
+             introduce String 动态的介绍正文
+             address String 地址
+             prize int 价格 默认为0
+             look_persons int 查看量 默认为0        
+             
+                       
+         3、返回（JSON格式字符串）
+             code int 是否成功的信息，成功返回1，失败返回0
+             msg String 返回操作信息        
+             title String 动态的标题
+             introduce String 动态的介绍正文
+             address String 地址
+             prize int 价格 默认为0
+             look_persons int 查看量 默认为0  
+             注：全部为用户所填数据            
+                         
+         4、请求方式
+             
+             POST/GET
+             
+         5、示例
+         
+         http://localhost:8080/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&videofile=&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
+     六，修改视频数据的视频和视频图片
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Video/modifyVideo_videoById.do?（注：部署到服务器后更改IP地址）
+         
+         2、参数说明
+         
+             video_id int 视频数据的ID
+             videofile File 视频流可为空，如果为空表示删除这个视频
+             video_picture File 图片流可为空，如果为空表示删除这个视频图片
+             
+         3、返回（JSON格式字符串）
+         
+             code int 是否成功的信息，成功返回1，失败返回0
+             msg String 返回操作信息
+             video_id int 视频数据的ID
+             videofile CommonsMultipartFile 视频数据的视频服务器地址
+             
+                
+         4、请求方式
+             
+             POST
+             
+         5、示例
+         
+         http://localhost:8080/Video/modifyVideo_videoById.do?video_id=4&videofile=test.mp4    
+     七，删除一个视频数据
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Video/deleteVideoById.do?（注：部署到服务器后更改IP地址）
+         
+         2、参数说明
+         
+             video_id int 视频的id
+             
+         3、返回（JSON格式字符串）
+         
+             code int 是否成功的信息，成功返回1，失败返回0
+             msg String 返回操作信息
+             
+                
+         4、请求方式
+             
+             POST/GET
+             
+         5、示例
+         
+           http://127.0.0.1:8080/xhuapp/Video/deleteVideoById.do?video_id=5
 #### 视频相关API
-
+ 
 ##### 测试接口
-    一，插入一个视频数据
-    1、接口URL
+     一，插入一个评论
+     1、接口URL
     
-        http://127.0.0.1:8080/xhuapp/Video/insertOneVideo.do?（注：部署到服务器后更改IP地址）
-    
-    2、参数说明
-    
-        title String 动态的标题（必填）
-        videofile File 视频流文件（必填）
-        video_picture File 图片流文件 (必填)
-        introduce String 动态的介绍正文（必填）
-        video_type int 0-3 分为4种视频（必填）
-        user_id_f int 动态的用户从属（必填）
-        address String 地址
-        prize int 价格 默认为0
-        look_persons int 查看量 默认为0
-        
-
-        
-    3、返回（JSON格式字符串）
-    
-        code int 是否成功的信息，成功返回1，失败返回0
-        msg String 返回操作信息
-        data{
-                title String 动态的标题（必填）
-                videofile CommonsMultipartFile 视频流文件（必填）
-                introduce String 动态的介绍正文（必填）
-                video_type int 0-3 分为4种视频（必填）
-                user_id_f int 动态的用户从属（必填）
-                address String 地址
-                prize int 价格 默认为0
-                look_persons int 查看量 默认为0
-        }
-    
-    4、请求方式
-        
-        POST
-        
-    5、示例
-    
-        http://localhost:8080/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&videofile=&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
-        
-    二，通过视频数据的id查找视频数据
-        1、接口URL
-        
-            http://127.0.0.1:8080/xhuapp/Video/findVideoById.do?（注：部署到服务器后更改IP地址）
-        
-        2、参数说明
-        
-            video_id (必填)
-            
-        3、返回（JSON格式字符串）
-        
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            data{
-                      title String 动态的标题（必填）
-                      introduce String 动态的介绍正文（必填）
-                      video_type int 0-3 分为4种视频（必填）
-                      user_id_f int 动态的用户从属（必填）
-                      address String 地址
-                      prize int 价格 默认为0
-                      look_persons int 查看量 默认为0
-                }
-    
-        
-        4、请求方式
-            
-            POST/GET
-            
-        5、示例
-        
-             http://127.0.0.1:8080/xhuapp/Video/findVideoById.do?video_id=1
-    三，通过视频的类型查找视频数据
-        1、接口URL
-        
-            http://127.0.0.1:8080/xhuapp/Video/findVideosByType.do?（注：部署到服务器后更改IP地址）
-        
-        2、参数说明
-        
-           video_type int 视频的类型
-            
-        3、返回（JSON格式字符串）
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            data{
-                      title String 动态的标题（必填）
-                      introduce String 动态的介绍正文（必填）
-                      video_type int 0-3 分为4种视频（必填）
-                      user_id_f int 动态的用户从属（必填）
-                      address String 地址
-                      prize int 价格 默认为0
-                      look_persons int 查看量 默认为0
-                }    一般为数组            
-            
-            
-        4、请求方式
-            
-            POST/GET
-            
-        5、示例
-        
-        http://127.0.0.1:8080/xhuapp/Video/findVideosByType.do?video_type=0 
-        注 此接口请
-    四，通过用户的ID查找视频数据
-        1、接口URL
-        
-            http://127.0.0.1:8080/xhuapp/Video/findVideosByUser_id_f.do?（注：部署到服务器后更改IP地址）
-        
-        2、参数说明
-        
-            user_id_f int 用户的id
-            
-        3、返回（JSON格式字符串）
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            data{
-                      title String 动态的标题（必填）
-                      introduce String 动态的介绍正文（必填）
-                      video_type int 0-3 分为4种视频（必填）
-                      user_id_f int 动态的用户从属（必填）
-                      address String 地址
-                      prize int 价格 默认为0
-                      look_persons int 查看量 默认为0
-                }    一般为数组           
-        4、请求方式
-            
-            POST/GET
-            
-        5、示例
-        
-        http://127.0.0.1:8080/xhuapp/Video/findVideosByUser_id_f.do?use_id_f=1  
+         http://127.0.0.1:8080/xhuapp/Commont/insertOneCommont.do?（注：部署到服务器后更改IP地址）
+     
+     2、参数说明
+     
+        user_id_f(int):用户的id（必填）
+        commont_body(String):评论的内容（必填）
+        father_commont_id(int):是否有父评论，如果有请填实际值，无则填-1
+         
+     3、返回（JSON格式字符串）
+     
+         code(int)：错误0，正确1
+         message(string) : 具体信息
+     
+     4、请求方式
+         
+         POST
+         
+     5、示例
+     
+          http://127.0.0.1:8080/xhuapp/Commont/insertOneCommont.do?user_id_f=1&commont_body=hello&father_commont_id=-1
           
-    五，修改一个视频数据（修改视频地址另有接口）
-        1、接口URL
-        
-            http://127.0.0.1:8080/xhuapp/Video/modifyVideoById.do?（注：部署到服务器后更改IP地址）
-        
+     二，通过评论id查找评论数据信息
+    
+         1、接口URL
+         
+          http://127.0.0.1:8080/xhuapp/Commont/findCommontById.do?
+         
+         2、参数说明
+         
+             commont_id(int):评论的id
+             
+         3、返回（JSON格式字符串）
+         
+             code(int): 是否成功的信息，成功返回1，失败返回0
+             massage(String): 返回操作信息
+             data{
+                       commont_id(int):评论的id
+                       user_id_f(int):用户的id
+                       commont_body(String)：评论内容
+                       father_commont_id(int)：父评论的id
+                 }
+     
+         4、请求方式
+             
+             POST/GET
+             
+         5、示例
+         
+              http://127.0.0.1:8080/xhuapp/Commont/findCommontById.do?commont_id=1
+     三，通过用户的id查找其所有的评论
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Commont/findCommontsByUser_id.do?
+         
+         2、参数说明
+         
+            user_id_f(int): 用户的id
+             
+         3、返回（JSON格式字符串）
+             code(int): 是否成功的信息，成功返回1，失败返回0
+             massage(String): 返回操作信息
+             data{
+                       commont_id(int):评论的id
+                       user_id_f(int):用户的id
+                       commont_body(String)：评论内容
+                       father_commont_id(int)：父评论的id
+                 } 一般为数组            
+             
+             
+         4、请求方式
+             
+             POST/GET
+             
+         5、示例
+         
+             http://127.0.0.1:8080/xhuapp/Commont/findCommontsByUser_id.do?user_id_f=1
+
+     四，通过评论的id查找其父评论的评论数据信息
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Commont/findFather_CommontByCommont_id.do?
+         
+         2、参数说明
+         
+             commont_id(int)：评论数据的id
+             
+         3、返回（JSON格式字符串）
+              code(int): 是否成功的信息，成功返回1，失败返回0
+              massage(String): 返回操作信息
+              data{
+                        commont_id(int):评论的id
+                        user_id_f(int):用户的id
+                        commont_body(String)：评论内容
+                        father_commont_id(int)：父评论的id
+                  } 一般为数组           
+         4、请求方式
+             
+             POST/GET
+             
+         5、示例
+         
+             http://127.0.0.1:8080/xhuapp/Commont/findFather_CommontByCommont_id.do?commont_id=1
+           
+     五，修改一个视频数据（修改视频地址另有接口）
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Commont/findSon_Commont_idByCommont_id?
+         
         2、参数说明
-            title String 动态的标题
-            introduce String 动态的介绍正文
-            address String 地址
-            prize int 价格 默认为0
-            look_persons int 查看量 默认为0        
-            
-                      
+              
+              commont_id(int)：评论数据的id
+                  
         3、返回（JSON格式字符串）
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息        
-            title String 动态的标题
-            introduce String 动态的介绍正文
-            address String 地址
-            prize int 价格 默认为0
-            look_persons int 查看量 默认为0  
-            注：全部为用户所填数据            
-                        
+              code(int): 是否成功的信息，成功返回1，失败返回0
+              massage(String): 返回操作信息
+              data{
+                       commont_id(int):评论的id
+                       user_id_f(int):用户的id
+                       commont_body(String)：评论内容
+                       father_commont_id(int)：父评论的id
+                  } 一般为数组           
+                         
         4、请求方式
-            
-            POST/GET
-            
+             
+             POST/GET
+             
         5、示例
-        
-        http://localhost:8080/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&videofile=&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
-    六，修改视频数据的视频和视频图片
-        1、接口URL
-        
-            http://127.0.0.1:8080/xhuapp/Video/modifyVideo_videoById.do?（注：部署到服务器后更改IP地址）
-        
-        2、参数说明
-        
-            video_id int 视频数据的ID
-            videofile File 视频流可为空，如果为空表示删除这个视频
-            video_picture File 图片流可为空，如果为空表示删除这个视频图片
-            
-        3、返回（JSON格式字符串）
-        
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            video_id int 视频数据的ID
-            videofile CommonsMultipartFile 视频数据的视频服务器地址
-            
-               
-        4、请求方式
-            
-            POST
-            
-        5、示例
-        
-        http://localhost:8080/Video/modifyVideo_videoById.do?video_id=4&videofile=test.mp4    
-    七，删除一个视频数据
-        1、接口URL
-        
-            http://127.0.0.1:8080/xhuapp/Video/deleteVideoById.do?（注：部署到服务器后更改IP地址）
-        
-        2、参数说明
-        
-            video_id int 视频的id
-            
-        3、返回（JSON格式字符串）
-        
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            
-               
-        4、请求方式
-            
-            POST/GET
-            
-        5、示例
-        
-            http://127.0.0.1:8080/xhuapp/Video/deleteVideoById.do?video_id=5
+         
+             http://127.0.0.1:8080/xhuapp/Commont/findSon_Commont_idByCommont_id?commont_id=1
+     六，删除一个评论
+         1、接口URL
+         
+             http://127.0.0.1:8080/xhuapp/Commont/deleteCommontById.do?
+         
+         2、参数说明
+         
+             commont_id(int):评论数据的id
+             
+         3、返回（JSON格式字符串）
+         
+             code(int): 是否成功的信息，成功返回1，失败返回0
+             massage(String): 返回操作信息
+             
+                
+         4、请求方式
+             
+             POST
+             
+         5、示例
+         
+         http://localhost:8080/Commont/deleteCommontById.do?commont_id=1
