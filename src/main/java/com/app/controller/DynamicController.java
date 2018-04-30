@@ -121,7 +121,7 @@ public class DynamicController {
             produces = "text/json;charset=UTF-8")
     @ResponseBody
     public String modifyPicById(int dynamic_id,String prepicfilepath,@RequestParam("picfile")
-            CommonsMultipartFile nowpicfile,HttpServletRequest request){
+                                CommonsMultipartFile nowpicfile,HttpServletRequest request){
         Dynamic newdynamic = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         String picturepath = "";
