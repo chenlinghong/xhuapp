@@ -67,7 +67,7 @@ public class DynamicServiceImpl implements IDynamicService {
         return dynamicApiVo;
     }
 
-    public DynamicApiVo deletePicById(Dynamic dynamic, String prepicfilepath) {
+    public DynamicApiVo deletePicById(Dynamic dynamic,String prepicfilepath) {
         try{
             String prepicpath = dynamicDao.findPicturePathByIDd(dynamic.getDynamic_id());
             String[] prepicpaths = prepicpath.split(";");

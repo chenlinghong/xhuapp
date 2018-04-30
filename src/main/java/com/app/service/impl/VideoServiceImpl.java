@@ -13,11 +13,12 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.List;
 
 @Component(value = "videoService")
 @Scope(value = "prototype")
-public class VideoServiceImpl implements IVideoService {
+public class VideoServiceImpl implements IVideoService{
 
     @Resource
     private VideoApiVo videoApiVo;
@@ -25,20 +26,14 @@ public class VideoServiceImpl implements IVideoService {
     private IVideoDao videoDao;
 
 
-    public VideoApiVo insertOneVideo(Video video) {
-        try{
-            videoDao.insertOneVideo(video);
-            videoApiVo.setCode(1);
-            videoApiVo.setVideo(video);
-            videoApiVo.setVideoList(null);
-            videoApiVo.setMsg("添加成功");
-        }catch (Exception e){
-            videoApiVo.setCode(0);
-            videoApiVo.setVideo(null);
-            videoApiVo.setVideoList(null);
-            videoApiVo.setMsg("添加失败");
-            e.printStackTrace();
-        }
+    public VideoApiVo insertOneVideo(Video video) throws SQLException {
+
+        videoDao.insertOneVideo(video);
+        videoApiVo.setCode(1);
+        videoApiVo.setVideo(video);
+        videoApiVo.setVideoList(null);
+        videoApiVo.setMsg("添加成功");
+
         return videoApiVo;
     }
 

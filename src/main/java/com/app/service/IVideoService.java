@@ -7,8 +7,10 @@ package com.app.service;/*
 import com.app.entity.Video;
 import com.app.vo.VideoApiVo;
 
+import java.sql.SQLException;
+
 public interface IVideoService {
-    public VideoApiVo insertOneVideo(Video video);
+    public VideoApiVo insertOneVideo(Video video) throws SQLException;
 
     public VideoApiVo findVideoById(int video_id);
 

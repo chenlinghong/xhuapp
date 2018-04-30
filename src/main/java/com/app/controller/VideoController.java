@@ -21,6 +21,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 
 @Controller
 @RequestMapping("/Video")
@@ -36,7 +37,7 @@ public class VideoController {
     public String insertOneVideo(String title, @RequestParam("videofile")CommonsMultipartFile videofile,
                                  @RequestParam("video_picture")CommonsMultipartFile video_picture,
                                  int user_id_f, int video_type, String introduce,String address,
-                                 int prize,int look_persons,HttpServletRequest request){
+                                 int prize,int look_persons,HttpServletRequest request) throws SQLException{
         if(videofile.getOriginalFilename().equals("")){
             videoApiVo.setCode(0);
             videoApiVo.setVideoList(null);
@@ -58,7 +59,6 @@ public class VideoController {
             videoApiVo.setMsg("视频或者视频图片的格式错误");
             videoApiVo.setVideo(null);
         } else{
-            try{
                 String videopath = UploadUtil.upload(videofile,request,2);
                 String videopicturepath = UploadUtil.upload(video_picture,request,3);
                 Video video = new Video();
@@ -72,17 +72,9 @@ public class VideoController {
                 video.setPrize(prize);
                 video.setVideo_picture(videopicturepath);
                 videoApiVo = videoService.insertOneVideo(video);
-            }catch (Exception e){
-                videoApiVo.setCode(0);
-                videoApiVo.setVideoList(null);
-                videoApiVo.setMsg("出现未知错误");
-                videoApiVo.setVideo(null);
-                e.printStackTrace();
-            }
         }
         return ApiFormatUtil.apiFormat(videoApiVo.getCode(),videoApiVo.getMsg(),videoApiVo.getVideo());
     }
-
 
     @RequestMapping(value = "/findVideoById",method = {RequestMethod.GET, RequestMethod.POST}
             ,produces = "text/json;charset=utf-8")
