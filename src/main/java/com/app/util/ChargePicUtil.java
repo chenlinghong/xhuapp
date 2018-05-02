@@ -6,8 +6,9 @@ package com.app.util;/*
 
 public class ChargePicUtil {
     public static boolean ispic(String picstr){
-        String[] picstrs = picstr.split("\\.");
-        if(picstrs.length==0||!picstrs[1].equals("jpg")&&!picstrs[1].equals("png")&&!picstrs[1].equals("gif")){
+        int imgTypeint = picstr.lastIndexOf(".");
+        String imgtypestr = picstr.substring(imgTypeint);
+        if(!imgtypestr.equals(".jpg")&&!imgtypestr.equals(".png")&&!imgtypestr.equals(".gif")){
             return false;
         }else {
             return true;

@@ -11,6 +11,7 @@ import com.app.vo.CommontApiVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -29,7 +30,8 @@ public class CommontController {
     @RequestMapping(value = "/insertOneCommont",method = {RequestMethod.POST,RequestMethod.GET}
             ,produces = "text/json;charset=utf-8")
     @ResponseBody
-    public String insertOneCommont(int user_id_f,String commont_body,int father_commont_id) throws Exception{
+    public String insertOneCommont(int user_id_f,String commont_body,
+                                   @RequestParam(defaultValue = "-1") int father_commont_id) throws Exception{
         if(user_id_f<=0){
             commontApiVo.setMessage("用户id不合法(>0)");
             commontApiVo.setCode(0);

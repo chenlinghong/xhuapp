@@ -118,6 +118,13 @@ public class FarmController {
                     String location_name = farmAddDto.getLocation_name();
                     String introduce = farmAddDto.getIntroduce();
                     int area = farmAddDto.getArea();
+
+//                    System.out.println("---------------------------------------------");
+//                    System.out.println("longitude:" + longitude);
+//                    System.out.println("latitude: " + latitude);
+//                    System.out.println("user_id:" + farmAddDto.getUser_id());
+//                    System.out.println("---------------------------------------------");
+
                     if (longitude == "" || longitude == null){
                         farmDto.setCode(0);
                         farmDto.setMessage(farmDto.getMessage() + "经度为空！");
@@ -128,15 +135,16 @@ public class FarmController {
                     if (latitude == "" || latitude == null){
                         farmDto.setCode(0);
                         farmDto.setMessage(farmDto.getMessage() + "纬度为空！");
+//                        System.out.println("latitude: ------ " + latitude);
                     } else {
-                        latitude = longitude.trim();
-                        farm.setLongitude(latitude);
+                        latitude = latitude.trim();
+                        farm.setLatitude(latitude);
                     }
                     if (name != null && name != ""){
                         farm.setName(name);
                     }
                     if (location_name != null && location_name != ""){
-                        farm.setLongitude(location_name);
+                        farm.setLocation_name(location_name);
                     }
                     if (introduce != null && introduce != ""){
                         farm.setIntroduce(introduce);

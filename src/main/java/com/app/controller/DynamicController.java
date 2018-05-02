@@ -73,8 +73,9 @@ public class DynamicController {
     @ResponseBody
     public String insertOneDynamic(String title, String introduce,
                                    @RequestParam("picfile")CommonsMultipartFile[] picfiles,
-                                   int user_id_f, boolean dynamic_type,String address,
-                                   int prize,int look_persons,HttpServletRequest request) {
+                                   int user_id_f, boolean dynamic_type,@RequestParam(defaultValue = "成都") String address,
+                                   @RequestParam(defaultValue = "0") int prize,@RequestParam(defaultValue = "0") int look_persons,
+                                   HttpServletRequest request) {
         Dynamic newdynamic = new Dynamic();
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         String picfilepaths = "";

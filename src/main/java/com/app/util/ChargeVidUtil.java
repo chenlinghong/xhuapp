@@ -6,11 +6,12 @@ package com.app.util;/*
 
 public class ChargeVidUtil {
     public static boolean isVideo(String videostr){
-        String[] picstrs = videostr.split("\\.");
-        if(picstrs.length==0||!picstrs[1].equals("avi")&&!picstrs[1].equals("rmvb")&&!picstrs[1].equals("rm")
-                &&!picstrs[1].equals("asf")&&!picstrs[1].equals("divx")&&!picstrs[1].equals("mpg")&&!picstrs[1].equals("mpeg")
-                &&!picstrs[1].equals("mpe")&&!picstrs[1].equals("wmv")&&!picstrs[1].equals("mp4")&&!picstrs[1].equals("mkv")
-                &&!picstrs[1].equals("vob")){
+        int videoTypeInt = videostr.lastIndexOf(".");
+        String videoTypeStr = videostr.substring(videoTypeInt);
+        if(!videoTypeStr.equals(".avi")&&!videoTypeStr.equals(".rmvb")&&!videoTypeStr.equals(".rm")
+                &&!videoTypeStr.equals(".asf")&&!videoTypeStr.equals(".divx")&&!videoTypeStr.equals(".mpg")&&!videoTypeStr.equals(".mpeg")
+                &&!videoTypeStr.equals(".mpe")&&!videoTypeStr.equals(".wmv")&&!videoTypeStr.equals(".mp4")&&!videoTypeStr.equals(".mkv")
+                &&!videoTypeStr.equals(".vob")){
             return false;
         }else {
             return true;

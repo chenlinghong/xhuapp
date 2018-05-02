@@ -44,14 +44,16 @@
     
         code int 是否成功的信息，成功返回1，失败返回0
         msg String 返回操作信息
-        dynamic_id int 动态的ID，成功找到返回正确值，若失败无返回下同
-        title String 动态的标题
-        introduce String 动态的介绍正文
-        picture String 动态的图片地址
-        user_id_f int 动态的用户从属
-        dynamic_type bool true or false 1为需求0为动态
-    
-    
+        data
+            dynamic_id int 动态的ID，成功找到返回正确值，若失败无返回下同
+            title String 动态的标题
+            introduce String 动态的介绍正文
+            picture String 动态的图片地址
+            user_id_f int 动态的用户从属
+            dynamic_type bool true or false 1为需求0为动态
+            address(String)：用户的地址
+            prize(int):价格
+            look_persons(int):浏览量
     4、请求方式
         
         POST/GET
@@ -79,8 +81,10 @@
             introduce String 动态的介绍正文
             picture String 动态的图片地址
             user_id_f int 动态的用户从属
-            dynamic_type bool true or false 1为需求0为动态
-
+            dynamic_type int true or false 1为需求0为动态
+            address(String)：用户的地址
+            prize(int):价格
+            look_persons(int):浏览量
     
     4、请求方式
         
@@ -97,9 +101,11 @@
     2、参数说明
     
         dynamic_id int (必填)
-        title String 标题
-        introduce String 介绍正文
-        user_id_f int 用户的id(一般不能修改)
+        title String 标题(必填)如果不修改请填原数据
+        introduce String 介绍正文(必填)如果不修改请填原数据
+        address(String):地址（必填）如果不修改请填原数据
+        prize(int):价格（必填）如果不修改请填原数据
+        look_persons(int):浏览量（必填）如果不修改请填原数据
         
     3、返回（JSON格式字符串）
     
@@ -109,7 +115,9 @@
         title String 动态的标题
         introduce String 动态的介绍正文
         user_id_f int 动态的用户从属
-           
+        address(String)：用户的地址
+        prize(int):价格
+        look_persons(int):浏览量       
 
     
     4、请求方式
@@ -119,7 +127,7 @@
     5、示例
     
     http://localhost:8080/Dynamic/modifyDynamicById.do?dynamic_id=14&title=erwre&introduce=esrsr&user_id_f=3 
-    注 此接口请
+    
     四，通过动态的ID修改图片
     1、接口URL
     
@@ -128,9 +136,8 @@
     2、参数说明
     
         dynamic_id int (必填)
-        prepicfilepath String 要修改图片的服务器地址
-        picfile file 需要更改的图片的文件流
-        request HttpServletRequest  请求的对象
+        prepicfilepath String 要修改的图片服务器地址
+        picfile file 重新加入的图片流文件，如果不填就表示删之前的图片
         
     3、返回（JSON格式字符串）
     
@@ -177,12 +184,14 @@
     
     2、参数说明
     
-        title String 动态或者需求的标题
-        introduce String 动态或者需求的介绍
-        CommonsMultipartFile[] 图片流数组
-        user_id_f int 用户的id
-        dynamic_type boolean 动态的类型
-        request HttpServletRequest 请求对象
+        title String 动态或者需求的标题(必填)
+        introduce String 动态或者需求的介绍（必填）
+        picfile CommonsMultipartFile[] 图片流数组
+        user_id_f int 用户的id（必填）
+        dynamic_type int 动态的类型（必填）
+        address(String):地址默认为成都
+        prize(int):价格默认为0
+        look_persons(int):浏览人数默认为0
         
     3、返回（JSON格式字符串）
     
@@ -193,7 +202,9 @@
             CommonsMultipartFile[] 图片流数组
             user_id_f int 用户的id
             dynamic_type boolean 动态的类型true(需求) or false(动态) 
-        
+            address(String):地址默认为成都
+            prize(int):价格默认为0
+            look_persons(int):浏览人数默认为0
            
     4、请求方式
         
@@ -202,6 +213,7 @@
     5、示例
     
     http://localhost:8080/Dynamic/insertOneDynamic.do?title=test&introduce=test&picfile=63826574_p0.jpg&picfile=63902583_p0.jpg&user_id_f=3&dynamic_type=0
+    
     七，查找所有的动态或者需求
     1、接口URL
     
@@ -221,7 +233,9 @@
             picture String 图片的服务器地址
             user_id_f int 用户的id
             dynamic_type boolean 动态的类型true(需求) or false(动态) 
-           
+            address(String):地址默认为成都
+            prize(int):价格默认为0
+            look_persons(int):浏览人数默认为0
     4、请求方式
         
         POST/GET
@@ -245,7 +259,7 @@
          introduce String 动态的介绍正文（必填）
          video_type int 0-3 分为4种视频（必填）
          user_id_f int 动态的用户从属（必填）
-         address String 地址
+         address String 地址默认为成都
          prize int 价格 默认为0
          look_persons int 查看量 默认为0
          
@@ -456,7 +470,7 @@
      
         user_id_f(int):用户的id（必填）
         commont_body(String):评论的内容（必填）
-        father_commont_id(int):是否有父评论，如果有请填实际值，无则填-1
+        father_commont_id(int):是否有父评论，如果有请填实际值,默认为-1
          
      3、返回（JSON格式字符串）
      

@@ -36,8 +36,10 @@ public class VideoController {
     @ResponseBody
     public String insertOneVideo(String title, @RequestParam("videofile")CommonsMultipartFile videofile,
                                  @RequestParam("video_picture")CommonsMultipartFile video_picture,
-                                 int user_id_f, int video_type, String introduce,String address,
-                                 int prize,int look_persons,HttpServletRequest request) throws SQLException{
+                                 int user_id_f, int video_type, String introduce,
+                                 @RequestParam(defaultValue = "成都") String address,
+                                 @RequestParam(defaultValue = "0") int prize,
+                                 @RequestParam(defaultValue = "0") int look_persons,HttpServletRequest request) throws SQLException{
         if(videofile.getOriginalFilename().equals("")){
             videoApiVo.setCode(0);
             videoApiVo.setVideoList(null);

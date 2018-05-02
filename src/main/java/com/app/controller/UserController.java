@@ -586,7 +586,7 @@ public class UserController {
     @RequestMapping(value = "/recover",method = {RequestMethod.POST,RequestMethod.GET},
             produces = "text/json;charset=UTF-8")
     @ResponseBody
-    public String recoverPassword(@RequestParam RecoverPasswordDto recoverPasswordDto, HttpServletRequest request,
+    public String recoverPassword(RecoverPasswordDto recoverPasswordDto, HttpServletRequest request,
                                   HttpServletResponse response) throws Exception{
         //声明返回
         int resultCode = 1;

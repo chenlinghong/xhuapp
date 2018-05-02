@@ -23,7 +23,7 @@
         SELECT
           <include refid="dynamic_Base_column_List"/>
         FROM
-          dynamic
+          tb_dynamic
         WHERE
           dynamic_id = #{dynamic_id}
     </select>
@@ -31,7 +31,7 @@
         SELECT
           dynamic_id
         from
-          dynamic
+            tb_dynamic
         WHERE
           dynamic_id = #{dynamic_id}
     </select>
@@ -39,7 +39,7 @@
         SELECT
         <include refid="dynamic_Base_column_List"/>
         FROM
-        dynamic
+        tb_dynamic
         where
         user_id_f = #{user_id_f}
     </select>
@@ -47,7 +47,7 @@
         SELECT
           picture
         FROM
-          dynamic
+            tb_dynamic
         WHERE
           dynamic_id = #{dynamic_id}
     </select>
@@ -55,21 +55,21 @@
         SELECT
           <include refid="dynamic_Base_column_List"/>
         FROM
-          dynamic
+        tb_dynamic
         WHERE
           dynamic_type = #{dynamic_type}
     </select>
 
     <insert id="insertOneDynamic" parameterType="com.app.entity.Dynamic">
         INSERT INTO
-          dynamic(title,introduce,picture,user_id_f,dynamic_type,address,prize,look_persons)
+            tb_dynamic(title,introduce,picture,user_id_f,dynamic_type,address,prize,look_persons)
         VALUES
           (#{title},#{introduce},#{picture},#{user_id_f},#{dynamic_type},#{address},#{prize},#{look_persons})
     </insert>
 
     <insert id="modifyPicById" parameterType="com.app.entity.Dynamic">
         UPDATE
-          dynamic
+            tb_dynamic
         SET
           picture = #{picture}
         WHERE
@@ -78,7 +78,7 @@
 
     <update id="modifyDynamicById" parameterType="com.app.entity.Dynamic">
         UPDATE
-          dynamic
+            tb_dynamic
         set
           title = #{title} ,introduce = #{introduce},address = #{address},
           prize = #{prize},look_persons = #{look_persons}
@@ -88,7 +88,7 @@
 
     <delete id="deleteOneDynamicById" parameterType="java.lang.Integer">
         DELETE FROM
-          dynamic
+            tb_dynamic
         WHERE
           dynamic_id = #{dynamic_id}
     </delete>

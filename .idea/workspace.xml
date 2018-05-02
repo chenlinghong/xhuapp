@@ -7,27 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e019614a-4142-4c18-8b23-8dc4b7b86b17" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/CommontController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/dao/ICommontDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/entity/Commont.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/ICommontService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/impl/CommontServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/vo/CommontApiVo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CommontMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/app/service/impl/VideoServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/app/service/impl/VideoServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/app/controller/FarmController.class" afterPath="$PROJECT_DIR$/target/classes/com/app/controller/FarmController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp.war" afterPath="$PROJECT_DIR$/target/xhuapp.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/VideoServiceImpl.class" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/VideoServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/FarmController.class" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/FarmController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/instruction/dxlin.md" afterPath="$PROJECT_DIR$/instruction/dxlin.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/service/impl/VideoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/impl/VideoServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/VideoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/VideoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sql/basic.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/basic.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/VideoMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/VideoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sql/basic.sql" afterPath="$PROJECT_DIR$/target/classes/sql/basic.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/VideoMapper.xml" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/VideoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/sql/basic.sql" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/sql/basic.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/upload/videos/readme.txt" afterPath="$PROJECT_DIR$/target/xhuapp/upload/videos/readme.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/controller/CommontController.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/CommontController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/controller/FarmController.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/FarmController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/controller/VideoController.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/VideoController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/util/ChargePicUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/util/ChargePicUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/util/ChargeVidUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/util/ChargeVidUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/DynamicMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/DynamicMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/DynamicMapper.xml" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/DynamicMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,8 +37,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="CommontServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/CommontServiceImpl.java">
+      <file leaf-file-name="dxlin.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/instruction/dxlin.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="551">
+                <caret line="617" column="0" lean-forward="false" selection-start-line="617" selection-start-column="0" selection-end-line="617" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommontController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/CommontController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -53,18 +60,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DynamicServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java">
+      <file leaf-file-name="DynamicController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="613">
-              <caret line="179" column="5" lean-forward="false" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="5" />
+              <caret line="100" column="27" lean-forward="true" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ICommontService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/ICommontService.java">
+      <file leaf-file-name="VideoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/VideoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChargePicUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/ChargePicUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -73,79 +90,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IDynamicService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java">
+      <file leaf-file-name="ChargeVidUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/ChargeVidUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UploadUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/UploadUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
-              <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+              <caret line="13" column="96" lean-forward="false" selection-start-line="13" selection-start-column="96" selection-end-line="13" selection-end-column="96" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IVideoService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/IVideoService.java">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="12995">
+              <caret line="586" column="49" lean-forward="true" selection-start-line="586" selection-start-column="49" selection-end-line="586" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DynamicApiVo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/vo/DynamicApiVo.java">
+      <file leaf-file-name="FarmController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/FarmController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="130">
+              <caret line="139" column="49" lean-forward="false" selection-start-line="139" selection-start-column="49" selection-end-line="139" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VideoApiVo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/vo/VideoApiVo.java">
+      <file leaf-file-name="FarmAddDto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dto/FarmAddDto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommontApiVo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/app/vo/CommontApiVo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommontMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CommontMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1525089398509" expanded="true" signature="817:968" ph="INSERT INTO tb_commont" />
-                <marker date="1525089398509" expanded="true" signature="1083:1168" ph="SELECT * FRO... tb_commont" />
-                <marker date="1525089398509" expanded="true" signature="1293:1376" ph="SELECT * FRO... tb_commont" />
-                <marker date="1525089398509" expanded="true" signature="1506:1731" ph="SELECT * fro... tb_commont" />
-                <marker date="1525089398509" expanded="true" signature="1590:1719" ph="select fathe... tb_commont" />
-                <marker date="1525089398509" expanded="true" signature="1860:1970" ph="SELECT * FRO... tb_commont" />
-                <marker date="1525089398509" expanded="true" signature="2064:2147" ph="DELETE FROM " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basic.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/sql/basic.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="73" selection-end-column="2" />
+            <state relative-caret-position="552">
+              <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -194,10 +183,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/FarmMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/entity/Farm.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/dao/IFarmDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/app/dao/IFarmDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/dto/FarmDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/app/controller/VideoController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/entity/Video.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/entity/Dynamic.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/vo/VideoApiVo.java" />
@@ -208,23 +195,25 @@
         <option value="$PROJECT_DIR$/src/main/java/com/app/vo/UserApiVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/IFarmService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/impl/FarmServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/app/controller/FarmController.java" />
         <option value="$PROJECT_DIR$/instruction/api.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/dao/IVideoDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/vo/DynamicApiVo.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/impl/VideoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/util/IDynamicService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/upload/videos/readme.txt" />
-        <option value="$PROJECT_DIR$/instruction/dxlin.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/dao/IDynamicDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/IVideoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/vo/CommontApiVo.java" />
         <option value="$PROJECT_DIR$/src/main/resources/sql/basic.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/app/controller/FarmController.java" />
+        <option value="$PROJECT_DIR$/instruction/dxlin.md" />
+        <option value="$PROJECT_DIR$/src/main/java/com/app/controller/VideoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -275,9 +264,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -525,7 +511,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -535,7 +524,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/GoogleDownload/xhuapp-master(2)" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/GoogleDownload/xhuapp-master(2)/xhuapp-master" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://F:/Javaweb/conformable/xhuapp/src/main/java/com/app/vo/UserBaseInformationVo.java" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
   </component>
@@ -546,16 +535,15 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Javaweb\conformable\xhuapp\instruction" />
+      <recent name="F:\Javaweb\conformable\xhuapp\src\main\webapp\upload\imgs\dynamic_images" />
+      <recent name="F:\Javaweb\conformable\xhuapp\src\test\java\com\app\service" />
+      <recent name="F:\Javaweb\demo\xhuapp\src\main\webapp" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.app" />
       <recent name="com.app.dao" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\Javaweb\conformable\xhuapp\src\main\resources\mapper" />
-      <recent name="F:\Javaweb\conformable\xhuapp\src\main\java\com\app\vo" />
-      <recent name="F:\Javaweb\conformable\xhuapp\src\main\java\com\app\service" />
-      <recent name="F:\Javaweb\conformable\xhuapp\src\main\java\com\app\service\impl" />
-      <recent name="F:\Javaweb\conformable\xhuapp\src\main\java\com\app\entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.app.util" />
@@ -564,11 +552,12 @@
       <recent name="com.app.vo" />
       <recent name="com.app.service" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\Javaweb\conformable\xhuapp\instruction" />
-      <recent name="F:\Javaweb\conformable\xhuapp\src\main\webapp\upload\imgs\dynamic_images" />
-      <recent name="F:\Javaweb\conformable\xhuapp\src\test\java\com\app\service" />
-      <recent name="F:\Javaweb\demo\xhuapp\src\main\webapp" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Javaweb\conformable\xhuapp\src\main\java\com\app\util" />
+      <recent name="F:\Javaweb\conformable\xhuapp\src\main\java\com\app\controller" />
+      <recent name="F:\Javaweb\conformable\xhuapp\src\main\resources\mapper" />
+      <recent name="F:\Javaweb\conformable\xhuapp\src\main\java\com\app\vo" />
+      <recent name="F:\Javaweb\conformable\xhuapp\src\main\java\com\app\service" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -930,7 +919,10 @@
       <workItem from="1525067166382" duration="563000" />
       <workItem from="1525068263085" duration="367000" />
       <workItem from="1525069306235" duration="365000" />
-      <workItem from="1525093692092" duration="358000" />
+      <workItem from="1525093692092" duration="626000" />
+      <workItem from="1525142760975" duration="1213000" />
+      <workItem from="1525161988648" duration="2543000" />
+      <workItem from="1525225444423" duration="249000" />
     </task>
     <servers />
   </component>
@@ -967,7 +959,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76912000" />
+    <option name="totallyTimeSpent" value="81185000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1456" height="876" extended-state="6" />
@@ -987,16 +979,16 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14182344" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12879884" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.060781475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2781792" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18930636" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1099,13 +1091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dto/FarmAddDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dao/IFarmDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1633">
@@ -1120,31 +1105,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/FarmServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3151">
-          <caret line="245" column="23" lean-forward="false" selection-start-line="245" selection-start-column="23" selection-end-line="245" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dto/FarmDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/FarmController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2024">
-          <caret line="169" column="23" lean-forward="false" selection-start-line="169" selection-start-column="23" selection-end-line="169" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4945">
-          <caret line="502" column="50" lean-forward="false" selection-start-line="502" selection-start-column="50" selection-end-line="502" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1180,43 +1144,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/IVideoService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/UploadUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="13" column="96" lean-forward="false" selection-start-line="13" selection-start-column="96" selection-end-line="13" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/ChargeVidUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/IDynamicService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/ChargePicUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1748">
-          <caret line="76" column="13" lean-forward="false" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/logs/debug.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1224,42 +1156,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/instruction/dxlin.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="441">
-            <caret line="603" column="0" lean-forward="false" selection-start-line="603" selection-start-column="0" selection-end-line="603" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/CommontController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/VideoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="100" column="54" lean-forward="false" selection-start-line="100" selection-start-column="54" selection-end-line="100" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1329,7 +1225,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
+        <state relative-caret-position="3933">
           <caret line="179" column="5" lean-forward="false" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="5" />
           <folding />
         </state>
@@ -1361,7 +1257,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/vo/DynamicApiVo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
+        <state relative-caret-position="782">
           <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
@@ -1369,7 +1265,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/vo/VideoApiVo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
+        <state relative-caret-position="782">
           <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
@@ -1401,8 +1297,117 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/sql/basic.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="73" selection-end-column="2" />
+        <state relative-caret-position="1472">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2070">
+          <caret line="90" column="22" lean-forward="false" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+          <folding>
+            <marker date="1525142832224" expanded="true" signature="1465:1610" ph="SELECT FROM tb_dynamic" />
+            <marker date="1525142832224" expanded="true" signature="1730:1844" ph="SELECT dynam... tb_dynamic" />
+            <marker date="1525142832224" expanded="true" signature="1968:2105" ph="SELECT FROM tb_dynamic" />
+            <marker date="1525142832224" expanded="true" signature="2231:2342" ph="SELECT pictu... tb_dynamic" />
+            <marker date="1525142832224" expanded="true" signature="2454:2601" ph="SELECT FROM tb_dynamic" />
+            <marker date="1525142832224" expanded="true" signature="2699:2933" ph="INSERT INTO tb_dynamic" />
+            <marker date="1525142832224" expanded="true" signature="3028:3151" ph="UPDATE tb_dy... " />
+            <marker date="1525142832224" expanded="true" signature="3250:3475" ph="UPDATE tb_dy... " />
+            <marker date="1525142832224" expanded="true" signature="3572:3657" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dto/FarmAddDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/FarmServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2256">
+          <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/FarmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="139" column="49" lean-forward="false" selection-start-line="139" selection-start-column="49" selection-end-line="139" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instruction/dxlin.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="551">
+            <caret line="617" column="0" lean-forward="false" selection-start-line="617" selection-start-column="0" selection-end-line="617" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/CommontController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="100" column="27" lean-forward="true" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/VideoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/ChargePicUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/ChargeVidUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/util/UploadUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="13" column="96" lean-forward="false" selection-start-line="13" selection-start-column="96" selection-end-line="13" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12995">
+          <caret line="586" column="49" lean-forward="true" selection-start-line="586" selection-start-column="49" selection-end-line="586" selection-end-column="49" />
           <folding />
         </state>
       </provider>
