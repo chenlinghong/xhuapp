@@ -143,6 +143,41 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/find", method = {RequestMethod.POST, RequestMethod.GET},
+            produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String getUserByUser_id(int user_id) {
+        UserApiVo userApiVo = new UserApiVo();
+        userApiVo.setCode(1);
+        userApiVo.setMessage("");
+        userApiVo.setUser(null);
+
+        try {
+            userApiVo = userService.getUserByUser_id(user_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            userApiVo.setCode(0);
+            userApiVo.setMessage("未知错误");
+        }
+        String resultJson = "";
+
+        if (userApiVo.getCode() == 0){
+
+        } else {
+            User user = SimpleUtil.hideSensitiveInformation(userApiVo.getUser());
+
+            GsonBuilder gsonBuilder = new GsonBuilder();
+//        gsonBuilder.setPrettyPrinting();        //格式化（仅用于开发阶段）
+            gsonBuilder.setDateFormat("yyyy-MM-dd");
+            Gson gson = gsonBuilder.create();
+
+            resultJson = gson.toJson(user);
+        }
+
+        return ApiFormatUtil.apiFormat(userApiVo.getCode(), userApiVo.getMessage(), resultJson);
+    }
+
+
     /**
      * 用户注册
      *

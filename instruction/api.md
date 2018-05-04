@@ -193,7 +193,34 @@
 4、示例
 
     http://120.77.170.124:8080/xhuapp/user/recover.do?code=123456&password=123123
+   
+##### 七、通过User_id获取用户信息
+
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/find.do
+
+2、参数说明
+
+    user_id(int)：用户ID(必填)
+
+3、返回（JSON字符串）
+
+    user_id：用户登录成功返回用户ID，登录失败返回-1
+    username：用户姓名
+    password：用户密码（鉴于安全，一般为空）
+    gender：用户性别
+    birthday：用户出生日期
+    head_portrail：用户头像图片路径
+    introduce：用户介绍
+    telphone：用户电话号码
+    longitude: 经度
+    latitude: 纬度
     
+4、示例
+
+    http://120.77.170.124:8080/xhuapp/user/find.do?user_id=1
+   
 
 #### 农场相关API
 

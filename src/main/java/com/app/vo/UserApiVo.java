@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 @Component(value = "userApiVo")
 public class UserApiVo {
 
-    private User user;      //用户基本信息
     private int code;       //状态返回码
     private String message;     //状态信息说明
+    private User user;      //用户基本信息
 
     public UserApiVo(){
 
