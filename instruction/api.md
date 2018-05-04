@@ -206,7 +206,7 @@
 
 3、返回（JSON字符串）
 
-    user_id：用户登录成功返回用户ID，登录失败返回-1
+    user_id：用户ID
     username：用户姓名
     password：用户密码（鉴于安全，一般为空）
     gender：用户性别
