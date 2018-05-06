@@ -28,6 +28,12 @@ public interface IDynamicDao {
      *@Rerurn:List<Dynamic>
      */
     public List<Dynamic> findAllDynamicByUserId(int user_id_f);
+    /*
+    *@param:findDynamicByUserIdAndType
+    *@Description：通过用户的id和类型找到该用户的一个类型的动态或者需求
+    *@Rerurn:List<Dynamic>
+    */
+    public List<Dynamic> findDynamicByUserIdAndType(Dynamic dynamic);
     /*通过ID修改动态
     *@param:dynamic
     *@Description：通过ID修改需求或者动态

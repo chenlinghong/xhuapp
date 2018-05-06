@@ -102,7 +102,6 @@ public class CommontController {
             commontApiVo = commontService.findSon_Commont_idByCommont_id(commont_id);
         }
         return ApiFormatUtil.apiFormat(commontApiVo.getCode(),commontApiVo.getMessage(),commontApiVo.getCommontList());
-
     }
 
 

@@ -59,6 +59,8 @@
     telphone：用户电话号码
     longitude: 经度
     latitude: 纬度
+    fans : 粉丝数
+    attention : 关注数
     （注：若登录失败，返回为空）
 
 4、请求方式
@@ -221,6 +223,83 @@
 
     http://120.77.170.124:8080/xhuapp/user/find.do?user_id=1
    
+##### 八、获取粉丝列表
+
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/fans/get.do
+
+2、参数说明
+
+    user_id(int)：用户ID(必填)
+
+3、返回（JSON字符串）
+
+    粉丝用户ID列表
+
+4、示例
+
+    http://120.77.170.124:8080/xhuapp/user/fans/get.do?user_id=1;
+
+##### 九、获取关注列表
+
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/attention/get.do
+
+2、参数说明
+
+    user_id(int)：用户ID(必填)
+
+3、返回（JSON字符串）
+
+    关注用户ID列表
+
+4、示例
+
+    http://120.77.170.124:8080/xhuapp/user/attention/get.do?user_id=1;
+
+
+##### 十、添加关注
+
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/attention/add.do
+
+2、参数说明
+
+    user_id(int)：用户ID(必填)
+    attention_id(int):关注用户ID（必填）
+
+3、返回（JSON字符串）
+
+   反馈信息
+
+4、示例
+
+    http://120.77.170.124:8080/xhuapp/user/attention/add.do?user_id=1&attention_id=2
+
+
+##### 十一、取消关注
+
+1、接口URL
+
+    http://120.77.170.124:8080/xhuapp/user/attention/delete.do
+
+2、参数说明
+
+    user_id(int)：用户ID(必填)
+    attention_id(int):关注用户ID（必填）
+
+3、返回（JSON字符串）
+
+    反馈信息
+
+4、示例
+
+    http://120.77.170.124:8080/xhuapp/user/attention/delete.do?user_id=1&attention_id=2
+
+
 
 #### 农场相关API
 
@@ -545,231 +624,4 @@
     
     http://120.77.170.124:8080/Dynamic/findDynamicByType.do?dynamic_type=0
     
-    
-    
-#### 视频相关API
-
-##### 一、插入一个视频数据
-    
-1、接口URL
-    
-    http://120.77.170.124:8080/xhuapp/Video/insertOneVideo.do
-    
-2、参数说明
-    
-        title String 动态的标题（必填）
-        videofile CommonsMultipartFile 视频流文件（必填）
-        introduce String 动态的介绍正文（必填）
-        video_type int 0-3 分为4种视频（必填）
-        user_id_f int 动态的用户从属（必填）
-        address String 地址
-        prize int 价格 默认为0
-        look_persons int 查看量 默认为0
-
-        
-3、返回（JSON格式字符串）
-    
-        code int 是否成功的信息，成功返回1，失败返回0
-        msg String 返回操作信息
-        data{
-                title String 动态的标题（必填）
-                videofile CommonsMultipartFile 视频流文件（必填）
-                introduce String 动态的介绍正文（必填）
-                video_type int 0-3 分为4种视频（必填）
-                user_id_f int 动态的用户从属（必填）
-                address String 地址
-                prize int 价格 默认为0
-                look_persons int 查看量 默认为0
-        }
-    
-4、请求方式
-        
-        POST
-        
-5、示例
-    
-        http://120.77.170.124:8080/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&videofile=&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
-        
-##### 二、通过视频数据的id查找视频数据
-
-1、接口URL
-        
-            http://120.77.170.124:8080/xhuapp/Video/findVideoById.do
-        
-2、参数说明
-        
-            video_id (必填)
-            
-3、返回（JSON格式字符串）
-        
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            data{
-                      title String 动态的标题（必填）
-                      introduce String 动态的介绍正文（必填）
-                      video_type int 0-3 分为4种视频（必填）
-                      user_id_f int 动态的用户从属（必填）
-                      address String 地址
-                      prize int 价格 默认为0
-                      look_persons int 查看量 默认为0
-                }
-    
-        
-4、请求方式
-            
-            POST/GET
-            
-5、示例
-        
-             http://120.77.170.124:8080/xhuapp/Video/findVideoById.do?video_id=1
-
-##### 三、通过视频的类型查找视频数据
-
-1、接口URL
-        
-            http://120.77.170.124:8080/xhuapp/Video/findVideosByType.do
-        
-2、参数说明
-        
-           video_type int 视频的类型
-            
-3、返回（JSON格式字符串）
-
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            data{
-                      title String 动态的标题（必填）
-                      introduce String 动态的介绍正文（必填）
-                      video_type int 0-3 分为4种视频（必填）
-                      user_id_f int 动态的用户从属（必填）
-                      address String 地址
-                      prize int 价格 默认为0
-                      look_persons int 查看量 默认为0
-                }    一般为数组            
-            
-            
-4、请求方式
-            
-            POST/GET
-            
-5、示例
-        
-        http://120.77.170.124:8080/xhuapp/Video/findVideosByType.do?video_type=0 
-        注 此接口请
-
-#####    四、通过用户的ID查找视频数据
-
-1、接口URL
-        
-            http://120.77.170.124:8080/xhuapp/Video/findVideosByUser_id_f.do
-        
-2、参数说明
-        
-            user_id_f int 用户的id
-            
-3、返回（JSON格式字符串）
-
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            data{
-                      title String 动态的标题（必填）
-                      introduce String 动态的介绍正文（必填）
-                      video_type int 0-3 分为4种视频（必填）
-                      user_id_f int 动态的用户从属（必填）
-                      address String 地址
-                      prize int 价格 默认为0
-                      look_persons int 查看量 默认为0
-                }    一般为数组         
-                  
-4、请求方式
-            
-            POST/GET
-            
-5、示例
-        
-        http://120.77.170.124:8080/xhuapp/Video/findVideosByUser_id_f.do?use_id_f=1  
-          
-##### 五、修改一个视频数据（修改视频地址另有接口）
-
-1、接口URL
-        
-            http://120.77.170.124:8080/xhuapp/Video/modifyVideoById.do
-        
-2、参数说明
-
-            title String 动态的标题
-            introduce String 动态的介绍正文
-            address String 地址
-            prize int 价格 默认为0
-            look_persons int 查看量 默认为0        
-            
-                      
-3、返回（JSON格式字符串）
-
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息        
-            title String 动态的标题
-            introduce String 动态的介绍正文
-            address String 地址
-            prize int 价格 默认为0
-            look_persons int 查看量 默认为0  
-            注：全部为用户所填数据            
-                        
-4、请求方式
-            
-            POST/GET
-            
-        5、示例
-        
-        http://120.77.170.124:8080/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&videofile=&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
-        
-#####  六、创建一个动态
- 
-1、接口URL
-        
-            http://120.77.170.124:8080/xhuapp/Video/modifyVideo_videoById.do
-        
-2、参数说明
-        
-            video_id int 视频数据的ID
-            videofile CommonsMultipartFile 视频流可为空，如果为空表示删除这个视频
-            
-3、返回（JSON格式字符串）
-        
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            video_id int 视频数据的ID
-            videofile CommonsMultipartFile 视频数据的视频服务器地址
-            
-               
-4、请求方式
-            
-            POST
-            
-5、示例
-        
-        http://120.77.170.124:8080/Video/modifyVideo_videoById.do?video_id=4&videofile=test.mp4    
-
-##### 七、查找所有的动态或者需求
-
-1、接口URL
-        
-            http://120.77.170.124:8080/xhuapp/Video/deleteVideoById.do
-        
-2、参数说明
-        
-            video_id int 视频的id
-            
-3、返回（JSON格式字符串）
-        
-            code int 是否成功的信息，成功返回1，失败返回0
-            msg String 返回操作信息
-            
-               
-4、请求方式
-            
-            POST/GET
-            
-5、示例
-        
-            http://120.77.170.124:8080/xhuapp/Video/deleteVideoById.do?video_id=5
+   

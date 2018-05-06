@@ -24,6 +24,8 @@ public interface IDynamicService {
 
    public DynamicApiVo findAllDynamicByUser_id(int user_id_f);
 
+   public DynamicApiVo findDynamicByUserIdAndType(Dynamic dynamic);
+
    public DynamicApiVo findDynamicByType(boolean dynamic_type);
 
    public DynamicApiVo deleteOneDynamicById(int dynamic_id);

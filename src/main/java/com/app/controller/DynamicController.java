@@ -166,12 +166,27 @@ public class DynamicController {
     public String findAllDynamicByUserId(int user_id_f){
         DynamicApiVo dynamicApiVo = new DynamicApiVo();
         if(user_id_f<=0){
+            dynamicApiVo.setDynamic(null);
             dynamicApiVo.setCode(0);
             dynamicApiVo.setDynamicList(null);
             dynamicApiVo.setMessage("不存在这个用户");
-            dynamicApiVo.setDynamic(null);
         }else{
             dynamicApiVo = dynamicService.findAllDynamicByUser_id(user_id_f);
+        }
+        return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamicList());
+    }
+
+    @RequestMapping(value = "/findDynamicByUserIdAndType",method = {RequestMethod.GET,RequestMethod.POST},
+            produces = "text/json;charset=UTF-8")
+    @ResponseBody
+    public String findDynamicByUserIdAndType(Dynamic dynamic){
+        DynamicApiVo dynamicApiVo = new DynamicApiVo();
+        if(dynamic.getUser_id_f()<=0){
+            dynamicApiVo.setCode(0);
+            dynamicApiVo.setDynamicList(null);
+            dynamicApiVo.setMessage("不存在这个用户");
+        }else{
+            dynamicApiVo = dynamicService.findDynamicByUserIdAndType(dynamic);
         }
         return ApiFormatUtil.apiFormat(dynamicApiVo.getCode(),dynamicApiVo.getMessage(),dynamicApiVo.getDynamicList());
     }

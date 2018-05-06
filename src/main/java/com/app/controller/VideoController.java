@@ -196,5 +196,4 @@ public class VideoController {
         }
         return ApiFormatUtil.apiFormat(videoApiVo.getCode(),videoApiVo.getMsg(),videoApiVo.getVideoList());
     }
-
 }

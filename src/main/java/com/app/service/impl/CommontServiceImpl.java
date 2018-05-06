@@ -17,7 +17,7 @@ import java.util.List;
 @Component(value = "commontService")
 @Scope(value = "prototype")
 
-public class CommontServiceImpl implements ICommontService{
+public class CommontServiceImpl implements ICommontService {
 
     @Resource
     private ICommontDao commontDao;

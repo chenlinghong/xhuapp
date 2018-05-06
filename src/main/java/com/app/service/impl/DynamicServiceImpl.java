@@ -111,6 +111,21 @@ public class DynamicServiceImpl implements IDynamicService {
 
         return dynamicApiVo;
     }
+
+    public DynamicApiVo findDynamicByUserIdAndType(Dynamic dynamic) {
+        List<Dynamic> dynamics = dynamicDao.findDynamicByUserIdAndType(dynamic);
+        if(dynamics.size()==0){
+            dynamicApiVo.setCode(0);
+            dynamicApiVo.setDynamicList(null);
+            dynamicApiVo.setMessage("用户无此类型的动态");
+        }else {
+            dynamicApiVo.setCode(1);
+            dynamicApiVo.setDynamicList(dynamics);
+            dynamicApiVo.setMessage("用户动态查找成功");
+        }
+        return dynamicApiVo;
+    }
+
     public DynamicApiVo insertOneDynamic(Dynamic dynamic){
         try{
             dynamicDao.insertOneDynamic(dynamic);

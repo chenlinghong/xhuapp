@@ -19,6 +19,7 @@
             <input type="text" name="look_persons" value="">
             <input type="submit" value="insertOneDynamic">
     </form>
+
     <form action="/Dynamic/modifyDynamicById.do" method="get">
         <input type="text" name="dynamic_id" value="14">
         <input type="text" name="title" value="">
@@ -52,6 +53,12 @@
     <form action="/Dynamic/findAllDynamicByUserId.do">
         <input type="text" name="user_id_f" value="">
         <input type="submit" value="findAllDynamicByUserId">
+    </form>
+
+    <form action="/Dynamic/findDynamicByUserIdAndType.do">
+        <input type="text" name="user_id_f" value="">
+        <input type="text" name="dynamic_type" value="">
+        <input type="submit" value="findDynamicByUserIdAndType">
     </form>
 
     <form action="/Dynamic/findDynamicById.do">

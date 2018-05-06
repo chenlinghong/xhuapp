@@ -36,14 +36,15 @@ public class VideoServiceImpl implements IVideoService {
     }
 
     public VideoApiVo findVideoById(int video_id) {
-        try{
-            Video video = videoDao.findVideoById(video_id);
+
+        Video video = videoDao.findVideoById(video_id);
+        if(video!=null){
             videoApiVo.setCode(1);
             videoApiVo.setMsg("成功查询");
             videoApiVo.setVideo(video);
-        }catch (Exception e){
+        }else{
             videoApiVo.setCode(0);
-            videoApiVo.setMsg("查询失败");
+            videoApiVo.setMsg("未找到");
             videoApiVo.setVideo(null);
         }
 

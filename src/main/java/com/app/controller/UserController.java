@@ -2,7 +2,9 @@ package com.app.controller;
 
 import com.app.dto.LoginVo;
 import com.app.dto.RecoverPasswordDto;
+import com.app.dto.UserDto;
 import com.app.entity.User;
+import com.app.service.IAttentionService;
 import com.app.service.IUserService;
 import com.app.util.*;
 import com.app.vo.ModifyUserVo;
@@ -11,6 +13,7 @@ import com.app.vo.UserApiVo;
 import com.app.vo.UserBaseInformationVo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +25,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  * @program: busis
@@ -36,6 +40,9 @@ public class UserController {
 
     @Resource
     private IUserService userService;
+
+    @Autowired
+    private IAttentionService attentionService;
 
 
     //无参构造
@@ -131,12 +138,38 @@ public class UserController {
         } else {
             resultUser = SimpleUtil.hideSensitiveInformation(resultUser);
 
+
             GsonBuilder gsonBuilder = new GsonBuilder();
 //        gsonBuilder.setPrettyPrinting();        //格式化（仅用于开发阶段）
             gsonBuilder.setDateFormat("yyyy-MM-dd");
             Gson gson = gsonBuilder.create();
 
-            resultJson = gson.toJson(resultUser);
+//            resultJson = gson.toJson(resultUser);
+
+            //获取用户关注数和粉丝数
+            int fans = 0, attention = 0;
+            try {
+                fans = attentionService.getFansNum(resultUser.getUser_id());
+                attention = attentionService.getAttentionNum(resultUser.getUser_id());
+            } catch (Exception e){
+                throw e;
+            }
+
+            UserDto userDto = new UserDto();
+            userDto.setUser_id(resultUser.getUser_id());
+            userDto.setUsername(resultUser.getUsername());
+            userDto.setTelphone(resultUser.getTelphone());
+            userDto.setBirthday(resultUser.getBirthday());
+            userDto.setHead_portrail(resultUser.getHead_portrail());
+            userDto.setGender(resultUser.getGender());
+            userDto.setPassword(resultUser.getPassword());
+            userDto.setIntroduce(resultUser.getIntroduce());
+            userDto.setLongitude(resultUser.getLongitude());
+            userDto.setLatitude(resultUser.getLatitude());
+            userDto.setFans(fans);
+            userDto.setAttention(attention);
+
+            resultJson = gson.toJson(userDto);
         }
 
         return ApiFormatUtil.apiFormat(loginResult.getCode(), loginResult.getMessage(), resultJson);
@@ -742,6 +775,85 @@ public class UserController {
     }
 
 
+    /**
+     * 获取粉丝列表
+     * @param user_id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/fans/get",method = {RequestMethod.POST,RequestMethod.GET},
+            produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ArrayList<Integer> getFans(int user_id) throws Exception{
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        try {
+            result = attentionService.getFansUser(user_id);
+        } catch (Exception e){
+            throw e;
+        }
+        return result;
+    }
+
+
+    /**
+     * 获取粉丝列表
+     * @param user_id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/attention/get",method = {RequestMethod.POST,RequestMethod.GET},
+            produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ArrayList<Integer> getAttention(int user_id) throws Exception{
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        try {
+            result = attentionService.getAttentionUser(user_id);
+        } catch (Exception e){
+            throw e;
+        }
+        return result;
+    }
+
+
+    /**
+     * 添加关注
+     * @param user_id
+     * @param attention_id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/attention/add",method = {RequestMethod.POST,RequestMethod.GET},
+            produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String insertAttention(int user_id,int attention_id) throws Exception{
+        String result = "关注成功";
+        try {
+            attentionService.insertAttention(user_id,attention_id);
+        } catch (Exception e){
+            throw e;
+        }
+        return result;
+    }
+
+    /**
+     * 取消关注
+     * @param user_id
+     * @param attention_id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/attention/delete",method = {RequestMethod.POST,RequestMethod.GET},
+            produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String deleteAttention(int user_id,int attention_id) throws Exception{
+        String result = "取消关注成功";
+        try {
+            attentionService.deleteAttention(user_id,attention_id);
+        } catch (Exception e){
+            throw e;
+        }
+        return result;
+    }
 
 
 }

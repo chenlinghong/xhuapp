@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.dao.IAttentionDao">
+
+    <sql id="Base_Column_List">
+        user_id,attention_user
+    </sql>
+
+    <insert id="insertAttention">
+        INSERT
+            tb_attention(user_id,attention_user)
+            values(#{user_id},#{attention_user})
+    </insert>
+
+    <delete id="deleteAttention">
+        DELETE FROM
+            tb_attention
+        WHERE
+            user_id = #{user_id} AND attention_user = #{attention_user}
+    </delete>
+
+    <select id="getAttentionNum" parameterType="int" resultType="int">
+        SELECT
+            count(*)
+        FROM
+            tb_attention
+        WHERE
+            user_id = #{user_id}
+    </select>
+
+    <select id="getFansNum" parameterType="int" resultType="int">
+        SELECT
+        count(*)
+        FROM
+        tb_attention
+        WHERE
+        attention_user = #{attention_user}
+    </select>
+
+    <select id="getAttentionUser" parameterType="int" resultType="int">
+        SELECT
+            attention_user
+        FROM
+            tb_attention
+        WHERE
+            user_id = #{user_id}
+    </select>
+
+    <select id="getFansUser" parameterType="int" resultType="int">
+        SELECT
+            user_id
+        FROM
+            tb_attention
+        WHERE
+            attention_user = #{attention_user}
+    </select>
+
+
+</mapper>

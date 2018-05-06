@@ -34,7 +34,7 @@
     一。查找单个动态
     1、接口URL
     
-        http://127.0.0.1:8080/xhuapp/Dynamic/findDynamicById.do?（注：部署到服务器后更改IP地址）
+        http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicById.do?（注：部署到服务器后更改IP地址）
     
     2、参数说明
     
@@ -60,12 +60,12 @@
         
     5、示例
     
-        http://127.0.0.1:8080/xhuapp/Dynamic/findDynamicById.do?dynamic_id=1
+        http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicById.do?dynamic_id=1
         
     二，查找用户的多个动态
     1、接口URL
     
-        http://127.0.0.1:8080/xhuapp/Dynamic/findDynamicByUserId.do?（注：部署到服务器后更改IP地址）
+        http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByUserId.do?（注：部署到服务器后更改IP地址）
     
     2、参数说明
     
@@ -92,11 +92,11 @@
         
     5、示例
     
-        http://127.0.0.1:8080/xhuapp/Dynamic/findDynamicByUserId.do?user_id_f=1
+        http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByUserId.do?user_id_f=1
     三，通过动态的ID修改动态
     1、接口URL
     
-        http://127.0.0.1:8080/xhuapp/Dynamic/modifyDynamicById.do?（注：部署到服务器后更改IP地址）
+        http://120.77.170.124:8080/xhuapp/Dynamic/modifyDynamicById.do?（注：部署到服务器后更改IP地址）
     
     2、参数说明
     
@@ -126,12 +126,12 @@
         
     5、示例
     
-    http://localhost:8080/Dynamic/modifyDynamicById.do?dynamic_id=14&title=erwre&introduce=esrsr&user_id_f=3 
+    http://120.77.170.124:8080/xhuapp/Dynamic/modifyDynamicById.do?dynamic_id=14&title=erwre&introduce=esrsr&user_id_f=3 
     
     四，通过动态的ID修改图片
     1、接口URL
     
-        http://127.0.0.1:8080/xhuapp/Dynamic/modifyPicById.do?（注：部署到服务器后更改IP地址）
+        http://v/Dynamic/modifyPicById.do?（注：部署到服务器后更改IP地址）
     
     2、参数说明
     
@@ -153,12 +153,12 @@
         
     5、示例
     
-    http://localhost:8080/Dynamic/modifyPicById.do?dynamic_id=14&prepicfilepath="服务器端图片地址"&picfile=63909109_p0.jpg
+    http://120.77.170.124:8080/xhuapp/Dynamic/modifyPicById.do?dynamic_id=14&prepicfilepath="服务器端图片地址"&picfile=63909109_p0.jpg
 
     五，删除一个动态
     1、接口URL
     
-        http://127.0.0.1:8080/xhuapp/Dynamic/deleteOneDynamicById.do?（注：部署到服务器后更改IP地址）
+        http://120.77.170.124:8080/xhuapp/Dynamic/deleteOneDynamicById.do?（注：部署到服务器后更改IP地址）
     
     2、参数说明
     
@@ -176,11 +176,11 @@
         
     5、示例
     
-    http://localhost:8080/Dynamic/deleteOneDynamicById.do?dynamic_id=2
+    http://120.77.170.124:8080/xhuapp/Dynamic/deleteOneDynamicById.do?dynamic_id=2
     六，创建一个动态
     1、接口URL
     
-        http://127.0.0.1:8080/xhuapp/Dynamic/insertOneDynamic.do?（注：部署到服务器后更改IP地址）
+        http://120.77.170.124:8080/xhuapp/Dynamic/insertOneDynamic.do?（注：部署到服务器后更改IP地址）
     
     2、参数说明
     
@@ -212,12 +212,12 @@
         
     5、示例
     
-    http://localhost:8080/Dynamic/insertOneDynamic.do?title=test&introduce=test&picfile=63826574_p0.jpg&picfile=63902583_p0.jpg&user_id_f=3&dynamic_type=0
+    http://120.77.170.124:8080/xhuapp/Dynamic/insertOneDynamic.do?title=test&introduce=test&picfile=63826574_p0.jpg&picfile=63902583_p0.jpg&user_id_f=3&dynamic_type=0
     
     七，查找所有的动态或者需求
     1、接口URL
     
-        http://127.0.0.1:8080/xhuapp/Dynamic/findDynamicByType.do?（注：部署到服务器后更改IP地址）
+        http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByType.do?（注：部署到服务器后更改IP地址）
     
     2、参数说明
     
@@ -242,14 +242,45 @@
         
     5、示例
     
-    http://localhost:8080/Dynamic/findDynamicByType.do?dynamic_type=0
+    http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByType.do?dynamic_type=0
+    八，通过用户id和动态数据类型查找该用户的所有该类型的动态
+        1、接口URL
+        
+            http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByUserIdAndType.do?（注：部署到服务器后更改IP地址）
+        
+        2、参数说明
+            
+            user_id_f(int):用户的id
+            dynamic_type(boolean): 0为需求1为动态
+            
+        3、返回（JSON格式字符串）
+        
+            code int 是否成功的信息，成功返回1，失败返回0
+            msg String 返回操作信息
+            一般有多个，返回的每个信息如下
+                title String 动态或者需求的标题
+                introduce String 动态或者需求的介绍
+                picture String 图片的服务器地址
+                user_id_f int 用户的id
+                dynamic_type boolean 动态的类型true(需求) or false(动态) 
+                address(String):地址默认为成都
+                prize(int):价格默认为0
+                look_persons(int):浏览人数默认为0
+        4、请求方式
+            
+            POST/GET
+            
+        5、示例
+        
+        http://120.77.170.124:8080/xhuapp/Dynamic/findDynamicByUserIdAndType.do?user_id_f=3&dynamic_type=1
+    
  #### 视频相关API
  
  ##### 测试接口
      一，插入一个视频数据
      1、接口URL
      
-         http://127.0.0.1:8080/xhuapp/Video/insertOneVideo.do?（注：部署到服务器后更改IP地址）
+         http://120.77.170.124:8080/xhuapp/Video/insertOneVideo.do?（注：部署到服务器后更改IP地址）
      
      2、参数说明
      
@@ -287,12 +318,12 @@
          
      5、示例
      
-         http://localhost:8080/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&video_picture=123.jpg&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
+         http://120.77.170.124:8080/xhuapp/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&video_picture=123.jpg&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
          
      二，通过视频数据的id查找视频数据
          1、接口URL
          
-             http://127.0.0.1:8080/xhuapp/Video/findVideoById.do?（注：部署到服务器后更改IP地址）
+             http://120.77.170.124:8080/xhuapp/Video/findVideoById.do?（注：部署到服务器后更改IP地址）
          
          2、参数说明
          
@@ -319,11 +350,11 @@
              
          5、示例
          
-              http://127.0.0.1:8080/xhuapp/Video/findVideoById.do?video_id=1
+              http://120.77.170.124:8080/xhuapp/Video/findVideoById.do?video_id=1
      三，通过视频的类型查找视频数据
          1、接口URL
          
-             http://127.0.0.1:8080/xhuapp/Video/findVideosByType.do?（注：部署到服务器后更改IP地址）
+             http://120.77.170.124:8080/xhuapp/Video/findVideosByType.do?（注：部署到服务器后更改IP地址）
          
          2、参数说明
          
@@ -349,12 +380,12 @@
              
          5、示例
          
-         http://127.0.0.1:8080/xhuapp/Video/findVideosByType.do?video_type=0 
+         http://120.77.170.124:8080/xhuapp/Video/findVideosByType.do?video_type=0 
          注 此接口请
      四，通过用户的ID查找视频数据
          1、接口URL
          
-             http://127.0.0.1:8080/xhuapp/Video/findVideosByUser_id_f.do?（注：部署到服务器后更改IP地址）
+             http://120.77.170.124:8080/xhuapp/Video/findVideosByUser_id_f.do?（注：部署到服务器后更改IP地址）
          
          2、参数说明
          
@@ -378,12 +409,12 @@
              
          5、示例
          
-         http://127.0.0.1:8080/xhuapp/Video/findVideosByUser_id_f.do?use_id_f=1  
+         http://120.77.170.124:8080/xhuapp/Video/findVideosByUser_id_f.do?use_id_f=1  
            
      五，修改一个视频数据（修改视频地址另有接口）
          1、接口URL
          
-             http://127.0.0.1:8080/xhuapp/Video/modifyVideoById.do?（注：部署到服务器后更改IP地址）
+             http://120.77.170.124:8080/xhuapp/Video/modifyVideoById.do?（注：部署到服务器后更改IP地址）
          
          2、参数说明
              title String 动态的标题
@@ -409,11 +440,11 @@
              
          5、示例
          
-         http://localhost:8080/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&videofile=&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
+         http://120.77.170.124:8080/xhuapp/Video/insertOneVideo.do?title=test&videofile=63909109_p0.mp4&videofile=&user_id_f=3&video_type=0&introduce=123&address=成都prize=500&look_persons=1000
      六，修改视频数据的视频和视频图片
          1、接口URL
          
-             http://127.0.0.1:8080/xhuapp/Video/modifyVideo_videoById.do?（注：部署到服务器后更改IP地址）
+             http://120.77.170.124:8080/xhuapp/Video/modifyVideo_videoById.do?（注：部署到服务器后更改IP地址）
          
          2、参数说明
          
@@ -435,11 +466,11 @@
              
          5、示例
          
-         http://localhost:8080/Video/modifyVideo_videoById.do?video_id=4&videofile=test.mp4    
+         http://120.77.170.124:8080/xhuapp/Video/modifyVideo_videoById.do?video_id=4&videofile=test.mp4    
      七，删除一个视频数据
          1、接口URL
          
-             http://127.0.0.1:8080/xhuapp/Video/deleteVideoById.do?（注：部署到服务器后更改IP地址）
+             http://120.77.170.124:8080/xhuapp/Video/deleteVideoById.do?（注：部署到服务器后更改IP地址）
          
          2、参数说明
          
@@ -457,14 +488,14 @@
              
          5、示例
          
-           http://127.0.0.1:8080/xhuapp/Video/deleteVideoById.do?video_id=5
+           http://120.77.170.124:8080/xhuapp/Video/deleteVideoById.do?video_id=5
 #### 视频相关API
  
 ##### 测试接口
      一，插入一个评论
      1、接口URL
     
-         http://127.0.0.1:8080/xhuapp/Commont/insertOneCommont.do?（注：部署到服务器后更改IP地址）
+         http://120.77.170.124:8080/xhuapp/Commont/insertOneCommont.do?（注：部署到服务器后更改IP地址）
      
      2、参数说明
      
@@ -483,13 +514,13 @@
          
      5、示例
      
-          http://127.0.0.1:8080/xhuapp/Commont/insertOneCommont.do?user_id_f=1&commont_body=hello&father_commont_id=-1
+          http://120.77.170.124:8080/xhuapp/Commont/insertOneCommont.do?user_id_f=1&commont_body=hello&father_commont_id=-1
           
      二，通过评论id查找评论数据信息
     
          1、接口URL
          
-          http://127.0.0.1:8080/xhuapp/Commont/findCommontById.do?
+          http://120.77.170.124:8080/xhuapp/Commont/findCommontById.do?
          
          2、参数说明
          
@@ -512,11 +543,11 @@
              
          5、示例
          
-              http://127.0.0.1:8080/xhuapp/Commont/findCommontById.do?commont_id=1
+              http://120.77.170.124:8080/xhuapp/Commont/findCommontById.do?commont_id=1
      三，通过用户的id查找其所有的评论
          1、接口URL
          
-             http://127.0.0.1:8080/xhuapp/Commont/findCommontsByUser_id.do?
+             http://120.77.170.124:8080/xhuapp/Commont/findCommontsByUser_id.do?
          
          2、参数说明
          
@@ -539,12 +570,12 @@
              
          5、示例
          
-             http://127.0.0.1:8080/xhuapp/Commont/findCommontsByUser_id.do?user_id_f=1
+             http://120.77.170.124:8080/xhuapp/Commont/findCommontsByUser_id.do?user_id_f=1
 
      四，通过评论的id查找其父评论的评论数据信息
          1、接口URL
          
-             http://127.0.0.1:8080/xhuapp/Commont/findFather_CommontByCommont_id.do?
+             http://120.77.170.124:8080/xhuapp/Commont/findFather_CommontByCommont_id.do?
          
          2、参数说明
          
@@ -565,12 +596,12 @@
              
          5、示例
          
-             http://127.0.0.1:8080/xhuapp/Commont/findFather_CommontByCommont_id.do?commont_id=1
+             http://120.77.170.124:8080/xhuapp/Commont/findFather_CommontByCommont_id.do?commont_id=1
            
      五，修改一个视频数据（修改视频地址另有接口）
          1、接口URL
          
-             http://127.0.0.1:8080/xhuapp/Commont/findSon_Commont_idByCommont_id?
+             http://120.77.170.124:8080/xhuapp/Commont/findSon_Commont_idByCommont_id?
          
         2、参数说明
               
@@ -592,7 +623,7 @@
              
         5、示例
          
-             http://127.0.0.1:8080/xhuapp/Commont/findSon_Commont_idByCommont_id?commont_id=1
+             http://120.77.170.124:8080/xhuapp/Commont/findSon_Commont_idByCommont_id?commont_id=1
      六，删除一个评论
          1、接口URL
          
@@ -614,4 +645,4 @@
              
          5、示例
          
-         http://localhost:8080/Commont/deleteCommontById.do?commont_id=1
+         http://120.77.170.124:8080/xhuapp/Commont/deleteCommontById.do?commont_id=1
