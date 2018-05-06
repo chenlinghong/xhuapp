@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import com.app.dto.AttentionDto;
 import com.app.dto.LoginVo;
 import com.app.dto.RecoverPasswordDto;
 import com.app.dto.UserDto;
@@ -784,14 +785,20 @@ public class UserController {
     @RequestMapping(value = "/fans/get",method = {RequestMethod.POST,RequestMethod.GET},
             produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ArrayList<Integer> getFans(int user_id) throws Exception{
+    public AttentionDto getFans(int user_id) throws Exception{
+        AttentionDto attentionDto = new AttentionDto();
+        attentionDto.setCode(1);
+        attentionDto.setMessage("请求成功");
         ArrayList<Integer> result = new ArrayList<Integer>();
         try {
             result = attentionService.getFansUser(user_id);
+            attentionDto.setData(result);
         } catch (Exception e){
-            throw e;
+//            throw e;
+            attentionDto.setCode(0);
+            attentionDto.setMessage(e.getMessage());
         }
-        return result;
+        return attentionDto;
     }
 
 
@@ -804,14 +811,20 @@ public class UserController {
     @RequestMapping(value = "/attention/get",method = {RequestMethod.POST,RequestMethod.GET},
             produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ArrayList<Integer> getAttention(int user_id) throws Exception{
+    public AttentionDto getAttention(int user_id) throws Exception{
+        AttentionDto attentionDto = new AttentionDto();
+        attentionDto.setCode(1);
+        attentionDto.setMessage("请求成功");
         ArrayList<Integer> result = new ArrayList<Integer>();
         try {
             result = attentionService.getAttentionUser(user_id);
+            attentionDto.setData(result);
         } catch (Exception e){
-            throw e;
+//            throw e;
+            attentionDto.setCode(0);
+            attentionDto.setMessage(e.getMessage());
         }
-        return result;
+        return attentionDto;
     }
 
 
@@ -825,14 +838,19 @@ public class UserController {
     @RequestMapping(value = "/attention/add",method = {RequestMethod.POST,RequestMethod.GET},
             produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String insertAttention(int user_id,int attention_id) throws Exception{
+    public AttentionDto insertAttention(int user_id,int attention_id) throws Exception{
+        AttentionDto attentionDto = new AttentionDto();
+        attentionDto.setCode(1);
+        attentionDto.setMessage("请求成功");
         String result = "关注成功";
         try {
             attentionService.insertAttention(user_id,attention_id);
         } catch (Exception e){
-            throw e;
+//            throw e;
+            attentionDto.setCode(0);
+            attentionDto.setMessage(e.getMessage());
         }
-        return result;
+        return attentionDto;
     }
 
     /**
@@ -845,15 +863,18 @@ public class UserController {
     @RequestMapping(value = "/attention/delete",method = {RequestMethod.POST,RequestMethod.GET},
             produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String deleteAttention(int user_id,int attention_id) throws Exception{
-        String result = "取消关注成功";
+    public AttentionDto deleteAttention(int user_id,int attention_id) throws Exception{
+        AttentionDto attentionDto = new AttentionDto();
+        attentionDto.setCode(1);
+        attentionDto.setMessage("请求成功");
         try {
             attentionService.deleteAttention(user_id,attention_id);
         } catch (Exception e){
-            throw e;
+//            throw e;
+            attentionDto.setCode(0);
+            attentionDto.setMessage(e.getMessage());
         }
-        return result;
+        return attentionDto;
     }
-
 
 }

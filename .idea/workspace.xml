@@ -7,47 +7,143 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e019614a-4142-4c18-8b23-8dc4b7b86b17" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/dao/IAttentionDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/dto/UserDto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/entity/Attention.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/IAttentionService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/impl/AttentionServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AttentionMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/commonttest.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/app/controller/CommontController.class" afterPath="$PROJECT_DIR$/target/classes/com/app/controller/CommontController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/app/controller/DynamicController.class" afterPath="$PROJECT_DIR$/target/classes/com/app/controller/DynamicController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/app/dto/AttentionDto.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp.war" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/CommontController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/DynamicController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/FarmController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/UserController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/VideoController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/testController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dao/IAttentionDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dao/ICommontDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dao/IDynamicDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dao/IFarmDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dao/IUserDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dao/IVideoDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dto/FarmAddDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dto/FarmDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dto/LoginVo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dto/RecoverPasswordDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dto/UserDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/entity/Attention.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/entity/Commont.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/entity/Dynamic.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/entity/Farm.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/entity/MiaoDiReturn.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/entity/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/entity/Video.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/IAttentionService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/ICommontService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/IDynamicService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/IFarmService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/IUserService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/IVideoService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/AttentionServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/CommontServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/DynamicServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/FarmServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/UserServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/VideoServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/ApiFormatUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/ChargePicUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/ChargeVidUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/FarmUploadUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/GetDateByStringUtils.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/IndustrySMS.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/PictureUploadUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/SimpleUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/TelphoneCheckUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/UploadHead_portrailUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/UploadUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/sms/Config.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/sms/HttpUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/util/testPictureUploadUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/vo/CommontApiVo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/vo/DynamicApiVo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/vo/ModifyUserVo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/vo/SmsVo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/vo/UserApiVo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/vo/UserBaseInformationVo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/vo/VideoApiVo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/jdbc.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/log4j.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/AttentionMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/CommontMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/DynamicMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/FarmMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/UserMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/VideoMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/spring/spring-mvc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/spring/spring-mybatis.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/sql/basic.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/sql/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/accessors-smart-1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/activation-1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/asm-5.0.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/aspectjrt-1.8.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/aspectjweaver-1.8.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/c3p0-0.9.1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/commons-beanutils-1.9.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/commons-codec-1.9.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/commons-collections-3.2.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/commons-dbcp-1.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/commons-fileupload-1.3.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/commons-io-2.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/commons-lang-2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/commons-logging-1.1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/commons-pool-1.5.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/ezmorph-1.0.6.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/fastjson-1.1.41.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/gson-2.2.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/httpclient-4.5.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/httpcore-4.4.6.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/jackson-annotations-2.8.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/jackson-core-2.8.10.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/jackson-core-asl-1.9.13.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/jackson-databind-2.8.10.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/javaee-api-7.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/javax.mail-1.5.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/json-lib-2.4-jdk15.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/json-path-2.2.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/json-smart-2.2.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/jstl-1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/log4j-1.2.17.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/mybatis-3.2.6.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/mybatis-spring-1.2.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/mysql-connector-java-5.1.30.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/slf4j-api-1.7.7.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/slf4j-log4j12-1.7.7.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-aop-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-beans-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-context-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-context-support-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-core-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-expression-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-jdbc-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-oxm-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-test-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-tx-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-web-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/spring-webmvc-4.0.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/lib/standard-1.1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/logs/debug.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/logs/error.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/web.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/commonttest.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/dynamictest.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/upload/imgs/dynamic_images/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/upload/imgs/video_images/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/upload/videos/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xhuapp/videotest.jsp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/app/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/app/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/app/dao/IDynamicDao.class" afterPath="$PROJECT_DIR$/target/classes/com/app/dao/IDynamicDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/app/service/IDynamicService.class" afterPath="$PROJECT_DIR$/target/classes/com/app/service/IDynamicService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/app/service/impl/DynamicServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/app/service/impl/DynamicServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/app/service/impl/VideoServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/app/service/impl/VideoServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp.war" afterPath="$PROJECT_DIR$/target/xhuapp.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/CommontController.class" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/CommontController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/DynamicController.class" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/DynamicController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/UserController.class" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dao/IDynamicDao.class" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/dao/IDynamicDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/IDynamicService.class" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/IDynamicService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/DynamicServiceImpl.class" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/DynamicServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/VideoServiceImpl.class" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/com/app/service/impl/VideoServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/instruction/api.md" afterPath="$PROJECT_DIR$/instruction/api.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/instruction/dxlin.md" afterPath="$PROJECT_DIR$/instruction/dxlin.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/controller/CommontController.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/CommontController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/DynamicController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/controller/VideoController.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/controller/VideoController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/dao/IDynamicDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/dao/IDynamicDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/IDynamicService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/service/impl/CommontServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/impl/CommontServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/impl/DynamicServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/app/service/impl/VideoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/app/service/impl/VideoServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DynamicMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/dynamictest.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/dynamictest.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/videotest.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/videotest.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/DynamicMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/DynamicMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/DynamicMapper.xml" afterPath="$PROJECT_DIR$/target/xhuapp/WEB-INF/classes/mapper/DynamicMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/dynamictest.jsp" afterPath="$PROJECT_DIR$/target/xhuapp/dynamictest.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xhuapp/videotest.jsp" afterPath="$PROJECT_DIR$/target/xhuapp/videotest.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,7 +158,7 @@
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6819432">
+    <splitter split-orientation="horizontal" split-proportion="0.2035316">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="DynamicApiVo.java" pinned="false" current-in-tab="false">
@@ -117,8 +213,8 @@
             <entry file="file://$PROJECT_DIR$/instruction/api.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="FIRST">
-                  <first_editor relative-caret-position="138">
-                    <caret line="293" column="13" lean-forward="true" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
+                  <first_editor relative-caret-position="502">
+                    <caret line="295" column="5" lean-forward="false" selection-start-line="295" selection-start-column="5" selection-end-line="295" selection-end-column="5" />
                     <folding />
                   </first_editor>
                   <second_editor />
@@ -267,11 +363,34 @@
           <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="586">
-                  <caret line="857" column="0" lean-forward="false" selection-start-line="857" selection-start-column="0" selection-end-line="857" selection-end-column="0" />
+                <state relative-caret-position="4475">
+                  <caret line="835" column="13" lean-forward="false" selection-start-line="835" selection-start-column="13" selection-end-line="835" selection-end-column="13" />
                   <folding>
-                    <element signature="e#29570#29579#0" expanded="true" />
-                    <element signature="e#30134#30143#0" expanded="true" />
+                    <element signature="e#29727#29736#0" expanded="true" />
+                    <element signature="e#30555#30564#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AttentionDto.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dto/AttentionDto.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="537">
+                  <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#341#342#0" expanded="true" />
+                    <element signature="e#379#380#0" expanded="true" />
+                    <element signature="e#416#417#0" expanded="true" />
+                    <element signature="e#448#449#0" expanded="true" />
+                    <element signature="e#482#483#0" expanded="true" />
+                    <element signature="e#512#513#0" expanded="true" />
+                    <element signature="e#540#541#0" expanded="true" />
+                    <element signature="e#567#568#0" expanded="true" />
+                    <element signature="e#610#611#0" expanded="true" />
+                    <element signature="e#637#638#0" expanded="true" />
+                    <element signature="e#689#690#0" expanded="true" />
+                    <element signature="e#721#722#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -312,7 +431,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/app/dao/IUserDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/util/PictureUploadUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/entity/MiaoDiReturn.java" />
@@ -361,6 +479,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/AttentionMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/service/impl/AttentionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/dto/UserDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/app/dto/AttentionDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java" />
         <option value="$PROJECT_DIR$/instruction/api.md" />
       </list>
@@ -1002,7 +1121,7 @@
       <workItem from="1525434305173" duration="20000" />
       <workItem from="1525442880329" duration="1129000" />
       <workItem from="1525531897347" duration="54000" />
-      <workItem from="1525594064092" duration="4265000" />
+      <workItem from="1525594064092" duration="5146000" />
     </task>
     <servers />
   </component>
@@ -1039,7 +1158,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91715000" />
+    <option name="totallyTimeSpent" value="92596000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1456" height="876" extended-state="6" />
@@ -1059,16 +1178,16 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14182344" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7033285" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13458756" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53111434" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21170521" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22182082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1092,13 +1211,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dto/FarmDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -1516,13 +1628,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/app/dto/AttentionDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="25" />
+          <folding>
+            <element signature="e#341#342#0" expanded="true" />
+            <element signature="e#379#380#0" expanded="true" />
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#610#611#0" expanded="true" />
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#721#722#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/app/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="857" column="0" lean-forward="false" selection-start-line="857" selection-start-column="0" selection-end-line="857" selection-end-column="0" />
+        <state relative-caret-position="4475">
+          <caret line="835" column="13" lean-forward="false" selection-start-line="835" selection-start-column="13" selection-end-line="835" selection-end-column="13" />
           <folding>
-            <element signature="e#29570#29579#0" expanded="true" />
-            <element signature="e#30134#30143#0" expanded="true" />
+            <element signature="e#29727#29736#0" expanded="true" />
+            <element signature="e#30555#30564#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1530,8 +1663,8 @@
     <entry file="file://$PROJECT_DIR$/instruction/api.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="138">
-            <caret line="293" column="13" lean-forward="true" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
+          <first_editor relative-caret-position="502">
+            <caret line="295" column="5" lean-forward="false" selection-start-line="295" selection-start-column="5" selection-end-line="295" selection-end-column="5" />
             <folding />
           </first_editor>
           <second_editor />
