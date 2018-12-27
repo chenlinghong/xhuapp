@@ -1,8 +1,8 @@
-package com.app.controller;/*
- *@Author:dxlin
- *@Description：
- *@Date: 2018-3-
+package com.app.controller;
+/**
+ * 评论相关Controller
  */
+
 
 import com.app.entity.Commont;
 import com.app.service.ICommontService;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 
 @Controller
@@ -48,7 +49,8 @@ public class CommontController {
     @RequestMapping(value = "/findCommontById",method = {RequestMethod.POST,RequestMethod.GET}
             ,produces = "text/json;charset=utf-8")
     @ResponseBody
-    public String findCommontById(int commont_id) throws Exception{
+    public String findCommontById(int commont_id, HttpServletResponse response) throws Exception{
+
         if(commont_id<=0){
             commontApiVo.setMessage("评论id不合法(>0)");
             commontApiVo.setCode(0);
@@ -56,7 +58,7 @@ public class CommontController {
         }else{
             commontApiVo = commontService.findCommontById(commont_id);
         }
-        return ApiFormatUtil.apiFormat(commontApiVo.getCode(),commontApiVo.getMessage(),commontApiVo.getCommont());
+        return ApiFormatUtil.apiFormat(commontApiVo.getCode(),commontApiVo.getMessage(),commontApiVo.getCommont())+response.getContentType();
     }
 
 

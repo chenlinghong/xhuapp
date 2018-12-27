@@ -1,7 +1,8 @@
-package com.app.entity;/*
- *@Author:dxlin
- *@Description：
- *@Date: 2018-3-
+package com.app.entity;
+
+/**
+ *
+ * 视频基本bean
  */
 
 import org.springframework.context.annotation.Scope;
@@ -20,7 +21,18 @@ public class Video {
     private int prize;
     private int look_persons;
     private String video_picture;
+    private int interest_id_f;
+
     public Video(){}
+
+
+    public int getInterest_id_f() {
+        return interest_id_f;
+    }
+
+    public void setInterest_id_f(int interest_id_f) {
+        this.interest_id_f = interest_id_f;
+    }
 
     public String getVideo_picture() {
         return video_picture;

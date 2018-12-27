@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * dynamic相关操作
- * @param IDynamic
+ *
  */
 public interface IDynamicDao {
     /**
@@ -70,4 +70,16 @@ public interface IDynamicDao {
     *@Rerurn:List<Dynamic>
     */
     public List<Dynamic> findAllDynamicByType(boolean dynamic_type);
+    /*
+    *@param:user_id_f int
+    *@Description：通过用户id查找动态的id，lookperson，数据类型
+    *@Rerurn:List<Dynamic>
+    */
+    public List<Dynamic> findIdLookPersonsInterestIdByUser_id(int user_id_f);
+    /*
+    *@param:dynamic_id
+    *@Description：通过id查找动态的小类型
+    *@Rerurn:int
+    */
+    public int findInterest_Id_fById(int dynamic_id);
 }

@@ -14,19 +14,21 @@
         <result column="prize" property="prize" jdbcType="INTEGER" javaType="java.lang.Integer"/>
         <result column="look_persons" property="look_persons" jdbcType="INTEGER" javaType="java.lang.Integer"/>
         <result property="video_picture" column="video_picture" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="interest_id_f" column="interest_id_f" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+
      </resultMap>
 
     <sql id="video_base_column_List">
-        video_id,title,videopath,user_id_f,video_type,introduce,address,prize,look_persons,video_picture
+        video_id,title,videopath,user_id_f,video_type,introduce,address,prize,look_persons,video_picture,interest_id_f
     </sql>
 
     <insert id="insertOneVideo" parameterType="com.app.entity.Video">
         INSERT INTO
           tb_video(title,videopath,user_id_f,video_type,introduce,
-          address,prize,look_persons,video_picture)
+          address,prize,look_persons,video_picture,interest_id_f)
         VALUES
           (#{title},#{videopath},#{user_id_f},#{video_type},#{introduce},
-          #{address},#{prize},#{look_persons},#{video_picture})
+          #{address},#{prize},#{look_persons},#{video_picture},#{interest_id_f})
     </insert>
 
     <select id="findVideoById" resultType="com.app.entity.Video" parameterType="java.lang.Integer">

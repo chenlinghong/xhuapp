@@ -3,6 +3,10 @@ package com.app.service.impl;/*
  *@Description：
  *@Date: 2018-3-
  */
+/**
+ *
+ * 视频相关的Service类
+ */
 
 import com.app.dao.IVideoDao;
 import com.app.entity.Video;

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.dao.IInterestTimes">
+    <resultMap id="BaseInterest" type="com.app.entity.InterestTimes">
+        <result property="interest_id" column="interest_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="user_id_f" column="user_id_f" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+
+        <result property="agriculture_view" column="agriculture_view" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="agriculture_products" column="agriculture_products" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="agriculture_bp" column="agriculture_bp" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="other_view" column="other_view" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="create_delifood" column="create_delifood" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="delifood_commont" column="delifood_commont" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="farm_introduce" column="farm_introduce" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="countryside_view" column="countryside_view" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="agritainment_view" column="agritainment_view" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="delifood_entertainment" column="delifood_entertainment" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+    </resultMap>
+    
+    <insert id="insertOneInterestTimes" parameterType="java.lang.Integer">
+        INSERT INTO
+          tb_interest_click_times(user_id_f)
+        VALUES
+          user_id_f = #{user_id_f}
+    </insert>
+    
+    <update id="updataCountryside_view_times" parameterType="java.lang.Integer">
+        UPDATE
+          tb_interest_Click_times
+        set
+          countryside_view_times = countryside_view_times+1
+        WHERE
+          user_id_f = #{user_id_f}
+    </update>
+
+    <update id="updatAagriculture_view_times" parameterType="java.lang.Integer">
+        UPDATE
+        tb_interest_Click_times
+        set
+        agriculture_view_times = agriculture_view_times+1
+        WHERE
+        user_id_f = #{user_id_f}
+    </update>
+
+    <update id="updatAgritainment_view_times" parameterType="java.lang.Integer">
+        UPDATE
+        tb_interest_Click_times
+        set
+        agritainment_view_times = agritainment_view_times+1
+        WHERE
+        user_id_f = #{user_id_f}
+    </update>
+
+    <update id="updatOther_view_times" parameterType="java.lang.Integer">
+        UPDATE
+        tb_interest_Click_times
+        set
+        other_view_times = other_view_times+1
+        WHERE
+        user_id_f = #{user_id_f}
+    </update>
+
+    <update id="updatAgriculture_products_times" parameterType="java.lang.Integer">
+        UPDATE
+        tb_interest_Click_times
+        set
+        agriculture_products_times = agriculture_products_times+1
+        WHERE
+        user_id_f = #{user_id_f}
+    </update>
+
+    <update id="updatAgriculture_bp_times" parameterType="java.lang.Integer">
+        UPDATE
+        tb_interest_Click_times
+        set
+        agriculture_bp_times = agriculture_bp_times+1
+        WHERE
+        user_id_f = #{user_id_f}
+    </update>
+
+    <update id="updatCreate_delifood_times" parameterType="java.lang.Integer">
+        UPDATE
+        tb_interest_Click_times
+        set
+        create_delifood_times = create_delifood_times+1
+        WHERE
+        user_id_f = #{user_id_f}
+    </update>
+
+    <update id="updatDelifood_commont_times" parameterType="java.lang.Integer">
+        UPDATE
+        tb_interest_Click_times
+        set
+        delifood_commont_times = delifood_commont_times+1
+        WHERE
+        user_id_f = #{user_id_f}
+    </update>
+
+    <update id="updatDelifood_entertainment_times" parameterType="java.lang.Integer">
+        UPDATE
+        tb_interest_Click_times
+        set
+        delifood_entertainment_times = delifood_entertainment_times+1
+        WHERE
+        user_id_f = #{user_id_f}
+    </update>
+
+    <update id="updatFarm_introduce_times" parameterType="java.lang.Integer">
+        UPDATE
+        tb_interest_Click_times
+        set
+        farm_introduce_times = farm_introduce_times+1
+        WHERE
+        user_id_f = #{user_id_f}
+    </update>
+
+</mapper>

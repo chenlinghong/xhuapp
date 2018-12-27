@@ -1,7 +1,8 @@
-package com.app.service;/*
- *@Author:dxlin
- *@Description：
- *@Date: 2018-3-
+package com.app.service;
+
+/**
+ *
+ * 评论的相关service接口
  */
 
 import com.app.entity.Commont;

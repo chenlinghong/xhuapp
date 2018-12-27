@@ -9,7 +9,11 @@ import com.app.vo.VideoApiVo;
 
 import java.sql.SQLException;
 
+/**
+ * 视频的service相关接口
+ */
 public interface IVideoService {
+
     public VideoApiVo insertOneVideo(Video video) throws SQLException;
 
     public VideoApiVo findVideoById(int video_id);

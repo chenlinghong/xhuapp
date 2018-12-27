@@ -4,6 +4,11 @@ package com.app.entity;/*
  *@Date: 2018-3-
  */
 
+/**
+ * 评论的bean
+ * 用于评论的基本类
+ */
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

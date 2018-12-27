@@ -1,11 +1,9 @@
-package com.app.controller;/*
- *@Author:dxlin
- *@Description：
- *@Date: 2018-3-
- */
+package com.app.controller;
 
 
+import com.app.entity.Interest;
 import com.app.entity.Video;
+import com.app.service.IInterestService;
 import com.app.service.IVideoService;
 import com.app.util.ApiFormatUtil;
 import com.app.util.ChargePicUtil;
@@ -23,6 +21,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
+/**
+ * 视频相关Controller
+ */
 @Controller
 @RequestMapping("/Video")
 public class VideoController {
@@ -30,6 +31,10 @@ public class VideoController {
     private VideoApiVo videoApiVo;
     @Resource
     private IVideoService videoService;
+    @Resource
+    private IInterestService interestService;
+
+    private String interestMsg = "";
 
     @RequestMapping(value = "/insertOneVideo",method = {RequestMethod.GET, RequestMethod.POST}
                         ,produces = "text/json;charset=utf-8")
@@ -39,7 +44,8 @@ public class VideoController {
                                  int user_id_f, int video_type, String introduce,
                                  @RequestParam(defaultValue = "成都") String address,
                                  @RequestParam(defaultValue = "0") int prize,
-                                 @RequestParam(defaultValue = "0") int look_persons,HttpServletRequest request) throws SQLException{
+                                 @RequestParam(defaultValue = "0") int look_persons,
+                                 Interest interest, HttpServletRequest request) throws SQLException{
         if(videofile.getOriginalFilename().equals("")){
             videoApiVo.setCode(0);
             videoApiVo.setVideoList(null);
@@ -61,6 +67,7 @@ public class VideoController {
             videoApiVo.setMsg("视频或者视频图片的格式错误");
             videoApiVo.setVideo(null);
         } else{
+                interestMsg = interestService.insertOneInterest(interest);
                 String videopath = UploadUtil.upload(videofile,request,2);
                 String videopicturepath = UploadUtil.upload(video_picture,request,3);
                 Video video = new Video();
@@ -73,6 +80,8 @@ public class VideoController {
                 video.setLook_persons(look_persons);
                 video.setPrize(prize);
                 video.setVideo_picture(videopicturepath);
+                video.setInterest_id_f(interest.getInterest_id());
+                //关联小类型
                 videoApiVo = videoService.insertOneVideo(video);
         }
         return ApiFormatUtil.apiFormat(videoApiVo.getCode(),videoApiVo.getMsg(),videoApiVo.getVideo());

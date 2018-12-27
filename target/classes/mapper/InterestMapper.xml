@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.dao.IInterestDao">
+    <resultMap id="BaseInterest" type="com.app.entity.Interest">
+        <result property="interest_id" column="interest_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="agriculture_view" column="agriculture_view" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="agriculture_products" column="agriculture_products" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="agriculture_bp" column="agriculture_bp" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="other_view" column="other_view" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="create_delifood" column="create_delifood" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="delifood_commont" column="delifood_commont" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="farm_introduce" column="farm_introduce" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="countryside_view" column="countryside_view" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="agritainment_view" column="agritainment_view" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="delifood_entertainment" column="delifood_entertainment" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+    </resultMap>
+
+
+    <insert id="insertOneInterest" parameterType="com.app.entity.Interest">
+        <selectKey keyProperty="interest_id" resultType="int" order="AFTER">
+            SELECT last_insert_id()
+        </selectKey>
+        INSERT INTO
+          tb_interest(agriculture_view,agriculture_products,agriculture_bp
+                      ,other_view,create_delifood,delifood_commont,farm_introduce,
+                      countryside_view,agritainment_view,delifood_entertainment)
+          VALUES (#{agriculture_view},#{agriculture_products},#{agriculture_bp},
+                  #{other_view},#{create_delifood},#{delifood_commont},#{farm_introduce},
+                  #{countryside_view},#{agritainment_view},#{delifood_entertainment})
+    </insert>
+
+    <select id="findInterestById" parameterType="java.lang.Integer" resultType="com.app.entity.Interest">
+        SELECT * FROM
+          tb_interest
+        WHERE
+          interest_id = #{interest_id}
+    </select>
+
+
+
+</mapper>

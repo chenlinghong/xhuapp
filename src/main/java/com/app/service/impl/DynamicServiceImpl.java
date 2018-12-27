@@ -3,18 +3,29 @@ package com.app.service.impl;/*
  *@Description：
  *@Date: 2018-3-23
  */
+/**
+ *
+ * 动态Service相关类
+ */
 
+import com.app.algorithm.ArticleInfo;
 import com.app.dao.IDynamicDao;
+import com.app.dao.IInterestDao;
 import com.app.entity.Dynamic;
+import com.app.entity.Interest;
 import com.app.service.IDynamicService;
+import com.app.util.ReturnTypeOfInterest;
 import com.app.vo.DynamicApiVo;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
-@Service(value = "dynamicService")
+@Component(value = "dynamicService")
+@Scope(value = "prototype")
 public class DynamicServiceImpl implements IDynamicService {
     /*
     *@param:getDynamicById
@@ -25,6 +36,9 @@ public class DynamicServiceImpl implements IDynamicService {
     private DynamicApiVo dynamicApiVo;
     @Resource
     private IDynamicDao dynamicDao;
+    @Resource
+    private IInterestDao interestDao;
+
 
     public DynamicServiceImpl(){
     }
@@ -96,6 +110,7 @@ public class DynamicServiceImpl implements IDynamicService {
         return dynamicApiVo;
     }
     public DynamicApiVo findAllDynamicByUser_id(int user_id_f) {
+
         List<Dynamic> dynamics = dynamicDao.findAllDynamicByUserId(user_id_f);
         if(dynamics.size()==0){
             dynamicApiVo.setCode(0);
@@ -207,4 +222,37 @@ public class DynamicServiceImpl implements IDynamicService {
 
         return dynamicApiVo;
     }
+
+    public int findInterest_idById(int dynamic_id){
+        if(dynamic_id>0){
+            return dynamicDao.findInterest_Id_fById(dynamic_id);
+        }
+        return 0;
+    }
+
+    //2018.5.19 16.30add
+
+
+    public List<ArticleInfo> findIdLookPersonsInterestIdByUser_id(int user_id_f) {
+
+        List<ArticleInfo> dynamicLinkInterests = new ArrayList<ArticleInfo>();//创建整个动态兴趣链表
+        List<Dynamic> dynamics = dynamicDao.findIdLookPersonsInterestIdByUser_id(user_id_f);//获取用户的动态id和关注度链表
+        //利用单个动态兴趣对象存储
+        for(Dynamic dynamic:dynamics){
+            Interest interest = interestDao.findInterestById(dynamic.getInterest_id_f());
+            //获取用户喜欢的类型从1-10
+            int likeType = ReturnTypeOfInterest.getType(interest);
+
+            ArticleInfo articleInfo = new ArticleInfo();
+            articleInfo.setArticleId(dynamic.getDynamic_id());
+            articleInfo.setStar(dynamic.getLook_persons());
+            articleInfo.setArticleType(likeType);
+
+            dynamicLinkInterests.add(articleInfo);
+        }
+
+        return dynamicLinkInterests;
+    }
+
+
 }

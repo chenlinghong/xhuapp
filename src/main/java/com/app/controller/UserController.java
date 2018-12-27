@@ -70,7 +70,7 @@ public class UserController {
      * @throws Exception
      */
     @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET},
-            produces = "text/json;charset=UTF-8")
+            produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String loginByAccountAndPassword(LoginVo loginVo) throws Exception {
         String account = "";
@@ -534,7 +534,6 @@ public class UserController {
         }
 
         return ApiFormatUtil.apiFormat(userApiVo.getCode(),userApiVo.getMessage(),resultJson);
-
     }
 
 

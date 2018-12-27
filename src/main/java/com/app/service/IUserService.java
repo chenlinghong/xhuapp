@@ -2,7 +2,6 @@ package com.app.service;
 
 import com.app.entity.User;
 import com.app.vo.UserApiVo;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @program: busis
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @create: 2018-03-13 13:10
  **/
 
-@Transactional
 public interface IUserService {
 
     /**

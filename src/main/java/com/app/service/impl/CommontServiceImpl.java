@@ -3,6 +3,9 @@ package com.app.service.impl;/*
  *@Description：
  *@Date: 2018-3-
  */
+/**
+ * 评论相关Service类
+ */
 
 import com.app.dao.ICommontDao;
 import com.app.entity.Commont;

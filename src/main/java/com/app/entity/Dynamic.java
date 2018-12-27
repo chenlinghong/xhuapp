@@ -4,11 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- * 通过用户ID查询用户基本信息
- *
- * @param user_id
- * @return 用户信息
- * @throws Exception
+ * 动态基本bean
  */
 @Component(value = "dynamic")
 @Scope(value = "prototype")
@@ -22,8 +18,26 @@ public class Dynamic {
     private String address;
     private int prize;
     private int look_persons;
+    private String little_introduce;
+    private int interest_id_f;
 
     public Dynamic(){}
+
+    public int getInterest_id_f() {
+        return interest_id_f;
+    }
+
+    public void setInterest_id_f(int interest_id_f) {
+        this.interest_id_f = interest_id_f;
+    }
+
+    public String getLittle_introduce() {
+        return little_introduce;
+    }
+
+    public void setLittle_introduce(String little_introduce) {
+        this.little_introduce = little_introduce;
+    }
 
     public String getAddress() {
         return address;

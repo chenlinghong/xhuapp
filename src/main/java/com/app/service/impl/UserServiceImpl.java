@@ -2,10 +2,13 @@ package com.app.service.impl;
 
 import com.app.dao.IUserDao;
 import com.app.entity.User;
+import com.app.enums.ResultEnum;
+import com.app.exception.BaseException;
 import com.app.service.IUserService;
 import com.app.util.TelphoneCheckUtil;
 import com.app.vo.UserApiVo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -137,20 +140,25 @@ public class UserServiceImpl implements IUserService {
         return userApiVo;
     }
 
+    @Transactional
     public UserApiVo registerUser(User user) throws Exception {
-        int recordsTelphone = 0;
-        //验证数据库中是否存在利用该电话号码的用户
-        recordsTelphone = userDao.queryTelphone(user.getTelphone());
-        if (recordsTelphone > 0) {
-            //电话号码不可用
-            userApiVo.setCode(0);
-            userApiVo.setMessage("此电话号码已注册。");
-            userApiVo.setUser(user);
-        } else {
-            userDao.insertUser(user);
-            userApiVo.setCode(1);
-            userApiVo.setMessage("注册成功");
-            userApiVo.setUser(user);
+        try {
+            int recordsTelphone = 0;
+            //验证数据库中是否存在利用该电话号码的用户
+            recordsTelphone = userDao.queryTelphone(user.getTelphone());
+            if (recordsTelphone > 0) {
+                //电话号码不可用
+                userApiVo.setCode(0);
+                userApiVo.setMessage("此电话号码已注册。");
+                userApiVo.setUser(user);
+            } else {
+                userDao.insertUser(user);
+                userApiVo.setCode(1);
+                userApiVo.setMessage("注册成功");
+                userApiVo.setUser(user);
+            }
+        } catch (Exception e){
+            throw new BaseException(ResultEnum.UNKNOWN_ERROR);
         }
         return userApiVo;
     }
@@ -330,6 +338,7 @@ public class UserServiceImpl implements IUserService {
 //    }
 
 
+    @Transactional
     public UserApiVo updateUserInformation(User user) throws Exception {
         User tempUser = new User();
         boolean result = true;
@@ -404,65 +413,70 @@ public class UserServiceImpl implements IUserService {
                     tempUser.setIntroduce(user.getIntroduce());
                     tempUser.setHead_portrail(user.getHead_portrail());
 
-                    //校验是否修改电话号码
-                    if (tempUser.getTelphone() != null && tempUser.getTelphone() != "") {
-                        if (tempUser.getTelphone().equals(queryUser.getTelphone())) {
-                            //用户未进行电话号码修改
+                    try {
 
-                        } else {
-                            //用户欲修改电话号码
-                            //需要进行判断是否能够修改成功
-                            int records = -1;       //记录数
-                            records = userDao.queryTelphone(tempUser.getTelphone());
-                            if (records > 0 && !queryUser.getTelphone().equals(tempUser.getTelphone())) {
-                                //说明数据库中存在此号码
-                                result = false;
-                                userApiVo.setCode(0);
-                                userApiVo.setMessage(userApiVo.getMessage() + "电话号码已注册！");
+                        //校验是否修改电话号码
+                        if (tempUser.getTelphone() != null && tempUser.getTelphone() != "") {
+                            if (tempUser.getTelphone().equals(queryUser.getTelphone())) {
+                                //用户未进行电话号码修改
+
                             } else {
-                                //说明可以进行电话号码的修改
-                                //修改电话号码
-                                result = true;
-                                userDao.modifyTelphone(tempUser);
+                                //用户欲修改电话号码
+                                //需要进行判断是否能够修改成功
+                                int records = -1;       //记录数
+                                records = userDao.queryTelphone(tempUser.getTelphone());
+                                if (records > 0 && !queryUser.getTelphone().equals(tempUser.getTelphone())) {
+                                    //说明数据库中存在此号码
+                                    result = false;
+                                    userApiVo.setCode(0);
+                                    userApiVo.setMessage(userApiVo.getMessage() + "电话号码已注册！");
+                                } else {
+                                    //说明可以进行电话号码的修改
+                                    //修改电话号码
+                                    result = true;
+                                    userDao.modifyTelphone(tempUser);
+                                }
                             }
                         }
-                    }
-                    if (result) {
-                        //判断是否进行各项信息的修改，并进行修改
-                        //修改用户名
-                        if (tempUser.getUsername() != "" && tempUser.getUsername() != null) {
-                            userDao.modifyUsername(tempUser);
-                        }
-                        //修改出生日期
-                        if (tempUser.getBirthday() != null) {
-                            userDao.modifyBirthday(tempUser);
-                        }
+                        if (result) {
+                            //判断是否进行各项信息的修改，并进行修改
+                            //修改用户名
+                            if (tempUser.getUsername() != "" && tempUser.getUsername() != null) {
+                                userDao.modifyUsername(tempUser);
+                            }
+                            //修改出生日期
+                            if (tempUser.getBirthday() != null) {
+                                userDao.modifyBirthday(tempUser);
+                            }
 
-                        //修改用户性别
-                        if ((tempUser.getGender() == '0' || tempUser.getGender() == '1')
-                                && tempUser.getGender() != queryUser.getGender()) {
-                            userDao.modifyGender(tempUser);
-                        }
-                        //修改密码
-                        if (tempUser.getPassword() != "" && tempUser.getPassword() != null
-                                && !tempUser.getPassword().equals(queryUser.getPassword())) {
-                            userDao.modifyPassword(tempUser);
-                        }
-                        //修改备注
-                        if (tempUser.getIntroduce() != "" && tempUser.getIntroduce() != null
-                                && !tempUser.getIntroduce().equals(queryUser.getIntroduce())) {
-                            userDao.modifyIntroduce(tempUser);
-                        }
-                        //修改头像路径
-                        if (tempUser.getHead_portrail() != "" && tempUser.getHead_portrail() != null
-                                && !tempUser.getHead_portrail().equals(queryUser.getHead_portrail())) {
-                            userDao.modifyHead_portrail(tempUser);
-                        }
+                            //修改用户性别
+                            if ((tempUser.getGender() == '0' || tempUser.getGender() == '1')
+                                    && tempUser.getGender() != queryUser.getGender()) {
+                                userDao.modifyGender(tempUser);
+                            }
+                            //修改密码
+                            if (tempUser.getPassword() != "" && tempUser.getPassword() != null
+                                    && !tempUser.getPassword().equals(queryUser.getPassword())) {
+                                userDao.modifyPassword(tempUser);
+                            }
+                            //修改备注
+                            if (tempUser.getIntroduce() != "" && tempUser.getIntroduce() != null
+                                    && !tempUser.getIntroduce().equals(queryUser.getIntroduce())) {
+                                userDao.modifyIntroduce(tempUser);
+                            }
+                            //修改头像路径
+                            if (tempUser.getHead_portrail() != "" && tempUser.getHead_portrail() != null
+                                    && !tempUser.getHead_portrail().equals(queryUser.getHead_portrail())) {
+                                userDao.modifyHead_portrail(tempUser);
+                            }
 
-                        //执行到此步说明更改用户信息成功
-                        userApiVo.setMessage(userApiVo.getMessage() + "修改用户信息成功！");
-                        userApiVo.setCode(1);
-                        userApiVo.setUser(userDao.findUserByUser_id(user.getUser_id()));
+                            //执行到此步说明更改用户信息成功
+                            userApiVo.setMessage(userApiVo.getMessage() + "修改用户信息成功！");
+                            userApiVo.setCode(1);
+                            userApiVo.setUser(userDao.findUserByUser_id(user.getUser_id()));
+                        }
+                    } catch (Exception e){
+                        throw new BaseException(ResultEnum.UNKNOWN_ERROR);
                     }
                 }
             } else {
