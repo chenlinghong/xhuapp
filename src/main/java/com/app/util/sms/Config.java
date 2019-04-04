@@ -13,12 +13,12 @@ public class Config
 	/**
 	 * 开发者注册后系统自动生成的账号，可在官网登录后查看
 	 */
-	public static final String ACCOUNT_SID = "67ccadf3871f43e6a408ca7e5c68f9f0";
+	public static final String ACCOUNT_SID = "";
 
 	/**
 	 * 开发者注册后系统自动生成的TOKEN，可在官网登录后查看
 	 */
-	public static final String AUTH_TOKEN = "cc2f6172984f4151a1e23389fd90f3c4";
+	public static final String AUTH_TOKEN = "";
 
 
 	/**
